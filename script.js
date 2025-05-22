@@ -87,16 +87,20 @@ function loadDefaultConfig() {
     };
 
     // Apply default values to form fields
-    Object.keys(defaultConfig).forEach(key => {
-        const element = document.getElementById(key);
-        if (element) {
-            element.value = defaultConfig[key];
-        }
-    });
+    try {
+        Object.keys(defaultConfig).forEach(key => {
+            const element = document.getElementById(key);
+            if (element) {
+                element.value = defaultConfig[key];
+            }
+        });
 
-    currentConfig = defaultConfig;
-    updateRangeValues();
-    generateCode();
+        currentConfig = defaultConfig;
+        updateRangeValues();
+        generateCode();
+    } catch (error) {
+        console.error('Error loading default config:', error);
+    }
 }
 
 function collectConfig() {
@@ -134,9 +138,10 @@ function collectConfig() {
 }
 
 function generateCode() {
-    const config = collectConfig();
-    
-    const embedCode = `<script type="module" defer>
+    try {
+        const config = collectConfig();
+        
+        const embedCode = `<script type="module" defer>
   import Chatbot from "https://cdn.n8nchatui.com/v1/pole-embed-yard.js";
   Chatbot.init({
     "n8nChatUrl": "${config.webhookUrl}",
@@ -212,23 +217,40 @@ function generateCode() {
   });
 </script>`;
 
-    document.getElementById('embedCode').value = embedCode;
+        const embedCodeElement = document.getElementById('embedCode');
+        if (embedCodeElement) {
+            embedCodeElement.value = embedCode;
+        } else {
+            console.error('embedCode element not found');
+        }
+    } catch (error) {
+        console.error('Error generating code:', error);
+    }
 }
 
 function previewWidget() {
-    const config = collectConfig();
-    
-    // Create a preview mockup since we can't actually embed the widget
-    const previewContainer = document.getElementById('previewContainer');
-    
-    // Clear existing preview
-    previewContainer.innerHTML = '';
-    
-    // Create mockup
-    const mockup = createMockupWidget(config);
-    previewContainer.appendChild(mockup);
-    
-    generateCode();
+    try {
+        const config = collectConfig();
+        
+        // Create a preview mockup since we can't actually embed the widget
+        const previewContainer = document.getElementById('previewContainer');
+        
+        if (!previewContainer) {
+            console.error('previewContainer element not found');
+            return;
+        }
+        
+        // Clear existing preview
+        previewContainer.innerHTML = '';
+        
+        // Create mockup
+        const mockup = createMockupWidget(config);
+        previewContainer.appendChild(mockup);
+        
+        generateCode();
+    } catch (error) {
+        console.error('Error in previewWidget:', error);
+    }
 }
 
 function createMockupWidget(config) {
