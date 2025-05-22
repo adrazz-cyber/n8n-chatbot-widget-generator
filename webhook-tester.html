@@ -330,6 +330,7 @@ Please check your webhook URL format.`;
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        chatInput: 'Connection test from N8N Chatbot Tester',
                         message: 'Connection test from N8N Chatbot Tester',
                         timestamp: new Date().toISOString(),
                         test: true
@@ -395,6 +396,7 @@ Common causes:
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        chatInput: 'Hello! This is a test message from the N8N Chatbot Tester. Please respond if you can see this.',
                         message: 'Hello! This is a test message from the N8N Chatbot Tester. Please respond if you can see this.',
                         timestamp: new Date().toISOString(),
                         user: 'Test User',
