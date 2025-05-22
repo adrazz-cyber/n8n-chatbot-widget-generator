@@ -1,0 +1,30 @@
+{
+  "name": "n8n-chatbot-widget-generator",
+  "version": "1.0.0",
+  "description": "A customisable web application for generating N8N chatbot widget embed codes",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "npx live-server"
+  },
+  "keywords": [
+    "n8n",
+    "chatbot",
+    "widget",
+    "generator",
+    "embed",
+    "customisation"
+  ],
+  "author": "SEO it Right Ltd",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/n8n-chatbot-widget-generator.git"
+  },
+  "homepage": "https://your-username.github.io/n8n-chatbot-widget-generator/",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  }
+}
