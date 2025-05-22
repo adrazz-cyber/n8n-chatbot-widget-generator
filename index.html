@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N Chatbot Widget Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>N8N Chatbot Widget Generator</h1>
+            <p>Customise your chatbot appearance and generate embed code</p>
+        </header>
+
+        <div class="main-content">
+            <div class="config-panel">
+                <div class="config-section">
+                    <h2>Basic Configuration</h2>
+                    <div class="form-group">
+                        <label for="webhookUrl">N8N Webhook URL</label>
+                        <input type="url" id="webhookUrl" placeholder="https://your-n8n-instance.com/webhook/your-id">
+                    </div>
+                    <div class="form-group">
+                        <label for="chatTitle">Chat Title</label>
+                        <input type="text" id="chatTitle" value="Welcome to BlueChilli">
+                    </div>
+                    <div class="form-group">
+                        <label for="welcomeMessage">Welcome Message</label>
+                        <input type="text" id="welcomeMessage" value="Hello! Welcome to BlueChilli">
+                    </div>
+                    <div class="form-group">
+                        <label for="placeholderText">Input Placeholder</label>
+                        <input type="text" id="placeholderText" value="How can I help!">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Button Settings</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="buttonColor">Button Colour</label>
+                            <input type="color" id="buttonColor" value="#009BDD">
+                        </div>
+                        <div class="form-group">
+                            <label for="buttonSize">Button Size</label>
+                            <input type="range" id="buttonSize" min="40" max="80" value="54">
+                            <span class="range-value" id="buttonSizeValue">54px</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="buttonRight">Right Position</label>
+                            <input type="range" id="buttonRight" min="10" max="100" value="25">
+                            <span class="range-value" id="buttonRightValue">25px</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="buttonBottom">Bottom Position</label>
+                            <input type="range" id="buttonBottom" min="10" max="100" value="25">
+                            <span class="range-value" id="buttonBottomValue">25px</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customIcon">Custom Icon URL</label>
+                        <input type="url" id="customIcon" value="https://www.svgrepo.com/show/339963/chat-bot.svg">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Chat Window Settings</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="chatWidth">Width</label>
+                            <input type="range" id="chatWidth" min="300" max="600" value="400">
+                            <span class="range-value" id="chatWidthValue">400px</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="chatHeight">Height</label>
+                            <input type="range" id="chatHeight" min="400" max="800" value="600">
+                            <span class="range-value" id="chatHeightValue">600px</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="chatBackgroundColor">Background Colour</label>
+                        <input type="color" id="chatBackgroundColor" value="#4d4d4d">
+                    </div>
+                    <div class="form-group">
+                        <label for="fontSize">Font Size</label>
+                        <input type="range" id="fontSize" min="12" max="20" value="16">
+                        <span class="range-value" id="fontSizeValue">16px</span>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Message Styling</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="botMessageColor">Bot Message Colour</label>
+                            <input type="color" id="botMessageColor" value="#009BDD">
+                        </div>
+                        <div class="form-group">
+                            <label for="botTextColor">Bot Text Colour</label>
+                            <input type="color" id="botTextColor" value="#FFFFFF">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userMessageColor">User Message Colour</label>
+                            <input type="color" id="userMessageColor" value="#000000">
+                        </div>
+                        <div class="form-group">
+                            <label for="userTextColor">User Text Colour</label>
+                            <input type="color" id="userTextColor" value="#A3A3A3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Input Field</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inputBackgroundColor">Input Background</label>
+                            <input type="color" id="inputBackgroundColor" value="#000000">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTextColor">Input Text Colour</label>
+                            <input type="color" id="inputTextColor" value="#ffffff">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sendButtonColor">Send Button Colour</label>
+                        <input type="color" id="sendButtonColor" value="#009BDD">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Footer Settings</h2>
+                    <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" id="companyName" value="BlueChilli Ai">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyLink">Company Link</label>
+                        <input type="url" id="companyLink" value="https://bluechillidp.co.uk/">
+                    </div>
+                    <div class="form-group">
+                        <label for="footerTextColor">Footer Text Colour</label>
+                        <input type="color" id="footerTextColor" value="#151515">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Tooltip Settings</h2>
+                    <div class="form-group">
+                        <label for="tooltipMessage">Tooltip Message</label>
+                        <input type="text" id="tooltipMessage" value="Hello 👋 can I help!">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tooltipBackgroundColor">Tooltip Background</label>
+                            <input type="color" id="tooltipBackgroundColor" value="#009BDD">
+                        </div>
+                        <div class="form-group">
+                            <label for="tooltipTextColor">Tooltip Text Colour</label>
+                            <input type="color" id="tooltipTextColor" value="#FFFFFF">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h2>Actions</h2>
+                    <button class="btn btn-preview" onclick="previewWidget()">Preview Widget</button>
+                    <button class="btn btn-generate" onclick="generateCode()">Generate Embed Code</button>
+                    <button class="btn btn-save" onclick="saveConfig()">Save Configuration</button>
+                    <button class="btn btn-load" onclick="loadConfig()">Load Configuration</button>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <div class="preview-header">
+                    <h2>Preview</h2>
+                    <button class="btn btn-secondary" onclick="togglePreview()">Toggle Preview</button>
+                </div>
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-mockup">
+                        <div class="mockup-website">
+                            <div class="mockup-header">Your Website</div>
+                            <div class="mockup-content">
+                                <p>This is how your chatbot will appear on your website.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-output">
+                    <h3>Generated Embed Code</h3>
+                    <textarea id="embedCode" readonly></textarea>
+                    <button class="btn btn-copy" onclick="copyCode()">Copy Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

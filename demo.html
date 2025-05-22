@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Demo Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+        }
+        .demo-content {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .embed-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .embed-section h3 {
+            margin-top: 0;
+            color: #4a5568;
+        }
+        code {
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        .notice {
+            background: #fef5e7;
+            border: 1px solid #f6e05e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>N8N Chatbot Demo Page</h1>
+        
+        <div class="demo-content">
+            <p>This is a demonstration page showing how the N8N chatbot widget appears on a website.</p>
+            
+            <p>The chat button should appear in the bottom-right corner of this page. Click it to test the chat functionality.</p>
+            
+            <div class="notice">
+                <strong>Note:</strong> Make sure to replace the webhook URL in the embed code with your actual N8N workflow webhook URL for the chat to work properly.
+            </div>
+            
+            <div class="embed-section">
+                <h3>How to Use</h3>
+                <ol>
+                    <li>Generate your embed code using the Widget Generator</li>
+                    <li>Replace the webhook URL with your N8N webhook</li>
+                    <li>Paste the code into your website's HTML</li>
+                    <li>Test the chat functionality</li>
+                </ol>
+            </div>
+            
+            <div class="embed-section">
+                <h3>Current Configuration</h3>
+                <p>This demo uses the default BlueChilli configuration. You can customise:</p>
+                <ul>
+                    <li>Button colours and size</li>
+                    <li>Chat window appearance</li>
+                    <li>Message styling</li>
+                    <li>Company branding</li>
+                    <li>Welcome messages</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- N8N Chatbot Widget Embed Code -->
+    <script type="module" defer>
+        import Chatbot from "https://cdn.n8nchatui.com/v1/pole-embed-yard.js";
+        Chatbot.init({
+            "n8nChatUrl": "YOUR_N8N_CHAT_TRIGGER_NODE_WEBHOOK_URL",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#009BDD",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 54,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "customIconSize": 60,
+                    "customIconBorderRadius": 15,
+                    "autoWindowOpen": {
+                        "autoOpen": true,
+                        "openDelay": 2
+                    },
+                    "borderRadius": "rounded"
+                },
+                "tooltip": {
+                    "showTooltip": true,
+                    "tooltipMessage": "Hello 👋 can I help!",
+                    "tooltipBackgroundColor": "#009BDD",
+                    "tooltipTextColor": "#FFFFFF",
+                    "tooltipFontSize": 15
+                },
+                "chatWindow": {
+                    "borderRadiusStyle": "rounded",
+                    "avatarBorderRadius": 25,
+                    "messageBorderRadius": 6,
+                    "showTitle": true,
+                    "title": "Welcome to BlueChilli",
+                    "titleAvatarSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "welcomeMessage": "Hello! Welcome to BlueChilli",
+                    "errorMessage": "Please try again",
+                    "backgroundColor": "#4d4d4d",
+                    "height": 600,
+                    "width": 400,
+                    "fontSize": 16,
+                    "starterPromptFontSize": 15,
+                    "clearChatOnReload": true,
+                    "botMessage": {
+                        "backgroundColor": "#009BDD",
+                        "textColor": "#FFFFFF",
+                        "showAvatar": true,
+                        "avatarSrc": "https://www.svgrepo.com/show/334455/bot.svg"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#000000",
+                        "textColor": "#A3A3A3",
+                        "showAvatar": true,
+                        "avatarSrc": "https://www.svgrepo.com/show/532363/user-alt-1.svg"
+                    },
+                    "textInput": {
+                        "placeholder": "How can I help!",
+                        "backgroundColor": "#000000",
+                        "textColor": "#ffffff",
+                        "sendButtonColor": "#009BDD",
+                        "maxChars": 250,
+                        "maxCharsWarningMessage": "You exceeded the characters limit. Please input less than 250 characters.",
+                        "autoFocus": false,
+                        "borderRadius": 6,
+                        "sendButtonBorderRadius": 50
+                    },
+                    "footer": {
+                        "companyLink": "https://bluechillidp.co.uk/",
+                        "text": "Powered by",
+                        "company": "BlueChilli Ai",
+                        "textColor": "#151515"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
