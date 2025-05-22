@@ -58,6 +58,14 @@ function generateCode() {
         const inputBackgroundColor = document.getElementById('inputBackgroundColor')?.value || '#000000';
         const inputTextColor = document.getElementById('inputTextColor')?.value || '#ffffff';
         const sendButtonColor = document.getElementById('sendButtonColor')?.value || '#009BDD';
+        
+        // Border settings
+        const inputBorderColor = document.getElementById('inputBorderColor')?.value || '#cccccc';
+        const inputBorderWidth = document.getElementById('inputBorderWidth')?.value || '1';
+        const chatWindowBorderColor = document.getElementById('chatWindowBorderColor')?.value || '#e1e1e1';
+        const chatWindowBorderWidth = document.getElementById('chatWindowBorderWidth')?.value || '1';
+        const chatWindowBorderRadius = document.getElementById('chatWindowBorderRadius')?.value || '10';
+        
         const companyName = document.getElementById('companyName')?.value || 'Your Company';
         const companyLink = document.getElementById('companyLink')?.value || '';
         const footerTextColor = document.getElementById('footerTextColor')?.value || '#151515';
@@ -88,12 +96,17 @@ function generateCode() {
         "backgroundColor": "${chatBackgroundColor}",
         "fontSize": "${fontSize}px",
         "messageFont": "${messageFont}",
+        "borderColor": "${chatWindowBorderColor}",
+        "borderWidth": "${chatWindowBorderWidth}px",
+        "borderRadius": "${chatWindowBorderRadius}px",
         "textInput": {
           "placeholder": "${placeholderText}",
           "backgroundColor": "${inputBackgroundColor}",
           "textColor": "${inputTextColor}",
           "font": "${inputFont}",
-          "sendButtonColor": "${sendButtonColor}"
+          "sendButtonColor": "${sendButtonColor}",
+          "borderColor": "${inputBorderColor}",
+          "borderWidth": "${inputBorderWidth}px"
         },
         "botMessage": {
           "backgroundColor": "${botMessageColor}",
@@ -147,6 +160,13 @@ function previewWidget() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
         
+        // Border settings for preview
+        const inputBorderColor = document.getElementById('inputBorderColor')?.value || '#cccccc';
+        const inputBorderWidth = document.getElementById('inputBorderWidth')?.value || '1';
+        const chatWindowBorderColor = document.getElementById('chatWindowBorderColor')?.value || '#e1e1e1';
+        const chatWindowBorderWidth = document.getElementById('chatWindowBorderWidth')?.value || '1';
+        const chatWindowBorderRadius = document.getElementById('chatWindowBorderRadius')?.value || '10';
+        
         const previewContainer = document.getElementById('previewContainer');
         if (previewContainer) {
             previewContainer.innerHTML = `
@@ -193,13 +213,23 @@ function previewWidget() {
                     margin-top: 20px;
                     padding: 15px;
                     background: white;
-                    border-radius: 10px;
-                    border: 1px solid #e1e1e1;
+                    border-radius: ${chatWindowBorderRadius}px;
+                    border: ${chatWindowBorderWidth}px solid ${chatWindowBorderColor};
                 ">
                     <h4 style="margin: 0 0 10px 0; font-family: '${titleFont}', sans-serif;">${chatTitle}</h4>
-                    <p style="margin: 0; font-family: '${messageFont}', sans-serif; color: #666;">
+                    <p style="margin: 0 0 10px 0; font-family: '${messageFont}', sans-serif; color: #666;">
                         Font Preview: Title uses ${titleFont}, Messages use ${messageFont}
                     </p>
+                    <div style="
+                        margin-top: 10px;
+                        padding: 8px 12px;
+                        background: #f8f8f8;
+                        border: ${inputBorderWidth}px solid ${inputBorderColor};
+                        border-radius: 6px;
+                        font-family: '${messageFont}', sans-serif;
+                        color: #999;
+                        font-size: 14px;
+                    ">Input field border preview</div>
                 </div>
             `;
             console.log('Enhanced preview updated');
@@ -253,6 +283,13 @@ function saveConfig() {
             inputBackgroundColor: document.getElementById('inputBackgroundColor')?.value || '#000000',
             inputTextColor: document.getElementById('inputTextColor')?.value || '#ffffff',
             sendButtonColor: document.getElementById('sendButtonColor')?.value || '#009BDD',
+            
+            // Border settings
+            inputBorderColor: document.getElementById('inputBorderColor')?.value || '#cccccc',
+            inputBorderWidth: document.getElementById('inputBorderWidth')?.value || '1',
+            chatWindowBorderColor: document.getElementById('chatWindowBorderColor')?.value || '#e1e1e1',
+            chatWindowBorderWidth: document.getElementById('chatWindowBorderWidth')?.value || '1',
+            chatWindowBorderRadius: document.getElementById('chatWindowBorderRadius')?.value || '10',
             
             // Footer settings
             companyName: document.getElementById('companyName')?.value || '',
@@ -396,7 +433,7 @@ function initialisePreviewToggle() {
 function updateRangeValues() {
     console.log('Updating range values');
     try {
-        const ranges = ['buttonSize', 'buttonRight', 'buttonBottom', 'chatWidth', 'chatHeight', 'fontSize'];
+        const ranges = ['buttonSize', 'buttonRight', 'buttonBottom', 'chatWidth', 'chatHeight', 'fontSize', 'inputBorderWidth', 'chatWindowBorderWidth', 'chatWindowBorderRadius'];
         ranges.forEach(id => {
             const input = document.getElementById(id);
             const valueDisplay = document.getElementById(id + 'Value');
