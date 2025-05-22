@@ -450,6 +450,7 @@ class N8NChatbotWidget {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    chatInput: message,
                     message: message,
                     timestamp: new Date().toISOString()
                 })

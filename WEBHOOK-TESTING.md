@@ -65,7 +65,8 @@
 ### Expected Request Format:
 ```json
 {
-  "message": "User's message text",
+  "chatInput": "User's message text",
+  "message": "User's message text", 
   "timestamp": "2025-05-22T16:30:00.000Z"
 }
 ```
@@ -94,7 +95,11 @@
 fetch('YOUR_WEBHOOK_URL', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ message: 'Test message' })
+  body: JSON.stringify({ 
+    chatInput: 'Test message',
+    message: 'Test message',
+    timestamp: new Date().toISOString()
+  })
 })
 .then(response => response.json())
 .then(data => console.log('Success:', data))
