@@ -143,7 +143,8 @@ class N8NChatbotWidget {
                 width: ${this.config.theme.chatWindow.width}px;
                 height: ${this.config.theme.chatWindow.height}px;
                 background-color: ${this.config.theme.chatWindow.backgroundColor};
-                border-radius: 12px;
+                border-radius: ${this.config.theme.chatWindow.borderRadius || '12px'};
+                border: ${this.config.theme.chatWindow.borderWidth || '0px'} solid ${this.config.theme.chatWindow.borderColor || 'transparent'};
                 box-shadow: 0 8px 32px rgba(0,0,0,0.3);
                 z-index: 9999;
                 display: flex;
@@ -241,7 +242,7 @@ class N8NChatbotWidget {
             .n8n-chatbot-input {
                 flex: 1;
                 padding: 12px 15px;
-                border: 1px solid rgba(0,0,0,0.2);
+                border: ${this.config.theme.chatWindow.textInput.borderWidth || '1px'} solid ${this.config.theme.chatWindow.textInput.borderColor || 'rgba(0,0,0,0.2)'};
                 border-radius: 20px;
                 font-family: '${this.config.theme.chatWindow.textInput.font}', sans-serif;
                 font-size: 14px;
