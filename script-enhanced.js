@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateRangeValues();
         setupFontPreview();
         initialisePreviewToggle();
+        previewWidget(); // Initialize preview with current settings
     }, 100);
 });
 
@@ -453,16 +454,21 @@ document.addEventListener('DOMContentLoaded', function() {
         input.addEventListener('input', function() {
             updateRangeValues();
             generateCode(); // Update code when ranges change
+            previewWidget(); // Also update preview when ranges change
         });
     });
     
     // Add event listeners for all inputs to update code in real-time
     const allInputs = document.querySelectorAll('input, select');
     allInputs.forEach(input => {
-        input.addEventListener('change', generateCode);
+        input.addEventListener('change', function() {
+            generateCode();
+            previewWidget(); // Also update preview when settings change
+        });
         input.addEventListener('input', function() {
             if (input.type !== 'range') {
                 generateCode();
+                previewWidget(); // Also update preview when settings change
             }
         });
     });
