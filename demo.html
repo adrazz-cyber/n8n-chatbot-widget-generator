@@ -3,170 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Demo Page</title>
+    <title>N8N Chatbot Widget Demo - Enhanced</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            background-color: #f5f5f5;
+            line-height: 1.6;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #2d3748;
-            margin-bottom: 30px;
-        }
-        .demo-content {
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .embed-section {
-            background: #f8f9fa;
-            padding: 20px;
             border-radius: 10px;
-            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        .embed-section h3 {
-            margin-top: 0;
-            color: #4a5568;
+        .header {
+            background: linear-gradient(135deg, #009BDD, #0078A5);
+            color: white;
+            padding: 40px;
+            text-align: center;
         }
-        code {
-            background: #e2e8f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            font-weight: 700;
         }
-        .notice {
-            background: #fef5e7;
-            border: 1px solid #f6e05e;
-            padding: 15px;
+        .header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #009BDD;
+        }
+        .feature h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .feature p {
+            margin: 0;
+            color: #666;
+        }
+        .demo-section {
+            background: #f0f8ff;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .demo-section h2 {
+            color: #009BDD;
+            margin: 0 0 15px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #009BDD;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin: 10px;
+        }
+        .cta-button:hover {
+            background: #0078A5;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
         }
+        .instructions h3 {
+            margin: 0 0 15px 0;
+            color: #856404;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .highlight {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>N8N Chatbot Demo Page</h1>
+        <div class="header">
+            <h1>🤖 N8N Chatbot Widget Demo</h1>
+            <p>Enhanced Version with Typography Controls</p>
+        </div>
         
-        <div class="demo-content">
-            <p>This is a demonstration page showing how the N8N chatbot widget appears on a website.</p>
-            
-            <p>The chat button should appear in the bottom-right corner of this page. Click it to test the chat functionality.</p>
-            
-            <div class="notice">
-                <strong>Note:</strong> Make sure to replace the webhook URL in the embed code with your actual N8N workflow webhook URL for the chat to work properly.
+        <div class="content">
+            <div class="highlight">
+                <strong>🎉 New Enhanced Features:</strong> Now includes comprehensive font selection for all chat elements, cleaner interface, and improved customisation options!
             </div>
-            
-            <div class="embed-section">
-                <h3>How to Use</h3>
-                <ol>
-                    <li>Generate your embed code using the Widget Generator</li>
-                    <li>Replace the webhook URL with your N8N webhook</li>
-                    <li>Paste the code into your website's HTML</li>
-                    <li>Test the chat functionality</li>
-                </ol>
+
+            <h2>✨ Enhanced Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>🎨 Typography Control</h3>
+                    <p>Choose from 13+ professional fonts for title, messages, input field, tooltips, and footer separately. Create a cohesive brand experience.</p>
+                </div>
+                <div class="feature">
+                    <h3>🛡️ Privacy-First Design</h3>
+                    <p>Clean, generic placeholders with no company references. Safe webhook URL field with no pre-filled information.</p>
+                </div>
+                <div class="feature">
+                    <h3>🎯 Advanced Customisation</h3>
+                    <p>Complete control over colors, fonts, sizes, positioning, and styling for every element of your chatbot widget.</p>
+                </div>
+                <div class="feature">
+                    <h3>💾 Configuration Management</h3>
+                    <p>Save and load complete configurations with all typography settings preserved. Share setups across projects.</p>
+                </div>
+                <div class="feature">
+                    <h3>👀 Live Preview</h3>
+                    <p>See your changes instantly with enhanced preview showing font selections and styling in real-time.</p>
+                </div>
+                <div class="feature">
+                    <h3>📱 Professional Embedding</h3>
+                    <p>Generate clean, professional embed code with all your custom typography and styling settings included.</p>
+                </div>
             </div>
-            
-            <div class="embed-section">
-                <h3>Current Configuration</h3>
-                <p>This demo uses the default BlueChilli configuration. You can customise:</p>
-                <ul>
-                    <li>Button colours and size</li>
-                    <li>Chat window appearance</li>
-                    <li>Message styling</li>
-                    <li>Company branding</li>
-                    <li>Welcome messages</li>
+
+            <div class="demo-section">
+                <h2>🚀 Try the Enhanced Generator</h2>
+                <p>Experience the new typography controls and cleaner interface</p>
+                <a href="index.html" class="cta-button">Open Enhanced Generator</a>
+            </div>
+
+            <div class="instructions">
+                <h3>📋 What's New in This Version</h3>
+                <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li><strong>Font Selection:</strong> 5 separate font controls for different sections</li>
+                    <li><strong>Clean Placeholders:</strong> No company references or pre-filled data</li>
+                    <li><strong>Secure Setup:</strong> Empty webhook URL field for safety</li>
+                    <li><strong>Enhanced Preview:</strong> Shows typography choices in real-time</li>
+                    <li><strong>Professional Fonts:</strong> Inter, Roboto, Open Sans, Montserrat, and more</li>
+                    <li><strong>Improved UX:</strong> Better organisation and cleaner interface</li>
                 </ul>
             </div>
+
+            <h2>🔧 How to Use</h2>
+            <ol style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <li><strong>Configure Typography:</strong> Choose fonts for each section - title, messages, input, tooltip, and footer</li>
+                <li><strong>Set Basic Details:</strong> Add your webhook URL and customize messages</li>
+                <li><strong>Style Your Widget:</strong> Adjust colors, sizes, and positioning</li>
+                <li><strong>Preview Live:</strong> See your font choices and styling in the preview panel</li>
+                <li><strong>Generate Code:</strong> Get your embed code with all typography settings</li>
+                <li><strong>Save Configuration:</strong> Export your complete setup for future use</li>
+            </ol>
+
+            <div class="demo-section">
+                <h2>📚 Font Options Available</h2>
+                <p style="font-family: 'Inter';">Inter • </p>
+                <p style="font-family: 'Roboto';">Roboto • </p>
+                <p style="font-family: 'Open Sans';">Open Sans • </p>
+                <p style="font-family: 'Montserrat';">Montserrat • </p>
+                <p style="font-family: 'Poppins';">Poppins • </p>
+                <p style="font-family: 'Lato';">Lato • </p>
+                <p style="font-family: 'Work Sans';">Work Sans • </p>
+                <p style="font-family: 'Nunito';">Nunito</p>
+                <p><em>...and 5 more professional options!</em></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 N8N Chatbot Widget Generator - Enhanced Edition | Open Source | MIT License</p>
         </div>
     </div>
 
-    <!-- N8N Chatbot Widget Embed Code -->
-    <script type="module" defer>
-        import Chatbot from "https://cdn.n8nchatui.com/v1/pole-embed-yard.js";
-        Chatbot.init({
-            "n8nChatUrl": "YOUR_N8N_CHAT_TRIGGER_NODE_WEBHOOK_URL",
-            "theme": {
-                "button": {
-                    "backgroundColor": "#009BDD",
-                    "right": 25,
-                    "bottom": 25,
-                    "size": 54,
-                    "iconColor": "#FFFFFF",
-                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
-                    "customIconSize": 60,
-                    "customIconBorderRadius": 15,
-                    "autoWindowOpen": {
-                        "autoOpen": true,
-                        "openDelay": 2
-                    },
-                    "borderRadius": "rounded"
-                },
-                "tooltip": {
-                    "showTooltip": true,
-                    "tooltipMessage": "Hello 👋 can I help!",
-                    "tooltipBackgroundColor": "#009BDD",
-                    "tooltipTextColor": "#FFFFFF",
-                    "tooltipFontSize": 15
-                },
-                "chatWindow": {
-                    "borderRadiusStyle": "rounded",
-                    "avatarBorderRadius": 25,
-                    "messageBorderRadius": 6,
-                    "showTitle": true,
-                    "title": "Welcome to BlueChilli",
-                    "titleAvatarSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
-                    "welcomeMessage": "Hello! Welcome to BlueChilli",
-                    "errorMessage": "Please try again",
-                    "backgroundColor": "#4d4d4d",
-                    "height": 600,
-                    "width": 400,
-                    "fontSize": 16,
-                    "starterPromptFontSize": 15,
-                    "clearChatOnReload": true,
-                    "botMessage": {
-                        "backgroundColor": "#009BDD",
-                        "textColor": "#FFFFFF",
-                        "showAvatar": true,
-                        "avatarSrc": "https://www.svgrepo.com/show/334455/bot.svg"
-                    },
-                    "userMessage": {
-                        "backgroundColor": "#000000",
-                        "textColor": "#A3A3A3",
-                        "showAvatar": true,
-                        "avatarSrc": "https://www.svgrepo.com/show/532363/user-alt-1.svg"
-                    },
-                    "textInput": {
-                        "placeholder": "How can I help!",
-                        "backgroundColor": "#000000",
-                        "textColor": "#ffffff",
-                        "sendButtonColor": "#009BDD",
-                        "maxChars": 250,
-                        "maxCharsWarningMessage": "You exceeded the characters limit. Please input less than 250 characters.",
-                        "autoFocus": false,
-                        "borderRadius": 6,
-                        "sendButtonBorderRadius": 50
-                    },
-                    "footer": {
-                        "companyLink": "https://bluechillidp.co.uk/",
-                        "text": "Powered by",
-                        "company": "BlueChilli Ai",
-                        "textColor": "#151515"
-                    }
-                }
+    <!-- This is where your actual chatbot would load -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js"></script>
+    <script>
+      // Demo chatbot configuration - this would be generated by your tool
+      console.log('Demo page loaded - Enhanced N8N Chatbot Widget Generator');
+      
+      // Example of what the generated code might look like:
+      /*
+      N8NChatbot.init({
+        "n8nChatUrl": "YOUR_WEBHOOK_URL_HERE",
+        "theme": {
+          "button": {
+            "backgroundColor": "#009BDD",
+            "right": 25,
+            "bottom": 25,
+            "size": 54
+          },
+          "chatWindow": {
+            "title": "Welcome to Our Chat",
+            "titleFont": "Inter",
+            "messageFont": "Roboto",
+            "textInput": {
+              "font": "Open Sans"
+            },
+            "tooltip": {
+              "font": "Poppins"
+            },
+            "footer": {
+              "font": "Lato"
             }
-        });
+          }
+        }
+      });
+      */
     </script>
 </body>
 </html>
