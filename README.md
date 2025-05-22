@@ -1,8 +1,18 @@
 # N8N Chatbot Widget Generator
 
+🎉 **Now Enhanced with Typography Controls!** See [README-Enhanced.md](README-Enhanced.md) for new features.
+
 A customisable web application for generating N8N chatbot widget embed codes with a visual configuration interface.
 
-## Features
+## ✨ Enhanced Features (NEW!)
+
+- **Typography Control**: Choose from 13 professional fonts for different sections
+- **5 Font Categories**: Title, Message, Input, Tooltip, and Footer fonts
+- **Privacy-First**: Clean placeholders with no pre-filled company data
+- **Enhanced Preview**: See font selections in real-time
+- **Professional Output**: Clean, organised embed code with typography settings
+
+## Core Features
 
 - **Visual Configuration Interface**: Easy-to-use web interface for customising chatbot appearance
 - **Real-time Preview**: See how your chatbot will look on your website
