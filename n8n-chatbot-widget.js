@@ -1,7 +1,7 @@
 /**
  * N8N Chatbot Widget - Self-hosted Implementation
  * A lightweight, customizable chat widget for N8N workflows
- * Version: 2.1.0 Enhanced with N8N Output Field Support
+ * Version: 2.0.0 Enhanced with Typography Controls
  */
 
 class N8NChatbotWidget {
@@ -60,7 +60,7 @@ class N8NChatbotWidget {
             },
             ...config
         };
-
+        
         this.isOpen = false;
         this.messages = [];
         this.sessionId = null; // Will be generated when first message is sent
@@ -77,13 +77,13 @@ class N8NChatbotWidget {
     createStyles() {
         const styles = `
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-
+            
             .n8n-chatbot-container * {
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
             }
-
+            
             .n8n-chatbot-button {
                 position: fixed;
                 right: ${this.config.theme.button.right}px;
@@ -101,17 +101,17 @@ class N8NChatbotWidget {
                 justify-content: center;
                 transition: transform 0.2s ease;
             }
-
+            
             .n8n-chatbot-button:hover {
                 transform: scale(1.05);
             }
-
+            
             .n8n-chatbot-button svg {
                 width: 24px;
                 height: 24px;
                 fill: ${this.config.theme.button.iconColor};
             }
-
+            
             .n8n-chatbot-tooltip {
                 position: fixed;
                 right: ${this.config.theme.button.right + this.config.theme.button.size + 15}px;
@@ -130,12 +130,12 @@ class N8NChatbotWidget {
                 transition: all 0.3s ease;
                 pointer-events: none;
             }
-
+            
             .n8n-chatbot-tooltip.show {
                 opacity: 1;
                 transform: translateY(0);
             }
-
+            
             .n8n-chatbot-window {
                 position: fixed;
                 right: ${this.config.theme.button.right}px;
@@ -153,13 +153,13 @@ class N8NChatbotWidget {
                 transition: all 0.3s ease;
                 pointer-events: none;
             }
-
+            
             .n8n-chatbot-window.open {
                 opacity: 1;
                 transform: translateY(0) scale(1);
                 pointer-events: all;
             }
-
+            
             .n8n-chatbot-header {
                 padding: 20px;
                 border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -170,14 +170,14 @@ class N8NChatbotWidget {
                 justify-content: space-between;
                 align-items: center;
             }
-
+            
             .n8n-chatbot-title {
                 font-family: '${this.config.theme.chatWindow.titleFont}', sans-serif;
                 font-size: 18px;
                 font-weight: 600;
                 margin: 0;
             }
-
+            
             .n8n-chatbot-close {
                 background: none;
                 border: none;
@@ -193,11 +193,11 @@ class N8NChatbotWidget {
                 border-radius: 50%;
                 transition: background-color 0.2s ease;
             }
-
+            
             .n8n-chatbot-close:hover {
                 background-color: rgba(255,255,255,0.2);
             }
-
+            
             .n8n-chatbot-messages {
                 flex: 1;
                 padding: 20px;
@@ -206,7 +206,7 @@ class N8NChatbotWidget {
                 flex-direction: column;
                 gap: 15px;
             }
-
+            
             .n8n-chatbot-message {
                 max-width: 80%;
                 padding: 10px 15px;
@@ -215,21 +215,21 @@ class N8NChatbotWidget {
                 font-size: ${this.config.theme.chatWindow.fontSize};
                 line-height: 1.4;
             }
-
+            
             .n8n-chatbot-message.bot {
                 align-self: flex-start;
                 background-color: ${this.config.theme.chatWindow.botMessage.backgroundColor};
                 color: ${this.config.theme.chatWindow.botMessage.textColor};
                 font-family: '${this.config.theme.chatWindow.botMessage.font}', sans-serif;
             }
-
+            
             .n8n-chatbot-message.user {
                 align-self: flex-end;
                 background-color: ${this.config.theme.chatWindow.userMessage.backgroundColor};
                 color: ${this.config.theme.chatWindow.userMessage.textColor};
                 font-family: '${this.config.theme.chatWindow.userMessage.font}', sans-serif;
             }
-
+            
             .n8n-chatbot-input-container {
                 padding: 20px;
                 border-top: 1px solid rgba(0,0,0,0.1);
@@ -237,7 +237,7 @@ class N8NChatbotWidget {
                 gap: 10px;
                 align-items: center;
             }
-
+            
             .n8n-chatbot-input {
                 flex: 1;
                 padding: 12px 15px;
@@ -249,11 +249,11 @@ class N8NChatbotWidget {
                 color: ${this.config.theme.chatWindow.textInput.textColor};
                 outline: none;
             }
-
+            
             .n8n-chatbot-input::placeholder {
                 color: rgba(${this.hexToRgb(this.config.theme.chatWindow.textInput.textColor)}, 0.6);
             }
-
+            
             .n8n-chatbot-send {
                 width: 40px;
                 height: 40px;
@@ -266,17 +266,17 @@ class N8NChatbotWidget {
                 justify-content: center;
                 transition: transform 0.2s ease;
             }
-
+            
             .n8n-chatbot-send:hover {
                 transform: scale(1.05);
             }
-
+            
             .n8n-chatbot-send svg {
                 width: 16px;
                 height: 16px;
                 fill: white;
             }
-
+            
             .n8n-chatbot-footer {
                 padding: 10px 20px;
                 text-align: center;
@@ -285,16 +285,16 @@ class N8NChatbotWidget {
                 color: ${this.config.theme.chatWindow.footer.textColor};
                 border-top: 1px solid rgba(0,0,0,0.05);
             }
-
+            
             .n8n-chatbot-footer a {
                 color: inherit;
                 text-decoration: none;
             }
-
+            
             .n8n-chatbot-footer a:hover {
                 text-decoration: underline;
             }
-
+            
             @media (max-width: 480px) {
                 .n8n-chatbot-window {
                     right: 10px;
@@ -302,19 +302,19 @@ class N8NChatbotWidget {
                     width: calc(100vw - 20px);
                     height: calc(100vh - 100px);
                 }
-
+                
                 .n8n-chatbot-button {
                     right: 20px;
                     bottom: 20px;
                 }
-
+                
                 .n8n-chatbot-tooltip {
                     right: 35px;
                     bottom: 80px;
                 }
             }
         `;
-
+        
         const styleSheet = document.createElement('style');
         styleSheet.textContent = styles;
         document.head.appendChild(styleSheet);
@@ -322,24 +322,28 @@ class N8NChatbotWidget {
 
     hexToRgb(hex) {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '0, 0, 0';
-    }    createButton() {
+        return result ? 
+            `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : 
+            '0, 0, 0';
+    }
+
+    createButton() {
         this.button = document.createElement('div');
         this.button.className = 'n8n-chatbot-button';
-
-        const icon = this.config.theme.button.customIconSrc
-            ? `<img src="${this.config.theme.button.customIconSrc}" alt="Chat" style="width: 24px; height: 24px;">`
-            : `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
-
+        
+        const icon = this.config.theme.button.customIconSrc ? 
+            `<img src="${this.config.theme.button.customIconSrc}" alt="Chat" style="width: 24px; height: 24px;">` :
+            `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
+        
         this.button.innerHTML = icon;
         document.body.appendChild(this.button);
-
+        
         // Create tooltip
         this.tooltip = document.createElement('div');
         this.tooltip.className = 'n8n-chatbot-tooltip';
         this.tooltip.textContent = this.config.theme.chatWindow.tooltip.message;
         document.body.appendChild(this.tooltip);
-
+        
         // Show tooltip after delay
         setTimeout(() => {
             if (!this.isOpen) {
@@ -351,7 +355,7 @@ class N8NChatbotWidget {
     createChatWindow() {
         this.chatWindow = document.createElement('div');
         this.chatWindow.className = 'n8n-chatbot-window';
-
+        
         this.chatWindow.innerHTML = `
             <div class="n8n-chatbot-header">
                 <h3 class="n8n-chatbot-title">${this.config.theme.chatWindow.title}</h3>
@@ -365,15 +369,15 @@ class N8NChatbotWidget {
                 </button>
             </div>
             <div class="n8n-chatbot-footer">
-                ${this.config.theme.chatWindow.footer.companyLink 
-                    ? `<a href="${this.config.theme.chatWindow.footer.companyLink}" target="_blank">${this.config.theme.chatWindow.footer.companyName}</a>`
-                    : this.config.theme.chatWindow.footer.companyName
+                ${this.config.theme.chatWindow.footer.companyLink ? 
+                    `<a href="${this.config.theme.chatWindow.footer.companyLink}" target="_blank">${this.config.theme.chatWindow.footer.companyName}</a>` :
+                    this.config.theme.chatWindow.footer.companyName
                 }
             </div>
         `;
-
+        
         document.body.appendChild(this.chatWindow);
-
+        
         // Add welcome message
         this.addMessage(this.config.theme.chatWindow.welcomeMessage, 'bot');
     }
@@ -383,10 +387,10 @@ class N8NChatbotWidget {
         
         const closeBtn = this.chatWindow.querySelector('.n8n-chatbot-close');
         closeBtn.addEventListener('click', () => this.closeChat());
-
+        
         const input = this.chatWindow.querySelector('#n8n-input');
         const sendBtn = this.chatWindow.querySelector('#n8n-send');
-
+        
         sendBtn.addEventListener('click', () => this.sendMessage());
         input.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -422,27 +426,29 @@ class N8NChatbotWidget {
         messageDiv.textContent = text;
         messagesContainer.appendChild(messageDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }    async sendMessage() {
+    }
+
+    async sendMessage() {
         const input = this.chatWindow.querySelector('#n8n-input');
         const message = input.value.trim();
-
+        
         if (!message) return;
-
+        
         // Add user message
         this.addMessage(message, 'user');
         input.value = '';
-
+        
         if (!this.config.n8nChatUrl) {
             this.addMessage('Please configure your N8N webhook URL to enable chat functionality.', 'bot');
             return;
         }
-
+        
         try {
             // Generate a session ID if we don't have one
             if (!this.sessionId) {
                 this.sessionId = 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
             }
-
+            
             // Send to N8N webhook
             const response = await fetch(this.config.n8nChatUrl, {
                 method: 'POST',
@@ -456,13 +462,11 @@ class N8NChatbotWidget {
                     timestamp: new Date().toISOString()
                 })
             });
-
-            const data = await response.json();
             
-            // UPDATED: Handle multiple response formats including N8N's standard 'output' field
+            const data = await response.json();
             const botMessage = data.message || data.response || data.output || 'Thank you for your message!';
+            
             this.addMessage(botMessage, 'bot');
-
         } catch (error) {
             console.error('Error sending message:', error);
             this.addMessage('Sorry, there was an error sending your message. Please try again.', 'bot');

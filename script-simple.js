@@ -25,9 +25,9 @@ function generateCode() {
         const buttonBottom = document.getElementById('buttonBottom')?.value || '25';
         const customIcon = document.getElementById('customIcon')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
         
-        const embedCode = `<script type="module" defer>
-  import Chatbot from "https://cdn.n8nchatui.com/v1/pole-embed-yard.js";
-  Chatbot.init({
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js"></script>
+<script>
+  N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
     "theme": {
       "button": {
