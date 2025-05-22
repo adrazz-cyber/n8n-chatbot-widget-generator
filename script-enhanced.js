@@ -64,9 +64,9 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script type="module" defer>
-  import Chatbot from "https://cdn.n8nchatui.com/v1/pole-embed-yard.js";
-  Chatbot.init({
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js"></script>
+<script>
+  N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
     "theme": {
       "button": {
