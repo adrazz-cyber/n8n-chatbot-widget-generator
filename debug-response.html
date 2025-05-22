@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug N8N Response</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Debug N8N Response Format</h1>
+    <button onclick="testWebhook()">Test Webhook Response</button>
+    <div id="results"></div>
+
+    <script>
+        async function testWebhook() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="result">Testing webhook...</div>';
+            
+            try {
+                const response = await fetch('https://your-n8n-instance.com/webhook/your-webhook-id/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        sessionId: 'debug_session_' + Date.now(),
+                        chatInput: 'Debug test message',
+                        message: 'Debug test message',
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                const data = await response.json();
+                console.log('Full response data:', data);
+                console.log('Type of response:', typeof data);
+                
+                resultsDiv.innerHTML = `
+                    <div class="result">
+                        <h3>Response Analysis:</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Data Type:</strong> ${typeof data}</p>
+                        <p><strong>Full Response:</strong> <pre>${JSON.stringify(data, null, 2)}</pre></p>
+                        <p><strong>data.message:</strong> ${data.message || 'undefined'}</p>
+                        <p><strong>data.response:</strong> ${data.response || 'undefined'}</p>
+                        <p><strong>data.output:</strong> ${data.output || 'undefined'}</p>
+                        <p><strong>Extracted Message:</strong> ${data.message || data.response || data.output || 'No message found!'}</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                resultsDiv.innerHTML = `<div class="result" style="background: #ffeeee;"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         generateCode();
         updateRangeValues();
         setupFontPreview();
+        initialisePreviewToggle();
     }, 100);
 });
 
@@ -362,12 +363,33 @@ function copyCode() {
 
 function togglePreview() {
     const previewContainer = document.getElementById('previewContainer');
+    const toggleButton = document.querySelector('button[onclick="togglePreview()"]');
+    
     if (previewContainer) {
-        if (previewContainer.style.display === 'none') {
-            previewContainer.style.display = 'block';
-        } else {
+        // Check current state - if not explicitly set, assume it's visible
+        const isCurrentlyVisible = previewContainer.style.display !== 'none';
+        
+        if (isCurrentlyVisible) {
             previewContainer.style.display = 'none';
+            if (toggleButton) toggleButton.textContent = 'Show Preview';
+        } else {
+            previewContainer.style.display = 'block';
+            if (toggleButton) toggleButton.textContent = 'Hide Preview';
         }
+        
+        console.log('Preview toggled:', isCurrentlyVisible ? 'hidden' : 'shown');
+    }
+}
+
+function initialisePreviewToggle() {
+    const toggleButton = document.querySelector('button[onclick="togglePreview()"]');
+    const previewContainer = document.getElementById('previewContainer');
+    
+    if (toggleButton && previewContainer) {
+        // Set initial state - preview is visible by default
+        previewContainer.style.display = 'block';
+        toggleButton.textContent = 'Hide Preview';
+        console.log('Preview toggle initialised');
     }
 }
 
