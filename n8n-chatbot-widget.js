@@ -63,6 +63,7 @@ class N8NChatbotWidget {
         
         this.isOpen = false;
         this.messages = [];
+        this.sessionId = null; // Will be generated when first message is sent
         this.init();
     }
 
@@ -443,6 +444,11 @@ class N8NChatbotWidget {
         }
         
         try {
+            // Generate a session ID if we don't have one
+            if (!this.sessionId) {
+                this.sessionId = 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+            }
+            
             // Send to N8N webhook
             const response = await fetch(this.config.n8nChatUrl, {
                 method: 'POST',
@@ -450,6 +456,7 @@ class N8NChatbotWidget {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    sessionId: this.sessionId,
                     chatInput: message,
                     message: message,
                     timestamp: new Date().toISOString()
