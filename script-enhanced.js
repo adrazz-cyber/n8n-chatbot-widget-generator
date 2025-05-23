@@ -86,7 +86,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=2"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=3"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -279,7 +279,7 @@ function previewWidget() {
                         <h5 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">Avatar Preview:</h5>
                         
                         <!-- Bot Message with Avatar -->
-                        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+                        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
                             ${showBotAvatar ? `
                                 <div style="
                                     width: ${avatarSize}px;
@@ -289,10 +289,11 @@ function previewWidget() {
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    font-size: 14px;
+                                    font-size: 18px;
                                     color: #666;
                                     flex-shrink: 0;
                                     overflow: hidden;
+                                    margin-top: 2px;
                                 ">
                                     ${botAvatarUrl ? `<img src="${botAvatarUrl}" alt="Bot" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentNode.innerHTML='🤖';">` : '🤖'}
                                 </div>
@@ -300,16 +301,17 @@ function previewWidget() {
                             <div style="
                                 background: #009BDD;
                                 color: white;
-                                padding: 8px 12px;
-                                border-radius: 15px;
+                                padding: 12px 16px;
+                                border-radius: 18px;
                                 font-family: '${messageFont}', sans-serif;
                                 font-size: 14px;
-                                max-width: 200px;
+                                max-width: 250px;
+                                word-wrap: break-word;
                             ">Hello! Welcome to our chat!</div>
                         </div>
                         
                         <!-- User Message with Avatar -->
-                        <div style="display: flex; align-items: flex-start; gap: 10px; justify-content: flex-end; margin-bottom: 10px; flex-direction: row-reverse;">
+                        <div style="display: flex; align-items: flex-start; gap: 12px; justify-content: flex-end; margin-bottom: 12px; flex-direction: row-reverse;">
                             ${showUserAvatar ? `
                                 <div style="
                                     width: ${avatarSize}px;
@@ -319,10 +321,11 @@ function previewWidget() {
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    font-size: 14px;
+                                    font-size: 18px;
                                     color: #666;
                                     flex-shrink: 0;
                                     overflow: hidden;
+                                    margin-top: 2px;
                                 ">
                                     ${userAvatarUrl ? `<img src="${userAvatarUrl}" alt="User" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentNode.innerHTML='👤';">` : '👤'}
                                 </div>
@@ -330,11 +333,12 @@ function previewWidget() {
                             <div style="
                                 background: #e5e5e5;
                                 color: #333;
-                                padding: 8px 12px;
-                                border-radius: 15px;
+                                padding: 12px 16px;
+                                border-radius: 18px;
                                 font-family: '${messageFont}', sans-serif;
                                 font-size: 14px;
-                                max-width: 200px;
+                                max-width: 250px;
+                                word-wrap: break-word;
                             ">Hi there!</div>
                         </div>
                     </div>

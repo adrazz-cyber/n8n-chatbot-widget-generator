@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Improvements Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .improvements {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎨 Layout Improvements Test</h1>
+        
+        <div class="improvements">
+            <h3>Layout Improvements Applied:</h3>
+            <ul>
+                <li>✅ <strong>Avatar Alignment:</strong> Moved bot avatars to align with left edge (like red line)</li>
+                <li>✅ <strong>Avatar Size:</strong> Increased default from 32px to 36px for better visibility</li>
+                <li>✅ <strong>Emoji Size:</strong> Increased from 14px to 18px for better proportion</li>
+                <li>✅ <strong>Message Spacing:</strong> Improved gap between avatar and message (12px)</li>
+                <li>✅ <strong>Message Padding:</strong> Enhanced padding (12px 16px) for better text layout</li>
+                <li>✅ <strong>Container Padding:</strong> Adjusted to align avatars properly with left edge</li>
+                <li>✅ <strong>Version Update:</strong> v=3 cache-buster for immediate effect</li>
+            </ul>
+        </div>
+        
+        <p>This widget should now match the cleaner layout from your reference image. The bot avatars align with the left edge, and the spacing is much more professional.</p>
+    </div>
+
+    <!-- N8N Chatbot Widget with Layout Improvements -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=3"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#28a745",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 60,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "iconSize": "70%",
+                    "iconBorderRadius": "12px"
+                },
+                "chatWindow": {
+                    "title": "Layout Test Chat",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! Notice my improved layout with better avatar alignment and spacing.",
+                    "width": 400,
+                    "height": 500,
+                    "backgroundColor": "#ffffff",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "avatars": {
+                        "bot": {
+                            "src": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                            "show": true
+                        },
+                        "user": {
+                            "src": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg",
+                            "show": true
+                        },
+                        "size": "36px",
+                        "borderRadius": "50%"
+                    },
+                    "textInput": {
+                        "placeholder": "Test the improved layout...",
+                        "backgroundColor": "#f8f9fa",
+                        "textColor": "#333333",
+                        "font": "Inter",
+                        "sendButtonColor": "#28a745"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#28a745",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#e9ecef",
+                        "textColor": "#333333",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Layout Test",
+                        "companyLink": "",
+                        "textColor": "#666666",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Test improved layout!",
+                        "backgroundColor": "#28a745",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
