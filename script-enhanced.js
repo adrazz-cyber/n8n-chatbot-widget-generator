@@ -45,6 +45,14 @@ function generateCode() {
         const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
         const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
         
+        // Avatar settings
+        const botAvatarUrl = document.getElementById('botAvatarUrl')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
+        const userAvatarUrl = document.getElementById('userAvatarUrl')?.value || 'https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg';
+        const showBotAvatar = document.getElementById('showBotAvatar')?.checked || true;
+        const showUserAvatar = document.getElementById('showUserAvatar')?.checked || true;
+        const avatarSize = document.getElementById('avatarSize')?.value || '32';
+        const avatarBorderRadius = document.getElementById('avatarBorderRadius')?.value || '50';
+        
         // New toggle options
         const showTooltip = document.getElementById('showTooltip')?.checked || true;
         const autoOpenWidget = document.getElementById('autoOpenWidget')?.checked || false;
@@ -109,6 +117,18 @@ function generateCode() {
         "borderRadius": "10px",
         "showTitleSection": ${showTitleSection},
         "clearChatOnReload": ${clearChatOnReload},
+        "avatars": {
+          "bot": {
+            "src": "${botAvatarUrl}",
+            "show": ${showBotAvatar}
+          },
+          "user": {
+            "src": "${userAvatarUrl}",
+            "show": ${showUserAvatar}
+          },
+          "size": "${avatarSize}px",
+          "borderRadius": "${avatarBorderRadius}%"
+        },
         "textInput": {
           "placeholder": "${placeholderText}",
           "backgroundColor": "${inputBackgroundColor}",
@@ -180,6 +200,14 @@ function previewWidget() {
         const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
         const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
         
+        // Get avatar settings
+        const botAvatarUrl = document.getElementById('botAvatarUrl')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
+        const userAvatarUrl = document.getElementById('userAvatarUrl')?.value || 'https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg';
+        const showBotAvatar = document.getElementById('showBotAvatar')?.checked || true;
+        const showUserAvatar = document.getElementById('showUserAvatar')?.checked || true;
+        const avatarSize = document.getElementById('avatarSize')?.value || '32';
+        const avatarBorderRadius = document.getElementById('avatarBorderRadius')?.value || '50';
+        
         const previewContainer = document.getElementById('previewContainer');
         if (previewContainer) {
             // Determine what to show in the button
@@ -245,6 +273,71 @@ function previewWidget() {
                     <p style="margin: 0 0 10px 0; font-family: '${messageFont}', sans-serif; color: #666;">
                         Font Preview: Title uses ${titleFont}, Messages use ${messageFont}
                     </p>
+
+                    <!-- Avatar and Message Examples -->
+                    <div style="margin: 15px 0;">
+                        <h5 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">Avatar Preview:</h5>
+                        
+                        <!-- Bot Message with Avatar -->
+                        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+                            ${showBotAvatar ? `
+                                <div style="
+                                    width: ${avatarSize}px;
+                                    height: ${avatarSize}px;
+                                    border-radius: ${avatarBorderRadius}%;
+                                    background-color: #f0f0f0;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-size: 12px;
+                                    color: #666;
+                                    flex-shrink: 0;
+                                    overflow: hidden;
+                                ">
+                                    ${botAvatarUrl ? `<img src="${botAvatarUrl}" alt="Bot" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentNode.innerHTML='🤖';">` : '🤖'}
+                                </div>
+                            ` : ''}
+                            <div style="
+                                background: #009BDD;
+                                color: white;
+                                padding: 8px 12px;
+                                border-radius: 15px;
+                                font-family: '${messageFont}', sans-serif;
+                                font-size: 14px;
+                                max-width: 200px;
+                            ">Hello! Welcome to our chat!</div>
+                        </div>
+                        
+                        <!-- User Message with Avatar -->
+                        <div style="display: flex; align-items: flex-start; gap: 10px; justify-content: flex-end; margin-bottom: 10px; flex-direction: row-reverse;">
+                            ${showUserAvatar ? `
+                                <div style="
+                                    width: ${avatarSize}px;
+                                    height: ${avatarSize}px;
+                                    border-radius: ${avatarBorderRadius}%;
+                                    background-color: #f0f0f0;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-size: 12px;
+                                    color: #666;
+                                    flex-shrink: 0;
+                                    overflow: hidden;
+                                ">
+                                    ${userAvatarUrl ? `<img src="${userAvatarUrl}" alt="User" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentNode.innerHTML='👤';">` : '👤'}
+                                </div>
+                            ` : ''}
+                            <div style="
+                                background: #e5e5e5;
+                                color: #333;
+                                padding: 8px 12px;
+                                border-radius: 15px;
+                                font-family: '${messageFont}', sans-serif;
+                                font-size: 14px;
+                                max-width: 200px;
+                            ">Hi there!</div>
+                        </div>
+                    </div>
                     <div style="
                         margin-top: 10px;
                         padding: 8px 12px;
@@ -296,6 +389,14 @@ function saveConfig() {
             iconSize: document.getElementById('iconSize')?.value || '60',
             iconBorderRadius: document.getElementById('iconBorderRadius')?.value || '15',
             iconColor: document.getElementById('iconColor')?.value || '#FFFFFF',
+            
+            // Avatar settings
+            botAvatarUrl: document.getElementById('botAvatarUrl')?.value || '',
+            userAvatarUrl: document.getElementById('userAvatarUrl')?.value || '',
+            showBotAvatar: document.getElementById('showBotAvatar')?.checked || true,
+            showUserAvatar: document.getElementById('showUserAvatar')?.checked || true,
+            avatarSize: document.getElementById('avatarSize')?.value || '32',
+            avatarBorderRadius: document.getElementById('avatarBorderRadius')?.value || '50',
             
             // Toggle settings
             showTooltip: document.getElementById('showTooltip')?.checked || true,
