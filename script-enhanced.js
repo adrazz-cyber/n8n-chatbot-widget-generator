@@ -86,7 +86,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=8"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=10"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -284,7 +284,7 @@ function previewWidget() {
                                 <div style="
                                     width: ${avatarSize}px;
                                     height: ${avatarSize}px;
-                                    border-radius: ${avatarBorderRadius}%;
+                                    border-radius: 8px;
                                     background-color: transparent;
                                     display: flex;
                                     align-items: center;
@@ -295,7 +295,7 @@ function previewWidget() {
                                     overflow: hidden;
                                     margin-top: 2px;
                                 ">
-                                    ${botAvatarUrl ? `<img src="${botAvatarUrl}" alt="Bot" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentNode.innerHTML='🤖';">` : '🤖'}
+                                    ${botAvatarUrl ? `<img src="${botAvatarUrl}" alt="Bot" style="width:100%;height:100%;object-fit:cover;border-radius:8px;overflow:hidden;" onerror="this.style.display='none';this.parentNode.innerHTML='🤖';">` : '🤖'}
                                 </div>
                             ` : ''}
                             <div style="
@@ -318,7 +318,7 @@ function previewWidget() {
                                 <div style="
                                     width: ${avatarSize}px;
                                     height: ${avatarSize}px;
-                                    border-radius: ${avatarBorderRadius}%;
+                                    border-radius: 8px;
                                     background-color: transparent;
                                     display: flex;
                                     align-items: center;
@@ -329,7 +329,7 @@ function previewWidget() {
                                     overflow: hidden;
                                     margin-top: 2px;
                                 ">
-                                    ${userAvatarUrl ? `<img src="${userAvatarUrl}" alt="User" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentNode.innerHTML='👤';">` : '👤'}
+                                    ${userAvatarUrl ? `<img src="${userAvatarUrl}" alt="User" style="width:100%;height:100%;object-fit:cover;border-radius:8px;overflow:hidden;" onerror="this.style.display='none';this.parentNode.innerHTML='👤';">` : '👤'}
                                 </div>
                             ` : ''}
                             <div style="

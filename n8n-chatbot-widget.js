@@ -295,7 +295,7 @@ class N8NChatbotWidget {
             .n8n-chatbot-avatar {
                 width: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '40'}px;
                 height: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '40'}px;
-                border-radius: ${this.config.theme.chatWindow.avatar?.avatarBorderRadius || this.config.theme.chatWindow.avatars?.borderRadius || '50%'};
+                border-radius: 8px;
                 object-fit: cover;
                 flex-shrink: 0;
                 background-color: transparent;
@@ -305,6 +305,7 @@ class N8NChatbotWidget {
                 font-size: 18px;
                 color: #666;
                 margin-top: 2px;
+                overflow: hidden;
             }
             
             .n8n-chatbot-input-container {
