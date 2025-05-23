@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40x40 Avatar Size Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-info h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .test-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .changes {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+            margin: 15px 0;
+        }
+        .changes h3 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+        }
+        .changes ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>🎯 40x40 Avatar Size Test</h1>
+        <p><strong>Date:</strong> May 23, 2025</p>
+        <p><strong>Purpose:</strong> Test avatar icons rendered at 40x40 pixels to match example image</p>
+        
+        <div class="changes">
+            <h3>✅ AVATAR SIZE CHANGES:</h3>
+            <ul>
+                <li><strong>Widget Default:</strong> Changed from 36px to 40px</li>
+                <li><strong>Generator Default:</strong> Updated interface default from 36px to 40px</li>
+                <li><strong>JavaScript Default:</strong> Updated fallback from 32px to 40px</li>
+                <li><strong>Cache-Busting:</strong> Version updated from v=7 to v=8</li>
+            </ul>
+        </div>
+        
+        <p><strong>Expected Result:</strong> Avatar icons should now be 40x40 pixels, matching the size shown in your example image.</p>
+        <p><strong>Test Instructions:</strong> Open the chat and compare avatar sizes to your reference image.</p>
+    </div>
+
+    <!-- Test the 40x40 avatar sizing -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=8"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#3da5ae",
+            "right": 30,
+            "bottom": 30,
+            "size": 60,
+            "iconColor": "white",
+            "customIconSrc": "",
+            "iconSize": "60%",
+            "iconBorderRadius": "15px",
+            "borderRadius": "rounded",
+            "autoOpen": false
+          },
+          "tooltip": {
+            "show": true,
+            "backgroundColor": "#009BDD",
+            "textColor": "#FFFFFF",
+            "message": "Test 40x40 avatar sizing!",
+            "font": "Inter"
+          },
+          "chatWindow": {
+            "title": "40x40 Avatar Test",
+            "welcomeMessage": "Testing 40x40 pixel avatar sizing! Compare these avatars to your reference image.",
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#333333",
+            "width": 400,
+            "height": 600,
+            "borderRadius": 10,
+            "showTitleSection": true,
+            "clearChatOnReload": false,
+            "botMessage": {
+              "backgroundColor": "#FF6B47",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "userMessage": {
+              "backgroundColor": "#E8E8E8",
+              "textColor": "#333333",
+              "font": "Inter"
+            },
+            "avatar": {
+              "avatarSize": 40,
+              "avatarBorderRadius": "50%"
+            },
+            "avatars": {
+              "bot": {
+                "show": true,
+                "src": ""
+              },
+              "user": {
+                "show": true,
+                "src": ""
+              }
+            }
+          },
+          "input": {
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#333333",
+            "placeholderText": "Test avatar sizing...",
+            "borderColor": "#CCCCCC",
+            "borderWidth": "1px",
+            "font": "Inter"
+          },
+          "footer": {
+            "textColor": "#999999",
+            "text": "40x40 Avatar Test",
+            "font": "Inter"
+          }
+        }
+      });
+    </script>
+</body>
+</html>
