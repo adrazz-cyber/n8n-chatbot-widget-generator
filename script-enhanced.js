@@ -498,3 +498,42 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('Enhanced script loaded successfully');
+
+// Tab switching functionality
+function initializeTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            button.classList.add('active');
+            document.getElementById(targetTab + '-tab').classList.add('active');
+            
+            console.log('Switched to tab:', targetTab);
+        });
+    });
+}
+
+// Enhanced initialization
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Enhanced Tabbed Widget Generator Loading...');
+    
+    // Initialize tabs first
+    initializeTabs();
+    
+    // Then initialize existing functionality
+    setTimeout(function() {
+        generateCode();
+        updateRangeValues();
+        setupFontPreview();
+        initialisePreviewToggle();
+        previewWidget();
+    }, 100);
+});
