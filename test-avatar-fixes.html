@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar System Fixes Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .fix-info {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .fix-info h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 Avatar System Fixes Test</h1>
+        
+        <div class="fix-info">
+            <h3>Fixes Applied:</h3>
+            <ul>
+                <li>✅ <strong>Toggle Switch Fix</strong>: Changed || to ?? for proper boolean handling</li>
+                <li>✅ <strong>Avatar Background Fix</strong>: Changed from #f0f0f0 to transparent</li>
+                <li>✅ <strong>Font Size Increase</strong>: Changed from 12px to 14px for better visibility</li>
+            </ul>
+        </div>
+        
+        <p>This widget has Show Bot Avatar disabled and transparent backgrounds. Try opening the chat to see the fixes in action!</p>
+    </div>
+
+    <!-- N8N Chatbot Widget with Fixes -->
+    <script src="n8n-chatbot-widget.js"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#28a745",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 60,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "iconSize": "70%",
+                    "iconBorderRadius": "12px"
+                },
+                "chatWindow": {
+                    "title": "Fixed Avatar System",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hi! Notice I don't have an avatar since Show Bot Avatar is disabled.",
+                    "width": 400,
+                    "height": 500,
+                    "backgroundColor": "#ffffff",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "avatar": {
+                        "botAvatarUrl": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                        "userAvatarUrl": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg",
+                        "showBotAvatar": false, // THIS SHOULD NOW WORK!
+                        "showUserAvatar": true,
+                        "avatarSize": 36,
+                        "avatarBorderRadius": 50
+                    },
+                    "textInput": {
+                        "placeholder": "Test the avatar fixes...",
+                        "backgroundColor": "#f8f9fa",
+                        "textColor": "#333333",
+                        "font": "Inter",
+                        "sendButtonColor": "#28a745"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#28a745",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#e9ecef",
+                        "textColor": "#333333",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Avatar Fixes Test",
+                        "companyLink": "",
+                        "textColor": "#666666",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Avatar fixes testing!",
+                        "backgroundColor": "#28a745",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

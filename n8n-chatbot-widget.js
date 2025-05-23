@@ -262,11 +262,11 @@ class N8NChatbotWidget {
                 border-radius: ${this.config.theme.chatWindow.avatar?.avatarBorderRadius || this.config.theme.chatWindow.avatars?.borderRadius || '50%'};
                 object-fit: cover;
                 flex-shrink: 0;
-                background-color: #f0f0f0;
+                background-color: transparent;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 12px;
+                font-size: 14px;
                 color: #666;
             }
             

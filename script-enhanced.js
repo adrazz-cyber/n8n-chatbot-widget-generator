@@ -48,16 +48,16 @@ function generateCode() {
         // Avatar settings
         const botAvatarUrl = document.getElementById('botAvatarUrl')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
         const userAvatarUrl = document.getElementById('userAvatarUrl')?.value || 'https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg';
-        const showBotAvatar = document.getElementById('showBotAvatar')?.checked || true;
-        const showUserAvatar = document.getElementById('showUserAvatar')?.checked || true;
+        const showBotAvatar = document.getElementById('showBotAvatar')?.checked ?? true;
+        const showUserAvatar = document.getElementById('showUserAvatar')?.checked ?? true;
         const avatarSize = document.getElementById('avatarSize')?.value || '32';
         const avatarBorderRadius = document.getElementById('avatarBorderRadius')?.value || '50';
         
         // New toggle options
-        const showTooltip = document.getElementById('showTooltip')?.checked || true;
-        const autoOpenWidget = document.getElementById('autoOpenWidget')?.checked || false;
-        const showTitleSection = document.getElementById('showTitleSection')?.checked || true;
-        const clearChatOnReload = document.getElementById('clearChatOnReload')?.checked || false;
+        const showTooltip = document.getElementById('showTooltip')?.checked ?? true;
+        const autoOpenWidget = document.getElementById('autoOpenWidget')?.checked ?? false;
+        const showTitleSection = document.getElementById('showTitleSection')?.checked ?? true;
+        const clearChatOnReload = document.getElementById('clearChatOnReload')?.checked ?? false;
         
         // Font settings
         const titleFont = document.getElementById('titleFont')?.value || 'Inter';
@@ -203,8 +203,8 @@ function previewWidget() {
         // Get avatar settings
         const botAvatarUrl = document.getElementById('botAvatarUrl')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
         const userAvatarUrl = document.getElementById('userAvatarUrl')?.value || 'https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg';
-        const showBotAvatar = document.getElementById('showBotAvatar')?.checked || true;
-        const showUserAvatar = document.getElementById('showUserAvatar')?.checked || true;
+        const showBotAvatar = document.getElementById('showBotAvatar')?.checked ?? true;
+        const showUserAvatar = document.getElementById('showUserAvatar')?.checked ?? true;
         const avatarSize = document.getElementById('avatarSize')?.value || '32';
         const avatarBorderRadius = document.getElementById('avatarBorderRadius')?.value || '50';
         
@@ -285,11 +285,11 @@ function previewWidget() {
                                     width: ${avatarSize}px;
                                     height: ${avatarSize}px;
                                     border-radius: ${avatarBorderRadius}%;
-                                    background-color: #f0f0f0;
+                                    background-color: transparent;
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    font-size: 12px;
+                                    font-size: 14px;
                                     color: #666;
                                     flex-shrink: 0;
                                     overflow: hidden;
@@ -315,11 +315,11 @@ function previewWidget() {
                                     width: ${avatarSize}px;
                                     height: ${avatarSize}px;
                                     border-radius: ${avatarBorderRadius}%;
-                                    background-color: #f0f0f0;
+                                    background-color: transparent;
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    font-size: 12px;
+                                    font-size: 14px;
                                     color: #666;
                                     flex-shrink: 0;
                                     overflow: hidden;
@@ -393,8 +393,8 @@ function saveConfig() {
             // Avatar settings
             botAvatarUrl: document.getElementById('botAvatarUrl')?.value || '',
             userAvatarUrl: document.getElementById('userAvatarUrl')?.value || '',
-            showBotAvatar: document.getElementById('showBotAvatar')?.checked || true,
-            showUserAvatar: document.getElementById('showUserAvatar')?.checked || true,
+            showBotAvatar: document.getElementById('showBotAvatar')?.checked ?? true,
+            showUserAvatar: document.getElementById('showUserAvatar')?.checked ?? true,
             avatarSize: document.getElementById('avatarSize')?.value || '32',
             avatarBorderRadius: document.getElementById('avatarBorderRadius')?.value || '50',
             
