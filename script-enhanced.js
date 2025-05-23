@@ -38,6 +38,7 @@ function generateCode() {
         const buttonSize = document.getElementById('buttonSize')?.value || '54';
         const buttonRight = document.getElementById('buttonRight')?.value || '25';
         const buttonBottom = document.getElementById('buttonBottom')?.value || '25';
+        const buttonShape = document.getElementById('buttonShape')?.value || 'circle';
         const customIcon = document.getElementById('customIcon')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
         
         // New icon customisation options
@@ -87,7 +88,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=12"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=13"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -101,7 +102,7 @@ function generateCode() {
         "customIconSrc": "${customIcon}",
         "iconSize": "${iconSize}%",
         "iconBorderRadius": "${iconBorderRadius}px",
-        "borderRadius": "rounded",
+        "shape": "${buttonShape}",
         "autoOpen": ${autoOpenWidget}
       },
       "chatWindow": {
@@ -197,6 +198,7 @@ function previewWidget() {
         const buttonSize = document.getElementById('buttonSize')?.value || '54';
         const buttonRight = document.getElementById('buttonRight')?.value || '25';
         const buttonBottom = document.getElementById('buttonBottom')?.value || '25';
+        const buttonShape = document.getElementById('buttonShape')?.value || 'circle';
         const customIcon = document.getElementById('customIcon')?.value || '';
         const iconSize = document.getElementById('iconSize')?.value || '60';
         const iconBorderRadius = '8'; // Fixed square styling to match avatars
@@ -240,7 +242,7 @@ function previewWidget() {
                                     width: ${buttonSize}px;
                                     height: ${buttonSize}px;
                                     background-color: ${buttonColor};
-                                    border-radius: 50%;
+                                    border-radius: ${buttonShape === 'circle' ? '50%' : '12px'};
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
@@ -393,6 +395,7 @@ function saveConfig() {
             buttonSize: document.getElementById('buttonSize')?.value || '54',
             buttonRight: document.getElementById('buttonRight')?.value || '25',
             buttonBottom: document.getElementById('buttonBottom')?.value || '25',
+            buttonShape: document.getElementById('buttonShape')?.value || 'circle',
             customIcon: document.getElementById('customIcon')?.value || '',
             
             // Icon customisation settings

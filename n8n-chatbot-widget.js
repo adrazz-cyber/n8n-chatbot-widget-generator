@@ -98,7 +98,7 @@ class N8NChatbotWidget {
                 bottom: ${this.config.theme.button.bottom}px;
                 width: ${this.config.theme.button.size}px;
                 height: ${this.config.theme.button.size}px;
-                border-radius: 50%;
+                border-radius: ${this.config.theme.button.shape === 'circle' ? '50%' : '15px'};
                 background-color: ${this.config.theme.button.backgroundColor};
                 border: none;
                 cursor: pointer;
@@ -107,7 +107,7 @@ class N8NChatbotWidget {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                transition: transform 0.2s ease;
+                transition: all 0.2s ease;
             }
             
             .n8n-chatbot-button:hover {
@@ -409,27 +409,18 @@ class N8NChatbotWidget {
         this.button = document.createElement('div');
         this.button.className = 'n8n-chatbot-button';
         
-        // Handle custom icon with size and border radius (square styling for consistency)
+        // Handle bubble shape and icon state
         const iconSize = this.config.theme.button.iconSize || '60%';
         const iconBorderRadius = '8px'; // Fixed square styling to match avatars
         const iconColor = this.config.theme.button.iconColor || '#FFFFFF';
+        const bubbleShape = this.config.theme.button.shape || 'circle'; // 'circle' or 'rounded'
         
-        let icon = '';
-        if (this.config.theme.button.customIconSrc) {
-            icon = `<img src="${this.config.theme.button.customIconSrc}" 
-                    alt="Chat" 
-                    style="width: ${iconSize}; height: ${iconSize}; object-fit: contain; border-radius: ${iconBorderRadius};"
-                    onerror="this.style.display='none'; this.parentNode.querySelector('.default-icon').style.display='block';">
-                    <svg class="default-icon" viewBox="0 0 24 24" style="display: none; width: 24px; height: 24px; fill: ${iconColor};">
-                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-                    </svg>`;
-        } else {
-            icon = `<svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: ${iconColor};">
-                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-                    </svg>`;
-        }
+        // Store original icon for state changes
+        this.originalIcon = this.config.theme.button.customIconSrc;
         
-        this.button.innerHTML = icon;
+        // Set initial icon (open state)
+        this.updateButtonIcon(false); // false = open state
+        
         document.body.appendChild(this.button);
         
         // Create tooltip
@@ -533,12 +524,45 @@ class N8NChatbotWidget {
         this.isOpen = true;
         this.chatWindow.classList.add('open');
         this.tooltip.classList.remove('show');
+        this.updateButtonIcon(true); // true = chat is open (show close icon)
         this.chatWindow.querySelector('#n8n-input').focus();
     }
 
     closeChat() {
         this.isOpen = false;
         this.chatWindow.classList.remove('open');
+        this.updateButtonIcon(false); // false = chat is closed (show open icon)
+    }
+
+    updateButtonIcon(isOpen) {
+        const iconSize = this.config.theme.button.iconSize || '60%';
+        const iconBorderRadius = '8px';
+        const iconColor = this.config.theme.button.iconColor || '#FFFFFF';
+        
+        let icon = '';
+        if (isOpen) {
+            // Show close/down arrow icon when chat is open
+            icon = `<svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: ${iconColor};">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>`;
+        } else {
+            // Show original icon when chat is closed
+            if (this.originalIcon) {
+                icon = `<img src="${this.originalIcon}" 
+                        alt="Chat" 
+                        style="width: ${iconSize}; height: ${iconSize}; object-fit: contain; border-radius: ${iconBorderRadius};"
+                        onerror="this.style.display='none'; this.parentNode.querySelector('.default-icon').style.display='block';">
+                        <svg class="default-icon" viewBox="0 0 24 24" style="display: none; width: 24px; height: 24px; fill: ${iconColor};">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                        </svg>`;
+            } else {
+                icon = `<svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: ${iconColor};">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                        </svg>`;
+            }
+        }
+        
+        this.button.innerHTML = icon;
     }
 
     refreshChat() {
