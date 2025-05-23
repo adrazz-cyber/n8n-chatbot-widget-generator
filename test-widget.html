@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N Widget Functionality Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .feature-test {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #009bdd;
+            background: #f8f9fa;
+        }
+        h1 { color: #333; }
+        h2 { color: #009bdd; }
+        .expected { color: #28a745; font-weight: bold; }
+        .status { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 N8N Chatbot Widget Functionality Test</h1>
+        <p>This page tests all the features implemented in your N8N Chatbot Widget Generator to ensure they're working correctly.</p>
+        
+        <div class="feature-test">
+            <h2>🎯 Button Features Test</h2>
+            <div class="status">✅ <span class="expected">Expected:</span> Custom chat icon (chat-bot.svg)</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Blue button (#009bdd)</div>
+            <div class="status">✅ <span class="expected">Expected:</span> 54px button size</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Positioned 25px from right, 25px from bottom</div>
+            <div class="status">✅ <span class="expected">Expected:</span> 15px icon border radius</div>
+            <div class="status">✅ <span class="expected">Expected:</span> 60% icon size</div>
+        </div>
+
+        <div class="feature-test">
+            <h2>💬 Tooltip Features Test</h2>
+            <div class="status">✅ <span class="expected">Expected:</span> "Hello! Can I help you?" tooltip on hover</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Blue background (#009bdd), white text</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Inter font family</div>
+        </div>
+
+        <div class="feature-test">
+            <h2>🪟 Chat Window Features Test</h2>
+            <div class="status">✅ <span class="expected">Expected:</span> "Welcome to Our Chat" title</div>
+            <div class="status">✅ <span class="expected">Expected:</span> "Hello! How can we help you today?" welcome message</div>
+            <div class="status">✅ <span class="expected">Expected:</span> 400px width × 600px height</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Dark grey background (#4d4d4d)</div>
+            <div class="status">✅ <span class="expected">Expected:</span> 16px font size</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Inter fonts for title, messages, and input</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Blue bot messages (#009bdd), black user messages</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Black input background with white text</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Grey input border (#cccccc) 1px width</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Blue send button (#009bdd)</div>
+        </div>
+
+        <div class="feature-test">
+            <h2>🦶 Footer Features Test</h2>
+            <div class="status">✅ <span class="expected">Expected:</span> "Your Company" footer text</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Dark text color (#151515)</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Inter font family</div>
+        </div>
+
+        <div class="feature-test">
+            <h2>⚙️ Toggle Features Test</h2>
+            <div class="status">✅ <span class="expected">Expected:</span> Show Title Section: ON</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Show Tooltip: ON</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Auto Open Widget: OFF</div>
+            <div class="status">✅ <span class="expected">Expected:</span> Clear Chat on Reload: OFF</div>
+        </div>
+
+        <p><strong>🔍 Test Instructions:</strong></p>
+        <ol>
+            <li>Look for the chat button in the bottom-right corner</li>
+            <li>Hover over the button to see the tooltip</li>
+            <li>Click the button to open the chat window</li>
+            <li>Verify all styling matches the expected values above</li>
+            <li>Test sending a message to the N8N webhook</li>
+        </ol>
+    </div>
+
+    <!-- N8N Chatbot Widget Code -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=1"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#009bdd",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 54,
+                    "iconColor": "#ffffff",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "iconSize": "60%",
+                    "iconBorderRadius": "15px",
+                    "borderRadius": "rounded",
+                    "autoOpen": false
+                },
+                "chatWindow": {
+                    "title": "Welcome to Our Chat",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! How can we help you today?",
+                    "width": 400,
+                    "height": 600,
+                    "backgroundColor": "#4d4d4d",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "borderColor": "#e1e1e1",
+                    "borderWidth": "1px",
+                    "borderRadius": "10px",
+                    "showTitleSection": true,
+                    "clearChatOnReload": false,
+                    "textInput": {
+                        "placeholder": "Type your message here...",
+                        "backgroundColor": "#000000",
+                        "textColor": "#ffffff",
+                        "font": "Inter",
+                        "sendButtonColor": "#009bdd",
+                        "borderColor": "#cccccc",
+                        "borderWidth": "1px"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#009bdd",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#000000",
+                        "textColor": "#a3a3a3",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Your Company",
+                        "companyLink": "",
+                        "textColor": "#151515",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Hello! Can I help you?",
+                        "backgroundColor": "#009bdd",
+                        "textColor": "#ffffff",
+                        "font": "Inter",
+                        "show": true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -55,6 +55,14 @@ class N8NChatbotWidget {
                         backgroundColor: '#009BDD',
                         textColor: '#ffffff',
                         font: 'Inter'
+                    },
+                    avatar: {
+                        botAvatarUrl: '',
+                        userAvatarUrl: '',
+                        showBotAvatar: true,
+                        showUserAvatar: true,
+                        avatarSize: 32,
+                        avatarBorderRadius: 50
                     }
                 }
             },
@@ -215,20 +223,51 @@ class N8NChatbotWidget {
                 font-family: '${this.config.theme.chatWindow.messageFont}', sans-serif;
                 font-size: ${this.config.theme.chatWindow.fontSize};
                 line-height: 1.4;
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
             }
             
             .n8n-chatbot-message.bot {
                 align-self: flex-start;
+                flex-direction: row;
+            }
+            
+            .n8n-chatbot-message.user {
+                align-self: flex-end;
+                flex-direction: row-reverse;
+            }
+            
+            .n8n-chatbot-message-content {
+                padding: 10px 15px;
+                border-radius: 18px;
+                line-height: 1.4;
+            }
+            
+            .n8n-chatbot-message.bot .n8n-chatbot-message-content {
                 background-color: ${this.config.theme.chatWindow.botMessage.backgroundColor};
                 color: ${this.config.theme.chatWindow.botMessage.textColor};
                 font-family: '${this.config.theme.chatWindow.botMessage.font}', sans-serif;
             }
             
-            .n8n-chatbot-message.user {
-                align-self: flex-end;
+            .n8n-chatbot-message.user .n8n-chatbot-message-content {
                 background-color: ${this.config.theme.chatWindow.userMessage.backgroundColor};
                 color: ${this.config.theme.chatWindow.userMessage.textColor};
                 font-family: '${this.config.theme.chatWindow.userMessage.font}', sans-serif;
+            }
+            
+            .n8n-chatbot-avatar {
+                width: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '32'}px;
+                height: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '32'}px;
+                border-radius: ${this.config.theme.chatWindow.avatar?.avatarBorderRadius || this.config.theme.chatWindow.avatars?.borderRadius || '50%'};
+                object-fit: cover;
+                flex-shrink: 0;
+                background-color: #f0f0f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                color: #666;
             }
             
             .n8n-chatbot-input-container {
@@ -440,7 +479,48 @@ class N8NChatbotWidget {
         const messagesContainer = this.chatWindow.querySelector('#n8n-messages');
         const messageDiv = document.createElement('div');
         messageDiv.className = `n8n-chatbot-message ${sender}`;
-        messageDiv.textContent = text;
+        
+        let avatarHtml = '';
+        let showAvatar = false;
+        let avatarUrl = '';
+        
+        // Determine if avatar should be shown and get URL
+        if (sender === 'bot' && this.config.theme.chatWindow.avatar?.showBotAvatar) {
+            showAvatar = true;
+            avatarUrl = this.config.theme.chatWindow.avatar?.botAvatarUrl || this.config.theme.chatWindow.avatars?.bot?.src;
+        } else if (sender === 'user' && this.config.theme.chatWindow.avatar?.showUserAvatar) {
+            showAvatar = true;
+            avatarUrl = this.config.theme.chatWindow.avatar?.userAvatarUrl || this.config.theme.chatWindow.avatars?.user?.src;
+        }
+        
+        // Also check for alternative avatar configuration format
+        if (!showAvatar && this.config.theme.chatWindow.avatars) {
+            if (sender === 'bot' && this.config.theme.chatWindow.avatars.bot?.show) {
+                showAvatar = true;
+                avatarUrl = this.config.theme.chatWindow.avatars.bot.src;
+            } else if (sender === 'user' && this.config.theme.chatWindow.avatars.user?.show) {
+                showAvatar = true;
+                avatarUrl = this.config.theme.chatWindow.avatars.user.src;
+            }
+        }
+        
+        // Create avatar HTML if needed
+        if (showAvatar) {
+            if (avatarUrl) {
+                avatarHtml = `<img src="${avatarUrl}" alt="${sender} avatar" class="n8n-chatbot-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                             <div class="n8n-chatbot-avatar" style="display: none;">${sender === 'bot' ? '🤖' : '👤'}</div>`;
+            } else {
+                avatarHtml = `<div class="n8n-chatbot-avatar">${sender === 'bot' ? '🤖' : '👤'}</div>`;
+            }
+        }
+        
+        // Create message content
+        const messageContent = `
+            ${avatarHtml}
+            <div class="n8n-chatbot-message-content">${text}</div>
+        `;
+        
+        messageDiv.innerHTML = messageContent;
         messagesContainer.appendChild(messageDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
