@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Avatar Fix Test - N8N Chatbot Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .comparison {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .before, .after {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .before { background: #ffebee; }
+        .after { background: #e8f5e8; }
+    </style>
+</head>
+<body>
+    <h1>🔳 Square Avatar Fix Test - N8N Chatbot Widget</h1>
+    
+    <div class="test-section">
+        <h2>✅ SQUARE AVATAR SOLUTION IMPLEMENTED</h2>
+        <p><strong>Issue:</strong> Circular avatars were cropping image corners regardless of object-fit settings</p>
+        <p><strong>Solution:</strong> Changed to square avatars with 8px border-radius for modern, professional appearance</p>
+        
+        <div class="comparison">
+            <div class="before">
+                <h3>❌ Before (Circular - Cropping Issues)</h3>
+                <ul>
+                    <li>border-radius: 50% (circular)</li>
+                    <li>Image corners cropped</li>
+                    <li>object-fit issues with different aspect ratios</li>
+                    <li>Inconsistent appearance</li>
+                </ul>
+            </div>
+            <div class="after">
+                <h3>✅ After (Square - Clean Professional)</h3>
+                <ul>
+                    <li>border-radius: 8px (rounded square)</li>
+                    <li>Full image visibility</li>
+                    <li>No cropping issues</li>
+                    <li>Modern, professional appearance</li>
+                    <li>Consistent across all image types</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 TECHNICAL CHANGES APPLIED</h2>
+        
+        <h3>1. Main Widget (n8n-chatbot-widget.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+.n8n-chatbot-avatar {
+    border-radius: 8px;        // ← Fixed 8px instead of dynamic %
+    object-fit: cover;         // ← Back to cover (works perfectly with squares)
+    overflow: hidden;          // ← Clean edges
+}
+        </pre>
+
+        <h3>2. Preview System (script-enhanced.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+// Both bot and user avatars
+border-radius: 8px;           // ← Fixed 8px instead of variable
+object-fit: cover;            // ← Optimal for square containers
+        </pre>
+
+        <h3>3. UI Controls Updated:</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+Label: "Avatar Corner Rounding (Fixed at 8px for Square Style)"
+Control: Disabled slider showing 8px value
+Effect: Users understand the fixed square styling approach
+        </pre>
+
+        <h3>4. Version Update:</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+Cache-busting: v=9 → v=10
+Deployment: Immediate effect on GitHub Pages
+        </pre>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 ADVANTAGES OF SQUARE AVATARS</h2>
+        <ul>
+            <li>✅ <strong>No Cropping:</strong> Full image visibility without corner cutting</li>
+            <li>✅ <strong>Modern Design:</strong> Square avatars with rounded corners are current design trend</li>
+            <li>✅ <strong>Better Image Quality:</strong> object-fit: cover works optimally with square containers</li>
+            <li>✅ <strong>Consistent Appearance:</strong> Same look regardless of source image aspect ratio</li>
+            <li>✅ <strong>Professional Look:</strong> Clean, polished appearance matching premium chat interfaces</li>
+            <li>✅ <strong>Better for Logos:</strong> Company/brand logos display better in square format</li>
+            <li>✅ <strong>Easier Maintenance:</strong> Fixed 8px radius eliminates configuration complexity</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 TEST CONFIGURATION</h2>
+        <p><strong>Testing Webhook:</strong> https://your-n8n-instance.com/webhook/your-webhook-id/chat</p>
+        <p><strong>Bot Avatar:</strong> https://www.svgrepo.com/show/339963/chat-bot.svg</p>
+        <p><strong>User Avatar:</strong> https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg</p>
+        <p><strong>Expected Result:</strong> Square avatars with 8px border-radius, no cropping, professional appearance</p>
+    </div>
+
+    <!-- Load the updated widget with square avatars -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=10"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#009BDD",
+            "right": "25px",
+            "bottom": "25px", 
+            "size": "54px"
+          },
+          "chatWindow": {
+            "backgroundColor": "#FFFFFF",
+            "height": "600px",
+            "width": "400px",
+            "title": {
+              "text": "Square Avatar Test",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "avatars": {
+              "bot": {
+                "src": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                "show": true
+              },
+              "user": {
+                "src": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg",
+                "show": true
+              },
+              "size": "40px"
+            },
+            "welcomeMessage": {
+              "text": "Hello! Testing square avatars - should be clean and professional with no cropping!",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF"
+            },
+            "tooltip": {
+              "show": true,
+              "message": "Square avatars - no cropping!",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF"
+            }
+          }
+        }
+      });
+    </script>
+
+    <div class="test-section">
+        <h2>🚀 DEPLOYMENT STATUS</h2>
+        <p><strong>Status:</strong> Square avatar fix implemented and ready for testing</p>
+        <p><strong>Version:</strong> v=10 with square avatar styling</p>
+        <p><strong>GitHub Commit Required:</strong> Yes - ready to commit and push</p>
+        <p><strong>Expected Result:</strong> Clean, professional square avatars with 8px rounded corners</p>
+    </div>
+
+</body>
+</html>

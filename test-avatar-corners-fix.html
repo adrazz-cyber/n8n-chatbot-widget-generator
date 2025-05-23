@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Corners Fix Test - N8N Chatbot Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Avatar Corners Fix Test - N8N Chatbot Widget</h1>
+    
+    <div class="test-section">
+        <h2>✅ AVATAR CORNER CLIPPING FIX APPLIED</h2>
+        <p><strong>Issue Fixed:</strong> Avatar images were being clipped at the top corners due to object-fit: cover</p>
+        <p><strong>Solution Applied:</strong></p>
+        <ul>
+            <li>Changed <code>object-fit: cover</code> to <code>object-fit: contain</code></li>
+            <li>Added <code>overflow: hidden</code> for clean border radius application</li>
+            <li>Updated both widget JavaScript and preview system</li>
+            <li>Version updated from v=8 to v=9 for immediate deployment</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 TEST CONFIGURATION</h2>
+        <p><strong>Testing Webhook:</strong> https://your-n8n-instance.com/webhook/your-webhook-id/chat</p>
+        <p><strong>Bot Avatar (test image):</strong> https://www.svgrepo.com/show/339963/chat-bot.svg</p>
+        <p><strong>User Avatar (test image):</strong> https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg</p>
+        <p><strong>Expected Result:</strong> Avatar images should no longer be clipped at the top corners</p>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 TECHNICAL CHANGES MADE</h2>
+        
+        <h3>1. Main Widget File (n8n-chatbot-widget.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px; overflow-x: auto;">
+.n8n-chatbot-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;  // ← Changed from 'cover' to 'contain'
+    flex-shrink: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 2px;
+    overflow: hidden;     // ← Added for clean border radius
+}
+        </pre>
+
+        <h3>2. Preview System (script-enhanced.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px; overflow-x: auto;">
+// Bot Avatar
+object-fit: contain;  // ← Changed from 'cover'
+border-radius: ${avatarBorderRadius}%;
+overflow: hidden;
+
+// User Avatar  
+object-fit: contain;  // ← Changed from 'cover'
+border-radius: ${avatarBorderRadius}%;
+overflow: hidden;
+        </pre>
+
+        <h3>3. Cache-Busting Version Update:</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+Updated: v=8 → v=9
+Effect: Forces browsers to load the fixed version immediately
+        </pre>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 EXPECTED IMPROVEMENTS</h2>
+        <ul>
+            <li>✅ Avatar images no longer clipped at top corners</li>
+            <li>✅ Full image visibility while maintaining border radius</li>
+            <li>✅ Professional appearance matching reference standards</li>
+            <li>✅ Consistent behavior across different image aspect ratios</li>
+            <li>✅ Better visual quality for avatar display</li>
+        </ul>
+    </div>
+
+    <!-- Load the fixed widget -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=9"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#009BDD",
+            "right": "25px",
+            "bottom": "25px",
+            "size": "54px",
+            "customIconSrc": "",
+            "iconSize": "60%",
+            "iconBorderRadius": "15px",
+            "iconColor": "#FFFFFF"
+          },
+          "chatWindow": {
+            "backgroundColor": "#FFFFFF",
+            "height": "600px",
+            "width": "400px",
+            "borderRadius": "10px",
+            "title": {
+              "text": "Avatar Corners Test",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "fontSize": "16px",
+              "font": "Inter"
+            },
+            "avatar": {
+              "avatarSize": "40px",
+              "avatarBorderRadius": "50%"
+            },
+            "avatars": {
+              "bot": {
+                "src": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                "show": true
+              },
+              "user": {
+                "src": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg", 
+                "show": true
+              },
+              "size": "40px",
+              "borderRadius": "50%"
+            },
+            "welcomeMessage": {
+              "text": "Hello! Testing avatar corner fixes - avatars should display properly without clipping.",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "botMessage": {
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "userMessage": {
+              "backgroundColor": "#e5e5e5",
+              "textColor": "#333333",
+              "font": "Inter"
+            },
+            "tooltip": {
+              "show": true,
+              "message": "Test avatars - no corner clipping!",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            }
+          },
+          "footer": {
+            "text": "Avatar Corner Fix Test",
+            "textColor": "#666666",
+            "font": "Inter"
+          }
+        }
+      });
+    </script>
+
+    <div class="test-section">
+        <h2>🚀 DEPLOYMENT STATUS</h2>
+        <p><strong>Status:</strong> Avatar corner fix applied and ready for testing</p>
+        <p><strong>GitHub Commit Required:</strong> Yes - commit and push changes for GitHub Pages deployment</p>
+        <p><strong>Expected Deployment:</strong> Automatic via GitHub Actions within 2-3 minutes</p>
+        <p><strong>Testing:</strong> Use the chat widget above to verify avatar corners are no longer clipped</p>
+    </div>
+
+</body>
+</html>
