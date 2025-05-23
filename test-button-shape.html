@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Shape Test - N8N Chatbot Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔳 Button Shape Test - N8N Chatbot Widget</h1>
+        
+        <div class="test-info">
+            <h3>🎯 Test Objective:</h3>
+            <p>Verify that the Button Shape control works correctly with both Circle and Rounded Square options.</p>
+            
+            <h3>📋 Test Features:</h3>
+            <ul>
+                <li><strong>Circle Shape:</strong> Traditional round chat button (border-radius: 50%)</li>
+                <li><strong>Rounded Square:</strong> Modern square button with rounded corners (border-radius: 15px)</li>
+                <li><strong>Icon Toggle:</strong> Icon changes from chat bubble to down arrow when clicked</li>
+                <li><strong>Real-time Preview:</strong> Shape changes immediately in preview</li>
+            </ul>
+            
+            <h3>🔧 Implementation Details:</h3>
+            <ul>
+                <li>Button Shape dropdown added to Button Settings section</li>
+                <li>JavaScript variable 'buttonShape' captures selection</li>
+                <li>Preview system uses conditional border-radius based on shape</li>
+                <li>Widget JavaScript handles 'circle' vs 'rounded' values</li>
+                <li>Icon switching functionality already implemented</li>
+            </ul>
+        </div>
+
+        <div class="test-buttons">
+            <button onclick="testCircleShape()">Test Circle Shape</button>
+            <button onclick="testRoundedShape()">Test Rounded Square Shape</button>
+            <button onclick="testIconToggle()">Test Icon Toggle</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <!-- Circle Shape Widget Test -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=13"></script>
+    <script>
+        // Initialize with Circle Shape
+        let circleWidget = null;
+        let roundedWidget = null;
+        
+        function testCircleShape() {
+            if (circleWidget) {
+                circleWidget.destroy();
+            }
+            
+            circleWidget = N8NChatbot.init({
+                "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+                "theme": {
+                    "button": {
+                        "backgroundColor": "#009BDD",
+                        "right": 25,
+                        "bottom": 25,
+                        "size": 54,
+                        "iconColor": "#FFFFFF",
+                        "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                        "iconSize": "60%",
+                        "iconBorderRadius": "8px",
+                        "shape": "circle",
+                        "autoOpen": false
+                    },
+                    "chatWindow": {
+                        "title": "Circle Shape Test",
+                        "titleFont": "Inter",
+                        "welcomeMessage": "Testing circle shape button!",
+                        "tooltip": {
+                            "show": true,
+                            "message": "Circle shape test",
+                            "backgroundColor": "#009BDD",
+                            "textColor": "#FFFFFF",
+                            "hoverMode": false
+                        }
+                    }
+                }
+            });
+            
+            document.getElementById('result').innerHTML = `
+                <h4>✅ Circle Shape Test Active</h4>
+                <p><strong>Expected:</strong> Round chat button with 50% border-radius</p>
+                <p><strong>Config:</strong> shape: "circle"</p>
+                <p><strong>Action:</strong> Check chat button is perfectly round</p>
+            `;
+        }
+        
+        function testRoundedShape() {
+            if (roundedWidget) {
+                roundedWidget.destroy();
+            }
+            
+            roundedWidget = N8NChatbot.init({
+                "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+                "theme": {
+                    "button": {
+                        "backgroundColor": "#28a745",
+                        "right": 80,
+                        "bottom": 25,
+                        "size": 54,
+                        "iconColor": "#FFFFFF",
+                        "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                        "iconSize": "60%",
+                        "iconBorderRadius": "8px",
+                        "shape": "rounded",
+                        "autoOpen": false
+                    },
+                    "chatWindow": {
+                        "title": "Rounded Shape Test",
+                        "titleFont": "Inter",
+                        "welcomeMessage": "Testing rounded square button!",
+                        "tooltip": {
+                            "show": true,
+                            "message": "Rounded square test",
+                            "backgroundColor": "#28a745",
+                            "textColor": "#FFFFFF",
+                            "hoverMode": false
+                        }
+                    }
+                }
+            });
+            
+            document.getElementById('result').innerHTML = `
+                <h4>✅ Rounded Square Test Active</h4>
+                <p><strong>Expected:</strong> Square chat button with 15px border-radius</p>
+                <p><strong>Config:</strong> shape: "rounded"</p>
+                <p><strong>Action:</strong> Check chat button is square with rounded corners</p>
+                <p><strong>Note:</strong> Green color and different position to distinguish from circle test</p>
+            `;
+        }
+        
+        function testIconToggle() {
+            document.getElementById('result').innerHTML = `
+                <h4>🔄 Icon Toggle Test Instructions</h4>
+                <p><strong>Test Steps:</strong></p>
+                <ol>
+                    <li>Click on any active chat button (circle or rounded)</li>
+                    <li>Verify icon changes from chat bubble to down arrow</li>
+                    <li>Click the down arrow (same button) to close chat</li>
+                    <li>Verify icon changes back to original chat bubble</li>
+                </ol>
+                <p><strong>Expected Behavior:</strong></p>
+                <ul>
+                    <li><strong>Closed state:</strong> Custom icon or default chat bubble icon</li>
+                    <li><strong>Open state:</strong> Down arrow icon</li>
+                    <li><strong>Transition:</strong> Smooth icon change when clicked</li>
+                </ul>
+            `;
+        }
+        
+        // Initialize with circle shape by default
+        window.onload = function() {
+            testCircleShape();
+        };
+    </script>
+</body>
+</html>
