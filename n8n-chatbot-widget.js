@@ -438,12 +438,30 @@ class N8NChatbotWidget {
         this.tooltip.textContent = this.config.theme.chatWindow.tooltip.message;
         document.body.appendChild(this.tooltip);
         
-        // Show tooltip after delay
-        setTimeout(() => {
-            if (!this.isOpen) {
-                this.tooltip.classList.add('show');
+        // Handle tooltip display modes
+        const showTooltip = this.config.theme.chatWindow.tooltip.show ?? true;
+        const hoverMode = this.config.theme.chatWindow.tooltip.hoverMode ?? false;
+        
+        if (showTooltip) {
+            if (hoverMode) {
+                // Hover mode: Show/hide on button hover
+                this.button.addEventListener('mouseenter', () => {
+                    if (!this.isOpen) {
+                        this.tooltip.classList.add('show');
+                    }
+                });
+                this.button.addEventListener('mouseleave', () => {
+                    this.tooltip.classList.remove('show');
+                });
+            } else {
+                // Always visible mode: Show after delay and keep visible
+                setTimeout(() => {
+                    if (!this.isOpen) {
+                        this.tooltip.classList.add('show');
+                    }
+                }, 3000);
             }
-        }, 3000);
+        }
     }
 
     createChatWindow() {

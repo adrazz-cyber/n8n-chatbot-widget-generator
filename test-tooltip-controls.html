@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Enhanced Controls Test - N8N Chatbot Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-mode {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 Tooltip Enhanced Controls Test - N8N Chatbot Widget</h1>
+    
+    <div class="test-section">
+        <h2>✅ TOOLTIP DUAL CONTROL SYSTEM IMPLEMENTED</h2>
+        <p><strong>Enhancement:</strong> Added two separate tooltip controls for better user experience</p>
+        
+        <h3>New Control System:</h3>
+        <div class="test-mode">
+            <h4>1. Show Tooltip Toggle</h4>
+            <ul>
+                <li>✅ <strong>ON:</strong> Tooltip is enabled and will show (based on hover mode setting)</li>
+                <li>✅ <strong>OFF:</strong> Tooltip is completely hidden</li>
+            </ul>
+        </div>
+        
+        <div class="test-mode">
+            <h4>2. Hover Mode Toggle</h4>
+            <ul>
+                <li>✅ <strong>ON (Hover Mode):</strong> Tooltip appears only when hovering over button</li>
+                <li>✅ <strong>OFF (Always Visible):</strong> Tooltip shows automatically after 3 second delay</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 TECHNICAL IMPLEMENTATION</h2>
+        
+        <h3>1. Widget JavaScript (n8n-chatbot-widget.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px; overflow-x: auto;">
+// Enhanced tooltip handling
+const showTooltip = this.config.theme.chatWindow.tooltip.show ?? true;
+const hoverMode = this.config.theme.chatWindow.tooltip.hoverMode ?? false;
+
+if (showTooltip) {
+    if (hoverMode) {
+        // Hover mode: Show/hide on button hover
+        this.button.addEventListener('mouseenter', () => {
+            if (!this.isOpen) {
+                this.tooltip.classList.add('show');
+            }
+        });
+        this.button.addEventListener('mouseleave', () => {
+            this.tooltip.classList.remove('show');
+        });
+    } else {
+        // Always visible mode: Show after delay
+        setTimeout(() => {
+            if (!this.isOpen) {
+                this.tooltip.classList.add('show');
+            }
+        }, 3000);
+    }
+}
+        </pre>
+
+        <h3>2. Generator Interface (index.html):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px; overflow-x: auto;">
+&lt;!-- Show Tooltip Toggle --&gt;
+&lt;div class="form-group toggle-group"&gt;
+    &lt;label class="toggle-switch"&gt;
+        &lt;input type="checkbox" id="showTooltip" checked&gt;
+        &lt;span class="toggle-slider"&gt;&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label for="showTooltip"&gt;Show Tooltip&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Hover Mode Toggle --&gt;
+&lt;div class="form-group toggle-group"&gt;
+    &lt;label class="toggle-switch"&gt;
+        &lt;input type="checkbox" id="tooltipHoverMode"&gt;
+        &lt;span class="toggle-slider"&gt;&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label for="tooltipHoverMode"&gt;Hover Mode&lt;/label&gt;
+&lt;/div&gt;
+        </pre>
+
+        <h3>3. Configuration Generation (script-enhanced.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px; overflow-x: auto;">
+"tooltip": {
+    "message": "${tooltipMessage}",
+    "backgroundColor": "${tooltipBackgroundColor}",
+    "textColor": "${tooltipTextColor}",
+    "font": "${tooltipFont}",
+    "show": ${showTooltip},
+    "hoverMode": ${tooltipHoverMode}
+}
+        </pre>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 TEST SCENARIOS</h2>
+        
+        <div class="test-mode">
+            <h4>Test 1: Show Tooltip ON + Hover Mode OFF</h4>
+            <p><strong>Expected:</strong> Tooltip appears after 3 seconds and stays visible</p>
+        </div>
+        
+        <div class="test-mode">
+            <h4>Test 2: Show Tooltip ON + Hover Mode ON</h4>
+            <p><strong>Expected:</strong> Tooltip appears only when hovering over button</p>
+        </div>
+        
+        <div class="test-mode">
+            <h4>Test 3: Show Tooltip OFF + Any Hover Mode</h4>
+            <p><strong>Expected:</strong> No tooltip appears regardless of hover mode</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 TESTING CONFIGURATION</h2>
+        <p><strong>Testing Webhook:</strong> https://your-n8n-instance.com/webhook/your-webhook-id/chat</p>
+        <p><strong>Test Message:</strong> "Tooltip test - hover and always modes!"</p>
+        <p><strong>Expected Result:</strong> Tooltip behavior changes based on toggle settings</p>
+    </div>
+
+    <!-- Test Configuration 1: Always Visible Mode -->
+    <h3>Configuration 1: Always Visible Mode (Default)</h3>
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=12"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#009BDD",
+            "right": "25px",
+            "bottom": "25px",
+            "size": "54px"
+          },
+          "chatWindow": {
+            "title": "Always Visible Tooltip Test",
+            "backgroundColor": "#FFFFFF",
+            "tooltip": {
+              "message": "Always visible tooltip test!",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "show": true,
+              "hoverMode": false
+            }
+          }
+        }
+      });
+    </script>
+
+    <div class="test-section">
+        <h2>🚀 DEPLOYMENT STATUS</h2>
+        <p><strong>Status:</strong> Tooltip dual control system implemented and ready for testing</p>
+        <p><strong>Version:</strong> v=12 with enhanced tooltip controls</p>
+        <p><strong>GitHub Commit Required:</strong> Yes - ready to commit and push</p>
+        <p><strong>Testing Instructions:</strong></p>
+        <ol>
+            <li>Test with both toggles ON and hoverMode OFF - tooltip should appear after delay</li>
+            <li>Test with both toggles ON and hoverMode ON - tooltip should appear only on hover</li>
+            <li>Test with showTooltip OFF - no tooltip should appear</li>
+        </ol>
+    </div>
+
+</body>
+</html>
