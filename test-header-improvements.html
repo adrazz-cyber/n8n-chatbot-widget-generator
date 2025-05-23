@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Improvements Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-improvements {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>📱 Header Improvements Test</h1>
+        
+        <div class="header-improvements">
+            <h3>Header Improvements Applied:</h3>
+            <ul>
+                <li>✅ <strong>Reduced Header Depth:</strong> Padding reduced from 20px to 15px for more compact header</li>
+                <li>✅ <strong>Smaller Title:</strong> Font size reduced from 18px to 16px to match reference</li>
+                <li>✅ <strong>Refresh Button Added:</strong> Circular refresh icon with hover effects</li>
+                <li>✅ <strong>Header Actions Group:</strong> Refresh and close buttons properly spaced</li>
+                <li>✅ <strong>Professional Styling:</strong> Matching button sizes and hover states</li>
+                <li>✅ <strong>Functional Refresh:</strong> Clears chat history and resets session</li>
+            </ul>
+        </div>
+        
+        <p><strong>Test Instructions:</strong></p>
+        <ol>
+            <li>Click the chat button to open the widget</li>
+            <li>Notice the more compact header matching the reference design</li>
+            <li>Send a test message to see the conversation</li>
+            <li>Click the refresh button (↻) to clear the chat and start fresh</li>
+            <li>Verify the chat resets with just the welcome message</li>
+        </ol>
+    </div>
+
+    <!-- N8N Chatbot Widget with Header Improvements -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=4"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#2196f3",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 60,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "iconSize": "70%",
+                    "iconBorderRadius": "12px"
+                },
+                "chatWindow": {
+                    "title": "Header Test Chat",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! Notice the improved header design with refresh button. Try sending a message, then click refresh!",
+                    "width": 400,
+                    "height": 500,
+                    "backgroundColor": "#ffffff",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "avatars": {
+                        "bot": {
+                            "src": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                            "show": true
+                        },
+                        "user": {
+                            "src": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg",
+                            "show": true
+                        },
+                        "size": "36px",
+                        "borderRadius": "50%"
+                    },
+                    "textInput": {
+                        "placeholder": "Test the header improvements...",
+                        "backgroundColor": "#f8f9fa",
+                        "textColor": "#333333",
+                        "font": "Inter",
+                        "sendButtonColor": "#2196f3"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#2196f3",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#e9ecef",
+                        "textColor": "#333333",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Header Test",
+                        "companyLink": "",
+                        "textColor": "#666666",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Test the new header!",
+                        "backgroundColor": "#2196f3",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

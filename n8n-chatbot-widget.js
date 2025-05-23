@@ -170,7 +170,7 @@ class N8NChatbotWidget {
             }
             
             .n8n-chatbot-header {
-                padding: 20px;
+                padding: 15px 20px;
                 border-bottom: 1px solid rgba(0,0,0,0.1);
                 background: linear-gradient(135deg, ${this.config.theme.button.backgroundColor}, ${this.config.theme.button.backgroundColor}dd);
                 border-radius: 12px 12px 0 0;
@@ -182,24 +182,50 @@ class N8NChatbotWidget {
             
             .n8n-chatbot-title {
                 font-family: '${this.config.theme.chatWindow.titleFont}', sans-serif;
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 margin: 0;
+            }
+            
+            .n8n-chatbot-header-actions {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .n8n-chatbot-refresh {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+                padding: 4px;
+                width: 28px;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                transition: background-color 0.2s ease;
+            }
+            
+            .n8n-chatbot-refresh:hover {
+                background-color: rgba(255,255,255,0.2);
             }
             
             .n8n-chatbot-close {
                 background: none;
                 border: none;
                 color: white;
-                font-size: 24px;
+                font-size: 20px;
                 cursor: pointer;
-                padding: 0;
-                width: 30px;
-                height: 30px;
+                padding: 4px;
+                width: 28px;
+                height: 28px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border-radius: 50%;
+                border-radius: 4px;
                 transition: background-color 0.2s ease;
             }
             
@@ -415,7 +441,14 @@ class N8NChatbotWidget {
         this.chatWindow.innerHTML = `
             <div class="n8n-chatbot-header">
                 <h3 class="n8n-chatbot-title">${this.config.theme.chatWindow.title}</h3>
-                <button class="n8n-chatbot-close">&times;</button>
+                <div class="n8n-chatbot-header-actions">
+                    <button class="n8n-chatbot-refresh" title="Refresh Chat">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                        </svg>
+                    </button>
+                    <button class="n8n-chatbot-close" title="Close Chat">&times;</button>
+                </div>
             </div>
             <div class="n8n-chatbot-messages" id="n8n-messages"></div>
             <div class="n8n-chatbot-input-container">
@@ -443,6 +476,9 @@ class N8NChatbotWidget {
         
         const closeBtn = this.chatWindow.querySelector('.n8n-chatbot-close');
         closeBtn.addEventListener('click', () => this.closeChat());
+        
+        const refreshBtn = this.chatWindow.querySelector('.n8n-chatbot-refresh');
+        refreshBtn.addEventListener('click', () => this.refreshChat());
         
         const input = this.chatWindow.querySelector('#n8n-input');
         const sendBtn = this.chatWindow.querySelector('#n8n-send');
@@ -473,6 +509,24 @@ class N8NChatbotWidget {
     closeChat() {
         this.isOpen = false;
         this.chatWindow.classList.remove('open');
+    }
+
+    refreshChat() {
+        // Clear all messages
+        const messagesContainer = this.chatWindow.querySelector('#n8n-messages');
+        messagesContainer.innerHTML = '';
+        
+        // Reset session ID for new conversation
+        this.sessionId = null;
+        this.messages = [];
+        
+        // Add welcome message back
+        this.addMessage(this.config.theme.chatWindow.welcomeMessage, 'bot');
+        
+        // Clear input field
+        const input = this.chatWindow.querySelector('#n8n-input');
+        input.value = '';
+        input.focus();
     }
 
     addMessage(text, sender) {
