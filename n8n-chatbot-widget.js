@@ -240,6 +240,12 @@ class N8NChatbotWidget {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE and Edge */
+            }
+            
+            .n8n-chatbot-messages::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
             }
             
             .n8n-chatbot-message {
@@ -265,6 +271,11 @@ class N8NChatbotWidget {
                 border-radius: 18px;
                 line-height: 1.4;
                 word-wrap: break-word;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
+                box-sizing: border-box;
             }
             
             .n8n-chatbot-message.bot .n8n-chatbot-message-content {
