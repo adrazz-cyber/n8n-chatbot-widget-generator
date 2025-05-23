@@ -209,23 +209,19 @@ class N8NChatbotWidget {
             
             .n8n-chatbot-messages {
                 flex: 1;
-                padding: 20px;
+                padding: 20px 20px 20px 12px;
                 overflow-y: auto;
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
+                gap: 8px;
             }
             
             .n8n-chatbot-message {
                 max-width: 80%;
-                padding: 10px 15px;
-                border-radius: 18px;
-                font-family: '${this.config.theme.chatWindow.messageFont}', sans-serif;
-                font-size: ${this.config.theme.chatWindow.fontSize};
-                line-height: 1.4;
                 display: flex;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 12px;
+                margin-bottom: 15px;
             }
             
             .n8n-chatbot-message.bot {
@@ -239,26 +235,29 @@ class N8NChatbotWidget {
             }
             
             .n8n-chatbot-message-content {
-                padding: 10px 15px;
+                padding: 12px 16px;
                 border-radius: 18px;
                 line-height: 1.4;
+                word-wrap: break-word;
             }
             
             .n8n-chatbot-message.bot .n8n-chatbot-message-content {
                 background-color: ${this.config.theme.chatWindow.botMessage.backgroundColor};
                 color: ${this.config.theme.chatWindow.botMessage.textColor};
                 font-family: '${this.config.theme.chatWindow.botMessage.font}', sans-serif;
+                margin-left: 0;
             }
             
             .n8n-chatbot-message.user .n8n-chatbot-message-content {
                 background-color: ${this.config.theme.chatWindow.userMessage.backgroundColor};
                 color: ${this.config.theme.chatWindow.userMessage.textColor};
                 font-family: '${this.config.theme.chatWindow.userMessage.font}', sans-serif;
+                margin-right: 0;
             }
             
             .n8n-chatbot-avatar {
-                width: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '32'}px;
-                height: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '32'}px;
+                width: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '36'}px;
+                height: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '36'}px;
                 border-radius: ${this.config.theme.chatWindow.avatar?.avatarBorderRadius || this.config.theme.chatWindow.avatars?.borderRadius || '50%'};
                 object-fit: cover;
                 flex-shrink: 0;
@@ -266,8 +265,9 @@ class N8NChatbotWidget {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 14px;
+                font-size: 18px;
                 color: #666;
+                margin-top: 2px;
             }
             
             .n8n-chatbot-input-container {
