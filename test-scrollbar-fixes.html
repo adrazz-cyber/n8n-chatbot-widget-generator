@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollbar & Text Wrapping Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-info h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .test-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .fixes {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+            margin: 15px 0;
+        }
+        .fixes h3 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+        }
+        .fixes ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>🔧 Scrollbar & Text Wrapping Fixes Test</h1>
+        <p><strong>Date:</strong> May 23, 2025</p>
+        <p><strong>Issues Fixed:</strong> Hidden scrollbars, improved text wrapping, better space utilization</p>
+        
+        <div class="fixes">
+            <h3>✅ FIXES APPLIED:</h3>
+            <ul>
+                <li><strong>Hidden Scrollbar:</strong> Scrollbar now invisible but mouse scroll still works</li>
+                <li><strong>Text Wrapping:</strong> Added word-break, overflow-wrap, and hyphens for better wrapping</li>
+                <li><strong>Space Utilization:</strong> Message content uses full available width with proper box-sizing</li>
+                <li><strong>Cache-Busting:</strong> Version updated from v=6 to v=7</li>
+            </ul>
+        </div>
+        
+        <p><strong>Test Instructions:</strong></p>
+        <ul>
+            <li>Open the chat widget</li>
+            <li>Send long messages to test text wrapping</li>
+            <li>Check that scrollbar is hidden but scrolling still works</li>
+            <li>Verify text uses full blue message bubble space</li>
+        </ul>
+    </div>
+
+    <!-- Test the scrollbar and text wrapping fixes -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=7"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#3da5ae",
+            "right": 30,
+            "bottom": 30,
+            "size": 60,
+            "iconColor": "white",
+            "customIconSrc": "",
+            "iconSize": "60%",
+            "iconBorderRadius": "15px",
+            "borderRadius": "rounded",
+            "autoOpen": false
+          },
+          "tooltip": {
+            "show": true,
+            "backgroundColor": "#009BDD",
+            "textColor": "#FFFFFF",
+            "message": "Test scrollbar & text fixes!",
+            "font": "Inter"
+          },
+          "chatWindow": {
+            "title": "Scrollbar & Text Fix Test",
+            "welcomeMessage": "Testing scrollbar hiding and text wrapping improvements! Try sending long messages like: wwakjdhkajhdakjhdakjhdakjhdkja to test wrapping.",
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#333333",
+            "width": 400,
+            "height": 600,
+            "borderRadius": 10,
+            "showTitleSection": true,
+            "clearChatOnReload": false,
+            "botMessage": {
+              "backgroundColor": "#F0F0F0",
+              "textColor": "#333333",
+              "font": "Inter"
+            },
+            "userMessage": {
+              "backgroundColor": "#3da5ae",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "avatar": {
+              "avatarSize": 36,
+              "avatarBorderRadius": "50%"
+            },
+            "avatars": {
+              "bot": {
+                "show": true,
+                "src": ""
+              },
+              "user": {
+                "show": true,
+                "src": ""
+              }
+            }
+          },
+          "input": {
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#333333",
+            "placeholderText": "Type long text to test wrapping...",
+            "borderColor": "#CCCCCC",
+            "borderWidth": "1px",
+            "font": "Inter"
+          },
+          "footer": {
+            "textColor": "#999999",
+            "text": "Scrollbar & Text Fix Test",
+            "font": "Inter"
+          }
+        }
+      });
+    </script>
+</body>
+</html>
