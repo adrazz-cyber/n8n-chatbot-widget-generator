@@ -58,7 +58,7 @@ function updateRangeValues() {
 
 function loadDefaultConfig() {
     const defaultConfig = {
-        webhookUrl: 'https://n8n.srv833885.hstgr.cloud/webhook/your-webhook-id/chat',
+        webhookUrl: 'https://your-n8n-instance.com/webhook/your-webhook-id/chat',
         chatTitle: 'Welcome to BlueChilli',
         welcomeMessage: 'Hello! Welcome to BlueChilli',
         placeholderText: 'How can I help!',

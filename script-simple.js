@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function generateCode() {
     console.log('Generate Code clicked');
     try {
-        const webhookUrl = document.getElementById('webhookUrl')?.value || 'https://n8n.srv833885.hstgr.cloud/webhook/your-webhook-id/chat';
+        const webhookUrl = document.getElementById('webhookUrl')?.value || 'https://your-n8n-instance.com/webhook/your-webhook-id/chat';
         const chatTitle = document.getElementById('chatTitle')?.value || 'Welcome to BlueChilli';
         const welcomeMessage = document.getElementById('welcomeMessage')?.value || 'Hello! Welcome to BlueChilli';
         const placeholderText = document.getElementById('placeholderText')?.value || 'How can I help!';

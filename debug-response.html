@@ -22,7 +22,7 @@
             resultsDiv.innerHTML = '<div class="result">Testing webhook...</div>';
             
             try {
-                const response = await fetch('https://n8n.srv833885.hstgr.cloud/webhook/354b544f-43ce-4455-a8b6-07ffdb7e8d87/chat', {
+                const response = await fetch('https://your-n8n-instance.com/webhook/your-webhook-id/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

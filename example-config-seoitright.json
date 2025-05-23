@@ -1,5 +1,5 @@
 {
-  "webhookUrl": "https://n8n.srv833885.hstgr.cloud/webhook/your-webhook-id/chat",
+  "webhookUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
   "chatTitle": "SEO it Right Support",
   "welcomeMessage": "Hello! How can we help you today?",
   "placeholderText": "Type your message here...",

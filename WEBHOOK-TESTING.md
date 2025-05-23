@@ -7,7 +7,7 @@
 ### Step-by-Step Testing Process:
 
 1. **Open the webhook tester** in your browser
-2. **Enter your webhook URL**: `https://n8n.srv833885.hstgr.cloud/webhook/354b544f-43ce-4455-a8b6-07ffdb7e8d87/chat`
+2. **Enter your webhook URL**: `https://your-n8n-instance.com/webhook/your-webhook-id/chat`
 3. **Run all tests** in sequence:
    - URL Validation
    - Direct Connection Test

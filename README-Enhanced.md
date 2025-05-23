@@ -144,7 +144,7 @@ The enhanced version works exactly like the standard version:
 
 ```javascript
 <script type="module" defer>
-  import Chatbot from "https://cdn.n8nchatui.com/v1/pole-embed-yard.js";
+  import Chatbot from "https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js";
   Chatbot.init({
     "n8nChatUrl": "YOUR_WEBHOOK_URL",
     "theme": {
