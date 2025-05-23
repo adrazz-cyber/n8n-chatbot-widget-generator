@@ -55,6 +55,7 @@ function generateCode() {
         
         // New toggle options
         const showTooltip = document.getElementById('showTooltip')?.checked ?? true;
+        const tooltipHoverMode = document.getElementById('tooltipHoverMode')?.checked ?? false;
         const autoOpenWidget = document.getElementById('autoOpenWidget')?.checked ?? false;
         const showTitleSection = document.getElementById('showTitleSection')?.checked ?? true;
         const clearChatOnReload = document.getElementById('clearChatOnReload')?.checked ?? false;
@@ -86,7 +87,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=11"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=12"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -159,7 +160,8 @@ function generateCode() {
           "backgroundColor": "${tooltipBackgroundColor}",
           "textColor": "${tooltipTextColor}",
           "font": "${tooltipFont}",
-          "show": ${showTooltip}
+          "show": ${showTooltip},
+          "hoverMode": ${tooltipHoverMode}
         }
       }
     }
@@ -245,7 +247,7 @@ function previewWidget() {
                                     cursor: pointer;
                                     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
                                 ">${buttonContent}</div>
-                                <div style="
+                                ${showTooltip ? `<div style="
                                     position: absolute;
                                     bottom: 90px;
                                     right: 25px;
@@ -257,7 +259,7 @@ function previewWidget() {
                                     font-size: 14px;
                                     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
                                     max-width: 200px;
-                                ">${tooltipMessage}</div>
+                                ">${tooltipMessage}</div>` : ''}
                             </div>
                         </div>
                     </div>
@@ -408,6 +410,7 @@ function saveConfig() {
             
             // Toggle settings
             showTooltip: document.getElementById('showTooltip')?.checked || true,
+            tooltipHoverMode: document.getElementById('tooltipHoverMode')?.checked || false,
             autoOpenWidget: document.getElementById('autoOpenWidget')?.checked || false,
             showTitleSection: document.getElementById('showTitleSection')?.checked || true,
             clearChatOnReload: document.getElementById('clearChatOnReload')?.checked || false,
