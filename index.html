@@ -155,9 +155,31 @@
                             <span class="range-value" id="buttonBottomValue">25px</span>
                         </div>
                     </div>
+                    
+                    <h3 style="margin-top: 20px; color: #333; font-size: 16px;">Icon Customisation</h3>
                     <div class="form-group">
                         <label for="customIcon">Custom Icon URL</label>
-                        <input type="url" id="customIcon" value="https://www.svgrepo.com/show/339963/chat-bot.svg">
+                        <input type="url" id="customIcon" value="https://www.svgrepo.com/show/339963/chat-bot.svg" placeholder="https://example.com/icon.svg">
+                        <small class="form-help">Enter the URL of your custom icon (SVG, PNG, or JPG)</small>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="iconSize">Icon Size</label>
+                            <input type="range" id="iconSize" min="40" max="100" value="60">
+                            <span class="range-value" id="iconSizeValue">60%</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="iconBorderRadius">Icon Border Radius</label>
+                            <input type="range" id="iconBorderRadius" min="0" max="50" value="15">
+                            <span class="range-value" id="iconBorderRadiusValue">15px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="iconColor">Icon Colour (for default icons)</label>
+                        <input type="color" id="iconColor" value="#FFFFFF">
+                        <small class="form-help">Colour for built-in icons when no custom icon URL is provided</small>
                     </div>
                 </div>
 

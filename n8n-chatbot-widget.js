@@ -332,9 +332,25 @@ class N8NChatbotWidget {
         this.button = document.createElement('div');
         this.button.className = 'n8n-chatbot-button';
         
-        const icon = this.config.theme.button.customIconSrc ? 
-            `<img src="${this.config.theme.button.customIconSrc}" alt="Chat" style="width: 24px; height: 24px;">` :
-            `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
+        // Handle custom icon with size and border radius
+        const iconSize = this.config.theme.button.iconSize || '60%';
+        const iconBorderRadius = this.config.theme.button.iconBorderRadius || '15px';
+        const iconColor = this.config.theme.button.iconColor || '#FFFFFF';
+        
+        let icon = '';
+        if (this.config.theme.button.customIconSrc) {
+            icon = `<img src="${this.config.theme.button.customIconSrc}" 
+                    alt="Chat" 
+                    style="width: ${iconSize}; height: ${iconSize}; object-fit: contain; border-radius: ${iconBorderRadius};"
+                    onerror="this.style.display='none'; this.parentNode.querySelector('.default-icon').style.display='block';">
+                    <svg class="default-icon" viewBox="0 0 24 24" style="display: none; width: 24px; height: 24px; fill: ${iconColor};">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                    </svg>`;
+        } else {
+            icon = `<svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: ${iconColor};">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                    </svg>`;
+        }
         
         this.button.innerHTML = icon;
         document.body.appendChild(this.button);
