@@ -45,6 +45,12 @@ function generateCode() {
         const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
         const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
         
+        // New toggle options
+        const showTooltip = document.getElementById('showTooltip')?.checked || true;
+        const autoOpenWidget = document.getElementById('autoOpenWidget')?.checked || false;
+        const showTitleSection = document.getElementById('showTitleSection')?.checked || true;
+        const clearChatOnReload = document.getElementById('clearChatOnReload')?.checked || false;
+        
         // Font settings
         const titleFont = document.getElementById('titleFont')?.value || 'Inter';
         const messageFont = document.getElementById('messageFont')?.value || 'Inter';
@@ -86,7 +92,8 @@ function generateCode() {
         "customIconSrc": "${customIcon}",
         "iconSize": "${iconSize}%",
         "iconBorderRadius": "${iconBorderRadius}px",
-        "borderRadius": "rounded"
+        "borderRadius": "rounded",
+        "autoOpen": ${autoOpenWidget}
       },
       "chatWindow": {
         "title": "${chatTitle}",
@@ -100,6 +107,8 @@ function generateCode() {
         "borderColor": "#e1e1e1",
         "borderWidth": "1px",
         "borderRadius": "10px",
+        "showTitleSection": ${showTitleSection},
+        "clearChatOnReload": ${clearChatOnReload},
         "textInput": {
           "placeholder": "${placeholderText}",
           "backgroundColor": "${inputBackgroundColor}",
@@ -129,7 +138,8 @@ function generateCode() {
           "message": "${tooltipMessage}",
           "backgroundColor": "${tooltipBackgroundColor}",
           "textColor": "${tooltipTextColor}",
-          "font": "${tooltipFont}"
+          "font": "${tooltipFont}",
+          "show": ${showTooltip}
         }
       }
     }
@@ -286,6 +296,12 @@ function saveConfig() {
             iconSize: document.getElementById('iconSize')?.value || '60',
             iconBorderRadius: document.getElementById('iconBorderRadius')?.value || '15',
             iconColor: document.getElementById('iconColor')?.value || '#FFFFFF',
+            
+            // Toggle settings
+            showTooltip: document.getElementById('showTooltip')?.checked || true,
+            autoOpenWidget: document.getElementById('autoOpenWidget')?.checked || false,
+            showTitleSection: document.getElementById('showTitleSection')?.checked || true,
+            clearChatOnReload: document.getElementById('clearChatOnReload')?.checked || false,
             
             // Chat window settings
             chatWidth: document.getElementById('chatWidth')?.value || '400',
