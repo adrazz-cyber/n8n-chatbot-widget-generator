@@ -86,7 +86,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=4"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=6"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -305,7 +305,7 @@ function previewWidget() {
                                 border-radius: 18px;
                                 font-family: '${messageFont}', sans-serif;
                                 font-size: 14px;
-                                max-width: 250px;
+                                max-width: 320px;
                                 word-wrap: break-word;
                             ">Hello! Welcome to our chat!</div>
                         </div>
@@ -337,7 +337,7 @@ function previewWidget() {
                                 border-radius: 18px;
                                 font-family: '${messageFont}', sans-serif;
                                 font-size: 14px;
-                                max-width: 250px;
+                                max-width: 320px;
                                 word-wrap: break-word;
                             ">Hi there!</div>
                         </div>
