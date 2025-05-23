@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Chat Box Width Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-info h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .test-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .changes {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+            margin: 15px 0;
+        }
+        .changes h3 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+        }
+        .changes ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>🎯 Extended Chat Box Width Test</h1>
+        <p><strong>Date:</strong> May 23, 2025</p>
+        <p><strong>Purpose:</strong> Test extended chat message boxes to align with user's red line specification</p>
+        
+        <div class="changes">
+            <h3>✅ CHANGES APPLIED:</h3>
+            <ul>
+                <li><strong>Message Width:</strong> Increased from 85% to 95% container width</li>
+                <li><strong>Preview Width:</strong> Updated from 280px to 320px for proportional preview</li>
+                <li><strong>Cache-Busting:</strong> Version updated from v=5 to v=6</li>
+            </ul>
+        </div>
+        
+        <p><strong>Expected Result:</strong> Chat message boxes should now extend much wider, approaching the red line boundary shown in the reference image.</p>
+        <p><strong>Test Instructions:</strong> Click the chat button to open the widget and send test messages to verify the extended width.</p>
+    </div>
+
+    <!-- Test the extended width widget -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=6"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#3da5ae",
+            "right": 30,
+            "bottom": 30,
+            "size": 60,
+            "iconColor": "white",
+            "customIconSrc": "",
+            "iconSize": "60%",
+            "iconBorderRadius": "15px",
+            "borderRadius": "rounded",
+            "autoOpen": false
+          },
+          "tooltip": {
+            "show": true,
+            "backgroundColor": "#009BDD",
+            "textColor": "#FFFFFF",
+            "message": "Click to start chatting!",
+            "font": "Inter"
+          },
+          "chatWindow": {
+            "title": "Extended Width Test",
+            "welcomeMessage": "Testing extended chat box width! Notice how these messages now extend much wider to match the red line specification.",
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#333333",
+            "width": 400,
+            "height": 600,
+            "borderRadius": 10,
+            "showTitleSection": true,
+            "clearChatOnReload": false,
+            "botMessage": {
+              "backgroundColor": "#F0F0F0",
+              "textColor": "#333333",
+              "font": "Inter"
+            },
+            "userMessage": {
+              "backgroundColor": "#3da5ae",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "avatar": {
+              "avatarSize": 36,
+              "avatarBorderRadius": "50%"
+            },
+            "avatars": {
+              "bot": {
+                "show": true,
+                "src": ""
+              },
+              "user": {
+                "show": true,
+                "src": ""
+              }
+            }
+          },
+          "input": {
+            "backgroundColor": "#FFFFFF",
+            "textColor": "#333333",
+            "placeholderText": "Test the extended width...",
+            "borderColor": "#CCCCCC",
+            "borderWidth": "1px",
+            "font": "Inter"
+          },
+          "footer": {
+            "textColor": "#999999",
+            "text": "Extended Width Test",
+            "font": "Inter"
+          }
+        }
+      });
+    </script>
+</body>
+</html>

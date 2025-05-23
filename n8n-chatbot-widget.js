@@ -243,7 +243,7 @@ class N8NChatbotWidget {
             }
             
             .n8n-chatbot-message {
-                max-width: 80%;
+                max-width: 95%;
                 display: flex;
                 align-items: flex-start;
                 gap: 12px;

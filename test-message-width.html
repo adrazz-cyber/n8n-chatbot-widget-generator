@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Width Extension Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .width-improvements {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>📏 Message Width Extension Test</h1>
+        
+        <div class="width-improvements">
+            <h3>Message Width Improvements Applied:</h3>
+            <ul>
+                <li>✅ <strong>Message Container Width:</strong> Increased from 80% to 85% of chat window</li>
+                <li>✅ <strong>Preview Max-Width:</strong> Updated from 250px to 280px for consistency</li>
+                <li>✅ <strong>Better Text Space:</strong> Messages now extend closer to the red line boundaries</li>
+                <li>✅ <strong>Improved Readability:</strong> Longer messages have more space to display</li>
+                <li>✅ <strong>Consistent Spacing:</strong> Maintains proper avatar gap while extending width</li>
+            </ul>
+        </div>
+        
+        <p><strong>Test Instructions:</strong></p>
+        <ol>
+            <li>Click the chat button to open the widget</li>
+            <li>Notice the wider message boxes extending closer to the edges</li>
+            <li>Send longer test messages to see the improved text space</li>
+            <li>Verify both bot and user messages use the extended width</li>
+        </ol>
+        
+        <p><strong>Expected Result:</strong> Message boxes should now extend much closer to where your red lines were positioned in the reference image.</p>
+    </div>
+
+    <!-- N8N Chatbot Widget with Extended Message Width -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=5"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#6c757d",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 60,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "iconSize": "70%",
+                    "iconBorderRadius": "12px"
+                },
+                "chatWindow": {
+                    "title": "Message Width Test",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! Notice how this longer welcome message now extends wider across the chat window, reaching closer to the edges for better text display and improved readability.",
+                    "width": 400,
+                    "height": 500,
+                    "backgroundColor": "#ffffff",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "avatars": {
+                        "bot": {
+                            "src": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                            "show": true
+                        },
+                        "user": {
+                            "src": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg",
+                            "show": true
+                        },
+                        "size": "36px",
+                        "borderRadius": "50%"
+                    },
+                    "textInput": {
+                        "placeholder": "Try typing a longer message to test the width...",
+                        "backgroundColor": "#f8f9fa",
+                        "textColor": "#333333",
+                        "font": "Inter",
+                        "sendButtonColor": "#6c757d"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#6c757d",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#e9ecef",
+                        "textColor": "#333333",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Width Test",
+                        "companyLink": "",
+                        "textColor": "#666666",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Test wider messages!",
+                        "backgroundColor": "#6c757d",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
