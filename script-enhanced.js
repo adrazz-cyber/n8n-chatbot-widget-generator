@@ -21,9 +21,50 @@ function setupFontPreview() {
         select.style.fontFamily = select.value;
         select.addEventListener('change', function() {
             this.style.fontFamily = this.value;
+            applyFontToRelatedFields(); // Apply font to related input fields
             generateCode(); // Update code when font changes
         });
     });
+    
+    // Apply fonts to related fields on initial load
+    applyFontToRelatedFields();
+}
+
+function applyFontToRelatedFields() {
+    // Apply Title Font to Chat Title input field
+    const titleFont = document.getElementById('titleFont')?.value || 'Inter';
+    const chatTitleField = document.getElementById('chatTitle');
+    if (chatTitleField) {
+        chatTitleField.style.fontFamily = titleFont;
+    }
+    
+    // Apply Message Font to Welcome Message input field
+    const messageFont = document.getElementById('messageFont')?.value || 'Inter';
+    const welcomeMessageField = document.getElementById('welcomeMessage');
+    if (welcomeMessageField) {
+        welcomeMessageField.style.fontFamily = messageFont;
+    }
+    
+    // Apply Input Font to Placeholder Text input field
+    const inputFont = document.getElementById('inputFont')?.value || 'Inter';
+    const placeholderTextField = document.getElementById('placeholderText');
+    if (placeholderTextField) {
+        placeholderTextField.style.fontFamily = inputFont;
+    }
+    
+    // Apply Footer Font to Company Name input field
+    const footerFont = document.getElementById('footerFont')?.value || 'Inter';
+    const companyNameField = document.getElementById('companyName');
+    if (companyNameField) {
+        companyNameField.style.fontFamily = footerFont;
+    }
+    
+    // Apply Tooltip Font to Tooltip Message input field
+    const tooltipFont = document.getElementById('tooltipFont')?.value || 'Inter';
+    const tooltipMessageField = document.getElementById('tooltipMessage');
+    if (tooltipMessageField) {
+        tooltipMessageField.style.fontFamily = tooltipFont;
+    }
 }
 
 // Global functions that buttons call
