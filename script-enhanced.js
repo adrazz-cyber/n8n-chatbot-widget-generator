@@ -50,7 +50,7 @@ function generateCode() {
         const userAvatarUrl = document.getElementById('userAvatarUrl')?.value || 'https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg';
         const showBotAvatar = document.getElementById('showBotAvatar')?.checked ?? true;
         const showUserAvatar = document.getElementById('showUserAvatar')?.checked ?? true;
-        const avatarSize = document.getElementById('avatarSize')?.value || '32';
+        const avatarSize = document.getElementById('avatarSize')?.value || '40';
         const avatarBorderRadius = document.getElementById('avatarBorderRadius')?.value || '50';
         
         // New toggle options
@@ -86,7 +86,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=7"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=8"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -205,7 +205,7 @@ function previewWidget() {
         const userAvatarUrl = document.getElementById('userAvatarUrl')?.value || 'https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg';
         const showBotAvatar = document.getElementById('showBotAvatar')?.checked ?? true;
         const showUserAvatar = document.getElementById('showUserAvatar')?.checked ?? true;
-        const avatarSize = document.getElementById('avatarSize')?.value || '32';
+        const avatarSize = document.getElementById('avatarSize')?.value || '40';
         const avatarBorderRadius = document.getElementById('avatarBorderRadius')?.value || '50';
         
         const previewContainer = document.getElementById('previewContainer');

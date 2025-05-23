@@ -293,8 +293,8 @@ class N8NChatbotWidget {
             }
             
             .n8n-chatbot-avatar {
-                width: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '36'}px;
-                height: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '36'}px;
+                width: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '40'}px;
+                height: ${this.config.theme.chatWindow.avatar?.avatarSize || this.config.theme.chatWindow.avatars?.size?.replace('px', '') || '40'}px;
                 border-radius: ${this.config.theme.chatWindow.avatar?.avatarBorderRadius || this.config.theme.chatWindow.avatars?.borderRadius || '50%'};
                 object-fit: cover;
                 flex-shrink: 0;
