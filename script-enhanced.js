@@ -40,6 +40,11 @@ function generateCode() {
         const buttonBottom = document.getElementById('buttonBottom')?.value || '25';
         const customIcon = document.getElementById('customIcon')?.value || 'https://www.svgrepo.com/show/339963/chat-bot.svg';
         
+        // New icon customisation options
+        const iconSize = document.getElementById('iconSize')?.value || '60';
+        const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
+        const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
+        
         // Font settings
         const titleFont = document.getElementById('titleFont')?.value || 'Inter';
         const messageFont = document.getElementById('messageFont')?.value || 'Inter';
@@ -77,8 +82,10 @@ function generateCode() {
         "right": ${buttonRight},
         "bottom": ${buttonBottom},
         "size": ${buttonSize},
-        "iconColor": "#FFFFFF",
+        "iconColor": "${iconColor}",
         "customIconSrc": "${customIcon}",
+        "iconSize": "${iconSize}%",
+        "iconBorderRadius": "${iconBorderRadius}px",
         "borderRadius": "rounded"
       },
       "chatWindow": {
@@ -154,8 +161,31 @@ function previewWidget() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
         
+        // Get button and icon settings
+        const buttonSize = document.getElementById('buttonSize')?.value || '54';
+        const buttonRight = document.getElementById('buttonRight')?.value || '25';
+        const buttonBottom = document.getElementById('buttonBottom')?.value || '25';
+        const customIcon = document.getElementById('customIcon')?.value || '';
+        const iconSize = document.getElementById('iconSize')?.value || '60';
+        const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
+        const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
+        
         const previewContainer = document.getElementById('previewContainer');
         if (previewContainer) {
+            // Determine what to show in the button
+            let buttonContent = '';
+            if (customIcon && customIcon.trim() !== '') {
+                buttonContent = `<img src="${customIcon}" style="
+                    width: ${iconSize}%; 
+                    height: ${iconSize}%; 
+                    object-fit: contain;
+                    border-radius: ${iconBorderRadius}px;
+                " onerror="this.style.display='none'; this.nextSibling.style.display='block';">
+                <span style="display: none; color: ${iconColor}; font-size: 20px;">💬</span>`;
+            } else {
+                buttonContent = `<span style="color: ${iconColor}; font-size: 20px;">💬</span>`;
+            }
+            
             previewContainer.innerHTML = `
                 <div class="preview-mockup">
                     <div class="mockup-website">
@@ -165,20 +195,18 @@ function previewWidget() {
                             <div style="position: relative; height: 200px;">
                                 <div style="
                                     position: absolute;
-                                    bottom: 25px;
-                                    right: 25px;
-                                    width: 54px;
-                                    height: 54px;
+                                    bottom: ${buttonBottom}px;
+                                    right: ${buttonRight}px;
+                                    width: ${buttonSize}px;
+                                    height: ${buttonSize}px;
                                     background-color: ${buttonColor};
                                     border-radius: 50%;
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    color: white;
-                                    font-weight: bold;
                                     cursor: pointer;
                                     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                                ">💬</div>
+                                ">${buttonContent}</div>
                                 <div style="
                                     position: absolute;
                                     bottom: 90px;
@@ -253,6 +281,11 @@ function saveConfig() {
             buttonRight: document.getElementById('buttonRight')?.value || '25',
             buttonBottom: document.getElementById('buttonBottom')?.value || '25',
             customIcon: document.getElementById('customIcon')?.value || '',
+            
+            // Icon customisation settings
+            iconSize: document.getElementById('iconSize')?.value || '60',
+            iconBorderRadius: document.getElementById('iconBorderRadius')?.value || '15',
+            iconColor: document.getElementById('iconColor')?.value || '#FFFFFF',
             
             // Chat window settings
             chatWidth: document.getElementById('chatWidth')?.value || '400',
@@ -413,12 +446,23 @@ function initialisePreviewToggle() {
 function updateRangeValues() {
     console.log('Updating range values');
     try {
-        const ranges = ['buttonSize', 'buttonRight', 'buttonBottom', 'chatWidth', 'chatHeight', 'fontSize', 'inputBorderWidth'];
-        ranges.forEach(id => {
+        // Standard pixel values
+        const pixelRanges = ['buttonSize', 'buttonRight', 'buttonBottom', 'chatWidth', 'chatHeight', 'fontSize', 'inputBorderWidth', 'iconBorderRadius'];
+        pixelRanges.forEach(id => {
             const input = document.getElementById(id);
             const valueDisplay = document.getElementById(id + 'Value');
             if (input && valueDisplay) {
                 valueDisplay.textContent = input.value + 'px';
+            }
+        });
+        
+        // Percentage values
+        const percentageRanges = ['iconSize'];
+        percentageRanges.forEach(id => {
+            const input = document.getElementById(id);
+            const valueDisplay = document.getElementById(id + 'Value');
+            if (input && valueDisplay) {
+                valueDisplay.textContent = input.value + '%';
             }
         });
     } catch (error) {
