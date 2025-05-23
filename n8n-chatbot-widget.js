@@ -409,9 +409,9 @@ class N8NChatbotWidget {
         this.button = document.createElement('div');
         this.button.className = 'n8n-chatbot-button';
         
-        // Handle custom icon with size and border radius
+        // Handle custom icon with size and border radius (square styling for consistency)
         const iconSize = this.config.theme.button.iconSize || '60%';
-        const iconBorderRadius = this.config.theme.button.iconBorderRadius || '15px';
+        const iconBorderRadius = '8px'; // Fixed square styling to match avatars
         const iconColor = this.config.theme.button.iconColor || '#FFFFFF';
         
         let icon = '';

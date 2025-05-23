@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Icon Square Fix Test - N8N Chatbot Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🔳 Bubble Icon Square Fix Test - N8N Chatbot Widget</h1>
+    
+    <div class="test-section">
+        <h2>✅ BUBBLE ICON CONSISTENCY FIX APPLIED</h2>
+        <p><strong>Issue:</strong> Chat bubble button icon was still using circular/rounded styling (15px border-radius)</p>
+        <p><strong>Solution:</strong> Updated bubble icon to use consistent 8px square styling matching avatars</p>
+        
+        <h3>Changes Made:</h3>
+        <ul>
+            <li>✅ Fixed widget JavaScript: iconBorderRadius hardcoded to 8px</li>
+            <li>✅ Updated UI control: "Icon Corner Rounding (Fixed at 8px for Square Style)"</li>
+            <li>✅ Disabled border radius slider with explanation</li>
+            <li>✅ Updated preview system to use fixed 8px value</li>
+            <li>✅ Cache-busting: v=10 → v=11 for immediate deployment</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 TECHNICAL IMPLEMENTATION</h2>
+        
+        <h3>1. Widget JavaScript (n8n-chatbot-widget.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+// OLD (inconsistent):
+const iconBorderRadius = this.config.theme.button.iconBorderRadius || '15px';
+
+// NEW (consistent):
+const iconBorderRadius = '8px'; // Fixed square styling to match avatars
+        </pre>
+
+        <h3>2. Generator Interface (index.html):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+// OLD:
+&lt;label for="iconBorderRadius"&gt;Icon Border Radius&lt;/label&gt;
+&lt;input type="range" id="iconBorderRadius" min="0" max="50" value="15"&gt;
+&lt;span class="range-value" id="iconBorderRadiusValue"&gt;15px&lt;/span&gt;
+
+// NEW:
+&lt;label for="iconBorderRadius"&gt;Icon Corner Rounding (Fixed at 8px for Square Style)&lt;/label&gt;
+&lt;input type="range" id="iconBorderRadius" min="0" max="50" value="8" disabled&gt;
+&lt;span class="range-value" id="iconBorderRadiusValue"&gt;8px (Square)&lt;/span&gt;
+        </pre>
+
+        <h3>3. Preview System (script-enhanced.js):</h3>
+        <pre style="background: #f8f8f8; padding: 10px; border-radius: 4px;">
+// OLD:
+const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
+
+// NEW:
+const iconBorderRadius = '8'; // Fixed square styling to match avatars
+        </pre>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 CONSISTENCY ACHIEVED</h2>
+        <ul>
+            <li>✅ <strong>Chat Bubble Icon:</strong> 8px border-radius (square with rounded corners)</li>
+            <li>✅ <strong>Bot Avatars:</strong> 8px border-radius (square with rounded corners)</li>
+            <li>✅ <strong>User Avatars:</strong> 8px border-radius (square with rounded corners)</li>
+            <li>✅ <strong>Visual Harmony:</strong> All elements now use consistent square styling</li>
+            <li>✅ <strong>Modern Design:</strong> Professional appearance throughout interface</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 TEST CONFIGURATION</h2>
+        <p><strong>Testing Webhook:</strong> https://your-n8n-instance.com/webhook/your-webhook-id/chat</p>
+        <p><strong>Custom Icon:</strong> https://www.svgrepo.com/show/339963/chat-bot.svg</p>
+        <p><strong>Expected Result:</strong> Chat bubble icon with 8px square corners matching avatar styling</p>
+    </div>
+
+    <!-- Load the updated widget with consistent square styling -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=11"></script>
+    <script>
+      N8NChatbot.init({
+        "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+        "theme": {
+          "button": {
+            "backgroundColor": "#009BDD",
+            "right": "25px",
+            "bottom": "25px",
+            "size": "54px",
+            "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+            "iconSize": "60%",
+            "iconColor": "#FFFFFF"
+          },
+          "chatWindow": {
+            "backgroundColor": "#FFFFFF",
+            "height": "600px",
+            "width": "400px",
+            "title": {
+              "text": "Bubble Icon Test",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF",
+              "font": "Inter"
+            },
+            "avatars": {
+              "bot": {
+                "src": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                "show": true
+              },
+              "user": {
+                "src": "https://www.svgrepo.com/show/382097/male-avatar-boy-face-man-user-9.svg",
+                "show": true
+              }
+            },
+            "welcomeMessage": {
+              "text": "Testing bubble icon consistency - should be square like avatars!",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF"
+            },
+            "tooltip": {
+              "show": true,
+              "message": "Square icon test!",
+              "backgroundColor": "#009BDD",
+              "textColor": "#FFFFFF"
+            }
+          }
+        }
+      });
+    </script>
+
+    <div class="test-section">
+        <h2>🚀 DEPLOYMENT STATUS</h2>
+        <p><strong>Status:</strong> Bubble icon consistency fix applied and ready for testing</p>
+        <p><strong>Version:</strong> v=11 with consistent square styling</p>
+        <p><strong>GitHub Commit Required:</strong> Yes - ready to commit and push</p>
+        <p><strong>Expected Result:</strong> Chat bubble icon with same 8px square corners as avatars</p>
+    </div>
+
+</body>
+</html>

@@ -42,7 +42,7 @@ function generateCode() {
         
         // New icon customisation options
         const iconSize = document.getElementById('iconSize')?.value || '60';
-        const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
+        const iconBorderRadius = '8'; // Fixed square styling to match avatars
         const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
         
         // Avatar settings
@@ -86,7 +86,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=10"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=11"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -197,7 +197,7 @@ function previewWidget() {
         const buttonBottom = document.getElementById('buttonBottom')?.value || '25';
         const customIcon = document.getElementById('customIcon')?.value || '';
         const iconSize = document.getElementById('iconSize')?.value || '60';
-        const iconBorderRadius = document.getElementById('iconBorderRadius')?.value || '15';
+        const iconBorderRadius = '8'; // Fixed square styling to match avatars
         const iconColor = document.getElementById('iconColor')?.value || '#FFFFFF';
         
         // Get avatar settings
