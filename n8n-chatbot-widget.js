@@ -163,10 +163,26 @@ class N8NChatbotWidget {
                 pointer-events: none;
             }
             
+            @keyframes bounceIn {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px) scale(0.95);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateY(-5px) scale(1.02);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+            
             .n8n-chatbot-window.open {
                 opacity: 1;
                 transform: translateY(0) scale(1);
                 pointer-events: all;
+                animation: bounceIn 0.4s ease-out;
             }
             
             .n8n-chatbot-header {

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounce Animation Test - N8N Chatbot Widget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-info {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4caf50;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎯 Bounce Animation Test - N8N Chatbot Widget</h1>
+        
+        <div class="test-info">
+            <h3>🎨 Animation Enhancement:</h3>
+            <p>Added a subtle bounce animation to the chat window when it opens, similar to the n8nchatui.com reference.</p>
+            
+            <h3>📋 Bounce Animation Details:</h3>
+            <ul>
+                <li><strong>Duration:</strong> 0.4s (slightly longer than the standard 0.3s for a more noticeable effect)</li>
+                <li><strong>Easing:</strong> ease-out for a natural bounce feel</li>
+                <li><strong>Keyframes:</strong> 0% → 50% → 100% progression</li>
+                <li><strong>Effect:</strong> Slight overshoot at 50% (scale 1.02, translateY -5px) then settle to final position</li>
+            </ul>
+            
+            <h3>🔧 Technical Implementation:</h3>
+            <ul>
+                <li>Added @keyframes bounceIn animation to n8n-chatbot-widget.js</li>
+                <li>Updated .n8n-chatbot-window.open class to use animation instead of just transition</li>
+                <li>Maintained existing transition for closing (smooth fade out)</li>
+                <li>Cache-busting version updated from v=13 to v=14</li>
+            </ul>
+        </div>
+
+        <div class="test-buttons">
+            <button onclick="testBounceAnimation()">Test Bounce Animation</button>
+            <button onclick="testMultipleBounces()">Test Multiple Opens</button>
+            <button onclick="testShapeWithBounce()">Test Different Shapes</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <!-- Bounce Animation Widget Test -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=14"></script>
+    <script>
+        let currentWidget = null;
+        
+        function testBounceAnimation() {
+            if (currentWidget) {
+                currentWidget.destroy();
+            }
+            
+            currentWidget = N8NChatbot.init({
+                "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+                "theme": {
+                    "button": {
+                        "backgroundColor": "#4caf50",
+                        "right": 25,
+                        "bottom": 25,
+                        "size": 54,
+                        "iconColor": "#FFFFFF",
+                        "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                        "iconSize": "60%",
+                        "iconBorderRadius": "8px",
+                        "shape": "circle",
+                        "autoOpen": false
+                    },
+                    "chatWindow": {
+                        "title": "Bounce Animation Test",
+                        "titleFont": "Inter",
+                        "welcomeMessage": "Notice the bounce animation when this window opens!",
+                        "tooltip": {
+                            "show": true,
+                            "message": "Click to see bounce animation",
+                            "backgroundColor": "#4caf50",
+                            "textColor": "#FFFFFF",
+                            "hoverMode": false
+                        }
+                    }
+                }
+            });
+            
+            document.getElementById('result').innerHTML = `
+                <h4>✅ Bounce Animation Test Active</h4>
+                <p><strong>Instructions:</strong> Click the green chat button to see the bounce animation</p>
+                <p><strong>Expected:</strong> Window should appear with a subtle bounce effect (up overshoot, then settle)</p>
+                <p><strong>Animation:</strong> 0.4s ease-out with 50% overshoot at scale 1.02 and translateY -5px</p>
+                <p><strong>Comparison:</strong> Similar to the professional animation on n8nchatui.com</p>
+            `;
+        }
+        
+        function testMultipleBounces() {
+            if (currentWidget) {
+                currentWidget.destroy();
+            }
+            
+            currentWidget = N8NChatbot.init({
+                "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+                "theme": {
+                    "button": {
+                        "backgroundColor": "#ff9800",
+                        "right": 80,
+                        "bottom": 25,
+                        "size": 54,
+                        "iconColor": "#FFFFFF",
+                        "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                        "iconSize": "60%",
+                        "iconBorderRadius": "8px",
+                        "shape": "rounded",
+                        "autoOpen": false
+                    },
+                    "chatWindow": {
+                        "title": "Multiple Bounce Test",
+                        "titleFont": "Inter",
+                        "welcomeMessage": "Open and close multiple times to see consistent bounce animation!",
+                        "tooltip": {
+                            "show": true,
+                            "message": "Test multiple bounces",
+                            "backgroundColor": "#ff9800",
+                            "textColor": "#FFFFFF",
+                            "hoverMode": false
+                        }
+                    }
+                }
+            });
+            
+            document.getElementById('result').innerHTML = `
+                <h4>🔄 Multiple Bounce Test Active</h4>
+                <p><strong>Instructions:</strong> Click the orange rounded button multiple times</p>
+                <p><strong>Test:</strong> Open → Close → Open → Close (repeat)</p>
+                <p><strong>Expected:</strong> Consistent bounce animation on every open</p>
+                <p><strong>Note:</strong> Different position and shape to distinguish from first test</p>
+            `;
+        }
+        
+        function testShapeWithBounce() {
+            if (currentWidget) {
+                currentWidget.destroy();
+            }
+            
+            currentWidget = N8NChatbot.init({
+                "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+                "theme": {
+                    "button": {
+                        "backgroundColor": "#9c27b0",
+                        "right": 25,
+                        "bottom": 100,
+                        "size": 60,
+                        "iconColor": "#FFFFFF",
+                        "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                        "iconSize": "70%",
+                        "iconBorderRadius": "8px",
+                        "shape": "rounded",
+                        "autoOpen": false
+                    },
+                    "chatWindow": {
+                        "title": "Shape + Bounce Test",
+                        "titleFont": "Inter",
+                        "welcomeMessage": "Bounce animation works with all button shapes!",
+                        "tooltip": {
+                            "show": true,
+                            "message": "Rounded square with bounce",
+                            "backgroundColor": "#9c27b0",
+                            "textColor": "#FFFFFF",
+                            "hoverMode": false
+                        }
+                    }
+                }
+            });
+            
+            document.getElementById('result').innerHTML = `
+                <h4>🔳 Shape + Bounce Test Active</h4>
+                <p><strong>Instructions:</strong> Click the purple rounded square button</p>
+                <p><strong>Test:</strong> Bounce animation compatibility with button shape feature</p>
+                <p><strong>Expected:</strong> Same smooth bounce animation regardless of button shape</p>
+                <p><strong>Integration:</strong> Button shape + bounce animation working together</p>
+            `;
+        }
+        
+        // Initialize with bounce animation test by default
+        window.onload = function() {
+            testBounceAnimation();
+        };
+    </script>
+</body>
+</html>
