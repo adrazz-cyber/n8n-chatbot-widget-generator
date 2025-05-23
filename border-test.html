@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N Chatbot Border Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-info {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #009bdd;
+        }
+        .test-info h2 {
+            margin-top: 0;
+            color: #009bdd;
+        }
+        .expected {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 N8N Chatbot Border Test Page</h1>
+        
+        <div class="test-info">
+            <h2>Border Test Configuration</h2>
+            <p><strong>Expected Results:</strong></p>
+            <div class="expected">
+                ✅ <strong>Chat Window Border:</strong> Thick red border (5px width, #ff0000 colour) around the entire chat window<br>
+                ✅ <strong>Input Field Border:</strong> Light grey border (1px width, #cccccc colour) around the message input field<br>
+                ✅ <strong>Border Radius:</strong> 10px rounded corners on the chat window
+            </div>
+        </div>
+        
+        <p>Click the chat button in the bottom-right corner to test the border settings!</p>
+        
+        <p><em>This test page uses the latest border-enhanced chatbot widget with the following configuration:</em></p>
+        <ul>
+            <li><strong>Window Border:</strong> 5px solid red (#ff0000)</li>
+            <li><strong>Window Border Radius:</strong> 10px</li>
+            <li><strong>Input Border:</strong> 1px solid light grey (#cccccc)</li>
+        </ul>
+    </div>
+
+    <!-- N8N Chatbot Widget with Border Settings -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=20250522-1620&nocache=true"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#009bdd",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 54,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "https://www.svgrepo.com/show/339963/chat-bot.svg",
+                    "borderRadius": "rounded"
+                },
+                "chatWindow": {
+                    "title": "Welcome to Our Chat",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! How can we help you today?",
+                    "width": 400,
+                    "height": 600,
+                    "backgroundColor": "#4d4d4d",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "borderColor": "#ff0000",
+                    "borderWidth": "5px",
+                    "borderRadius": "10px",
+                    "textInput": {
+                        "placeholder": "Type your message here...",
+                        "backgroundColor": "#000000",
+                        "textColor": "#ffffff",
+                        "font": "Inter",
+                        "sendButtonColor": "#009bdd",
+                        "borderColor": "#cccccc",
+                        "borderWidth": "1px"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#009bdd",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#000000",
+                        "textColor": "#a3a3a3",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Your Company",
+                        "companyLink": "",
+                        "textColor": "#151515",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Hello! Can I help you?",
+                        "backgroundColor": "#009bdd",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
