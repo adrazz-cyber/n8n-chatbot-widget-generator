@@ -407,6 +407,36 @@ class N8NChatbotWidget {
                     bottom: 80px;
                 }
             }
+            
+            /* Message Formatting Styles */
+            .bullet-point {
+                margin: 4px 0;
+                padding-left: 8px;
+            }
+            
+            .numbered-point {
+                margin: 4px 0;
+                padding-left: 8px;
+            }
+            
+            .sub-bullet-point {
+                margin: 2px 0;
+                padding-left: 16px;
+                font-size: 0.95em;
+            }
+            
+            .section-header {
+                margin: 8px 0 4px 0;
+                font-weight: bold;
+            }
+            
+            .n8n-chatbot-message-content br {
+                line-height: 1.6;
+            }
+            
+            .n8n-chatbot-message-content strong {
+                font-weight: 600;
+            }
         `;
         
         const styleSheet = document.createElement('style');
@@ -638,15 +668,44 @@ class N8NChatbotWidget {
             }
         }
         
-        // Create message content
+        // Create message content with enhanced formatting
+        const formattedText = this.formatMessage(text);
         const messageContent = `
             ${avatarHtml}
-            <div class="n8n-chatbot-message-content">${text}</div>
+            <div class="n8n-chatbot-message-content">${formattedText}</div>
         `;
         
         messageDiv.innerHTML = messageContent;
         messagesContainer.appendChild(messageDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    formatMessage(text) {
+        // Convert various formatting patterns to HTML
+        let formatted = text;
+        
+        // Handle line breaks
+        formatted = formatted.replace(/\n/g, '<br>');
+        
+        // Handle bullet points (• or *)
+        formatted = formatted.replace(/^[•*]\s+(.+)$/gm, '<div class="bullet-point">• $1</div>');
+        
+        // Handle numbered lists
+        formatted = formatted.replace(/^\d+\.\s+(.+)$/gm, '<div class="numbered-point">$1</div>');
+        
+        // Handle bold text (**text** or <strong>text</strong>)
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
+        // Handle existing HTML tags (keep them)
+        // This regex preserves existing HTML while allowing our formatting
+        
+        // Handle section headers (text followed by colon)
+        formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="section-header"><strong>$1:</strong></div>');
+        
+        // Handle indented sub-points
+        formatted = formatted.replace(/^\s{2,}[•*]\s+(.+)$/gm, '<div class="sub-bullet-point">• $1</div>');
+        
+        return formatted;
     }
 
     async sendMessage() {
