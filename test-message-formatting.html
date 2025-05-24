@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N Chatbot Widget - Message Formatting Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #009BDD;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #007bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 N8N Chatbot Widget - Message Formatting Enhancement Test</h1>
+        <p><strong>Version:</strong> v=15 - Enhanced Message Formatting</p>
+        <p><strong>Test Date:</strong> May 24, 2025</p>
+        
+        <h2>📋 Test Objectives:</h2>
+        <ul>
+            <li>Test formatted messages with bullet points and section headers</li>
+            <li>Verify HTML formatting is properly displayed</li>
+            <li>Test bold text and line breaks</li>
+            <li>Compare with unformatted text blocks</li>
+        </ul>
+
+        <h2>🧪 Test Buttons:</h2>
+        <button class="test-button" onclick="testFormattedMessage()">Test Formatted Message</button>
+        <button class="test-button" onclick="testUnformattedMessage()">Test Unformatted Message</button>
+        <button class="test-button" onclick="testComplexFormatting()">Test Complex Formatting</button>
+        <button class="test-button" onclick="testSEOServices()">Test SEO Services List</button>
+    </div>
+
+    <!-- N8N Chatbot Widget -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=15"></script>
+    <script>
+        // Initialize the chatbot
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#3da5ae",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 60,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "",
+                    "iconSize": "60%",
+                    "iconBorderRadius": "8px",
+                    "iconColor": "#FFFFFF",
+                    "borderRadius": "8px",
+                    "shape": "circle"
+                },
+                "tooltip": {
+                    "message": "Chat with us!",
+                    "show": true,
+                    "backgroundColor": "#3da5ae",
+                    "textColor": "#FFFFFF",
+                    "font": "Inter",
+                    "hoverMode": false
+                },
+                "chatWindow": {
+                    "title": "SEO it Right AI Support",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! How can we help you today?",
+                    "width": 400,
+                    "height": 600,
+                    "backgroundColor": "#ffffff",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "showTitleSection": true,
+                    "clearChatOnReload": false,
+                    "textInput": {
+                        "placeholder": "Type your message...",
+                        "backgroundColor": "#f5f5f5",
+                        "textColor": "#333333",
+                        "font": "Inter",
+                        "sendButtonColor": "#3da5ae",
+                        "borderColor": "#e1e1e1",
+                        "borderWidth": "1px"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#3da5ae",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#e5e5e5",
+                        "textColor": "#333333",
+                        "font": "Inter"
+                    },
+                    "avatar": {
+                        "showBotAvatar": true,
+                        "showUserAvatar": true,
+                        "botAvatarUrl": "",
+                        "userAvatarUrl": "",
+                        "avatarSize": "40px",
+                        "avatarBorderRadius": "8px"
+                    },
+                    "footer": {
+                        "companyName": "AI Solutions by SEOitRight",
+                        "companyLink": "",
+                        "textColor": "#666666",
+                        "font": "Inter"
+                    }
+                }
+            }
+        });
+
+        // Test functions to simulate different message formats
+        function testFormattedMessage() {
+            // Simulate a formatted bot response
+            const widget = window.N8NChatbotWidget;
+            if (widget) {
+                widget.addMessage(`Here is a list of services offered by SEO It Right:
+
+**SEO and Content Marketing:**
+• Keyword research  
+• Onsite audits
+• Competitor analyses
+• Content strategies
+• Blog posts and articles
+• Press releases
+
+**Digital Marketing:**
+• Email Marketing
+• Customer engagement
+• Social media promotion`, 'bot');
+            }
+        }
+
+        function testUnformattedMessage() {
+            const widget = window.N8NChatbotWidget;
+            if (widget) {
+                widget.addMessage(`SEO and Content Marketing: Keyword research, Onsite audits, Competitor analyses, Content strategies, Blog posts and articles, Press releases, Email Marketing, Customer engagement, Social media promotion, Paid advertising consultation, Digital commerce guidance, Web Design and Hosting, Digital Consultancy, AI Implementation advice, SEO support`, 'bot');
+            }
+        }
+
+        function testComplexFormatting() {
+            const widget = window.N8NChatbotWidget;
+            if (widget) {
+                widget.addMessage(`**Our Complete Service Portfolio:**
+
+**SEO Services:**
+1. Technical SEO audits
+2. Content optimization
+3. Link building strategies
+
+**Marketing Solutions:**
+• Social media management
+• Email campaigns
+  • Newsletter design
+  • Automated sequences
+• PPC advertising
+
+**Technical Support:**
+• WordPress development
+• Hosting solutions
+• Performance optimization
+
+Contact us today for a **free consultation**!`, 'bot');
+            }
+        }
+
+        function testSEOServices() {
+            const widget = window.N8NChatbotWidget;
+            if (widget) {
+                widget.addMessage(`Here is a list of services offered by SEO It Right:
+
+**SEO and Content Marketing:**
+• Keyword research
+• Onsite audits
+• Competitor analyses
+• Content strategies
+• Blog posts and articles
+• Press releases
+
+**Digital Marketing:**
+• Email Marketing - Customer engagement
+• Promotion of new products or services
+• Sharing news and special offers
+• Driving website traffic
+
+**Technical Services:**
+• Digital Consultancy - SEO support
+• Email and hosting assistance
+• AI Implementation advice
+• Digital marketing analysis
+• Paid advertising consultation
+• Digital commerce guidance
+
+**Web Design and Hosting:**
+SEO it Right customises services to meet specific business needs, providing a transparent and jargon-free approach with regular reporting and a dedicated account manager.`, 'bot');
+            }
+        }
+
+        // Store widget reference globally for test functions
+        window.N8NChatbotWidget = null;
+        
+        // Wait for widget to initialize and store reference
+        setTimeout(() => {
+            // Try to get widget instance from the global scope
+            if (typeof N8NChatbot !== 'undefined' && N8NChatbot.instance) {
+                window.N8NChatbotWidget = N8NChatbot.instance;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
