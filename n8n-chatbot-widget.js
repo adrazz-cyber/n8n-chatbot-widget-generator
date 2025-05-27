@@ -721,7 +721,18 @@ class N8NChatbotWidget {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
+    isHtmlContent(text) {
+        // Check if the text contains HTML tags
+        const htmlTagRegex = /<\/?[a-z][\s\S]*>/i;
+        return htmlTagRegex.test(text);
+    }
+
     formatMessage(text) {
+        // If the content is already HTML, return it as-is for direct rendering
+        if (this.isHtmlContent(text)) {
+            return text;
+        }
+        
         // Convert various formatting patterns to HTML with improved spacing
         let formatted = text;
         
@@ -739,7 +750,7 @@ class N8NChatbotWidget {
         formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         
         // Handle section headers with better styling
-        formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="formatted-header"><strong>$1:</strong></div>');
+        formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="formatted-header"><strong>$1</strong></div>');
         
         // Handle indented sub-points with round bullets
         formatted = formatted.replace(/^\s{2,}[•*-]\s+(.+)$/gm, '<div class="formatted-sub-bullet">• $1</div>');
