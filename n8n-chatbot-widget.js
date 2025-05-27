@@ -740,8 +740,12 @@ class N8NChatbotWidget {
         formatted = formatted.replace(/\n\n/g, '<br><br>');
         formatted = formatted.replace(/\n/g, '<br>');
         
-        // Handle bullet points with better formatting and round bullets
-        formatted = formatted.replace(/^[•*-]\s+(.+)$/gm, '<div class="formatted-bullet">• $1</div>');
+        // Enhanced bullet point handling - catch all dash variations and convert to proper bullets
+        // Handle bullet points at start of line with various dash types
+        formatted = formatted.replace(/^[\-–—•*]\s+(.+)$/gm, '<div class="formatted-bullet">$1</div>');
+        
+        // Handle bullet points after line breaks
+        formatted = formatted.replace(/<br>[\-–—•*]\s+(.+)$/gm, '<br><div class="formatted-bullet">$1</div>');
         
         // Handle numbered lists with proper spacing
         formatted = formatted.replace(/^\d+\.\s+(.+)$/gm, '<div class="formatted-number">$1</div>');
@@ -753,7 +757,7 @@ class N8NChatbotWidget {
         formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="formatted-header"><strong>$1</strong></div>');
         
         // Handle indented sub-points with round bullets
-        formatted = formatted.replace(/^\s{2,}[•*-]\s+(.+)$/gm, '<div class="formatted-sub-bullet">• $1</div>');
+        formatted = formatted.replace(/^\s{2,}[\-–—•*]\s+(.+)$/gm, '<div class="formatted-sub-bullet">$1</div>');
         
         // Handle "It is effective for:" style headers
         formatted = formatted.replace(/^(It is effective for:)$/gm, '<div class="formatted-section"><strong>$1</strong></div>');
