@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatting Improvements Test - N8N Chatbot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .description {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #009BDD;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-button {
+            background: #009BDD;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #007BB5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 N8N Chatbot Formatting Improvements Test</h1>
+        
+        <div class="description">
+            <h3>📋 Test Purpose:</h3>
+            <p>Testing the enhanced message formatting system that provides better text spacing with round bullet points, matching the professional layout from the reference image.</p>
+            
+            <h4>🔧 Key Improvements:</h4>
+            <ul>
+                <li><strong>Round Bullet Points:</strong> Using CSS ::before pseudo-elements for perfect circles</li>
+                <li><strong>Better Spacing:</strong> Improved margins and padding between elements</li>
+                <li><strong>Enhanced Line Height:</strong> More readable text spacing (1.5 line-height)</li>
+                <li><strong>Professional Headers:</strong> Bold section headers with proper spacing</li>
+                <li><strong>Sub-bullet Support:</strong> Smaller bullet points for nested lists</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 Test Scenarios:</h3>
+            <button class="test-button" onclick="testBasicBullets()">Test Basic Bullet Points</button>
+            <button class="test-button" onclick="testSectionHeaders()">Test Section Headers</button>
+            <button class="test-button" onclick="testMixedContent()">Test Mixed Content</button>
+            <button class="test-button" onclick="testLongContent()">Test Long Content</button>
+        </div>
+
+        <div class="test-section">
+            <h3>📱 Test Results:</h3>
+            <p>Click the test buttons above to send different formatting scenarios to the chatbot. Check how the messages appear with the new improved formatting.</p>
+            <div id="testResults" style="background: #f8f8f8; padding: 10px; border-radius: 5px; margin-top: 10px; min-height: 50px;">
+                Test results will appear here...
+            </div>
+        </div>
+    </div>
+
+    <!-- N8N Chatbot Widget with v=15 -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=15"></script>
+    <script>
+        // Configure chatbot with test webhook
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-n8n-instance.com/webhook/your-webhook-id/chat",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#009BDD",
+                    "right": 25,
+                    "bottom": 25,
+                    "size": 60,
+                    "iconColor": "#FFFFFF",
+                    "customIconSrc": "",
+                    "shape": "circle"
+                },
+                "chatWindow": {
+                    "title": "Formatting Test Chat",
+                    "titleFont": "Inter",
+                    "welcomeMessage": "Hello! I'm testing the new formatting improvements. Try the test buttons to see different formatting examples!",
+                    "width": 400,
+                    "height": 600,
+                    "backgroundColor": "#ffffff",
+                    "fontSize": "16px",
+                    "messageFont": "Inter",
+                    "textInput": {
+                        "placeholder": "Type a message to test formatting...",
+                        "backgroundColor": "#f5f5f5",
+                        "textColor": "#333333",
+                        "font": "Inter",
+                        "sendButtonColor": "#009BDD",
+                        "borderColor": "#cccccc",
+                        "borderWidth": "1px"
+                    },
+                    "botMessage": {
+                        "backgroundColor": "#009BDD",
+                        "textColor": "#ffffff",
+                        "font": "Inter"
+                    },
+                    "userMessage": {
+                        "backgroundColor": "#e5e5e5",
+                        "textColor": "#333333",
+                        "font": "Inter"
+                    },
+                    "footer": {
+                        "companyName": "Formatting Test Suite",
+                        "companyLink": "",
+                        "textColor": "#666666",
+                        "font": "Inter"
+                    },
+                    "tooltip": {
+                        "message": "Test improved formatting!",
+                        "backgroundColor": "#009BDD",
+                        "textColor": "#ffffff",
+                        "font": "Inter",
+                        "show": true,
+                        "hoverMode": false
+                    },
+                    "avatar": {
+                        "botAvatarUrl": "",
+                        "userAvatarUrl": "",
+                        "showBotAvatar": true,
+                        "showUserAvatar": true,
+                        "avatarSize": 40,
+                        "avatarBorderRadius": 50
+                    }
+                }
+            }
+        });
+
+        // Test functions to simulate different message types
+        function testBasicBullets() {
+            updateTestResults("Testing Basic Bullet Points...");
+            simulateBotMessage(`Here are the key features:
+
+• Email marketing complements your other online marketing tactics
+• It is effective for keeping customers up to date
+• Promoting new products or services
+• Sharing news and special offers`);
+        }
+
+        function testSectionHeaders() {
+            updateTestResults("Testing Section Headers...");
+            simulateBotMessage(`Email Marketing Benefits:
+
+It is effective for:
+• Keeping customers up to date
+• Promoting new products or services
+• Sharing news and special offers
+• Encouraging brand engagement
+• Driving website traffic`);
+        }
+
+        function testMixedContent() {
+            updateTestResults("Testing Mixed Content...");
+            simulateBotMessage(`**Email Marketing Guide**
+
+Here's what you need to know:
+
+Email marketing complements your other online marketing tactics by helping you re-engage dormant leads and remind previous customers about your business offerings.
+
+It is effective for:
+• Keeping customers up to date
+• Promoting new products or services
+  • New product launches
+  • Special discounts
+• Sharing news and special offers
+• Encouraging brand engagement
+
+**Next Steps:**
+Contact us to get started with your email marketing campaign!`);
+        }
+
+        function testLongContent() {
+            updateTestResults("Testing Long Content with Multiple Sections...");
+            simulateBotMessage(`**Complete Email Marketing Strategy**
+
+Email marketing complements your other online marketing tactics by helping you re-engage dormant leads and remind previous customers about your business offerings.
+
+Primary Benefits:
+• Cost-effective communication channel
+• Direct access to customer inbox
+• Measurable results and analytics
+• Personalizable content delivery
+
+It is effective for:
+• Keeping customers up to date
+  • Industry news and updates
+  • Company announcements
+• Promoting new products or services
+  • Product launches
+  • Feature updates
+  • Special collections
+• Sharing news and special offers
+  • Seasonal promotions
+  • Exclusive member discounts
+• Encouraging brand engagement
+  • Social media integration
+  • Community building
+• Driving website traffic
+  • Blog post notifications
+  • Landing page conversions
+
+**Advanced Strategies:**
+• Segmentation for targeted campaigns
+• A/B testing for optimization
+• Automated drip campaigns
+• Behavioral trigger emails
+
+Ready to boost your marketing with email campaigns?`);
+        }
+
+        // Helper function to simulate bot messages for testing
+        function simulateBotMessage(message) {
+            // Access the chatbot instance and add a message
+            // This is a test simulation - in real usage, messages come from N8N
+            setTimeout(() => {
+                const messagesContainer = document.querySelector('#n8n-messages');
+                if (messagesContainer) {
+                    // Create a test message element
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'n8n-chatbot-message bot';
+                    
+                    // Use the same formatting logic as the widget
+                    const formattedMessage = formatTestMessage(message);
+                    
+                    messageDiv.innerHTML = `
+                        <div class="n8n-chatbot-avatar">🤖</div>
+                        <div class="n8n-chatbot-message-content">${formattedMessage}</div>
+                    `;
+                    
+                    messagesContainer.appendChild(messageDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            }, 500);
+        }
+
+        // Format message using the same logic as the widget
+        function formatTestMessage(text) {
+            let formatted = text;
+            
+            // Handle line breaks with proper spacing
+            formatted = formatted.replace(/\n\n/g, '<br><br>');
+            formatted = formatted.replace(/\n/g, '<br>');
+            
+            // Handle bullet points with better formatting and round bullets
+            formatted = formatted.replace(/^[•*-]\s+(.+)$/gm, '<div class="formatted-bullet">$1</div>');
+            
+            // Handle numbered lists with proper spacing
+            formatted = formatted.replace(/^\d+\.\s+(.+)$/gm, '<div class="formatted-number">$1</div>');
+            
+            // Handle bold text (**text** or <strong>text</strong>)
+            formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Handle section headers with better styling
+            formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="formatted-header"><strong>$1:</strong></div>');
+            
+            // Handle indented sub-points with round bullets
+            formatted = formatted.replace(/^\s{2,}[•*-]\s+(.+)$/gm, '<div class="formatted-sub-bullet">$1</div>');
+            
+            // Handle "It is effective for:" style headers
+            formatted = formatted.replace(/^(It is effective for:)$/gm, '<div class="formatted-section"><strong>$1</strong></div>');
+            
+            return formatted;
+        }
+
+        function updateTestResults(message) {
+            document.getElementById('testResults').innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+        }
+
+        // Auto-open chat for testing
+        setTimeout(() => {
+            const chatButton = document.querySelector('.n8n-chatbot-button');
+            if (chatButton && !document.querySelector('.n8n-chatbot-window.open')) {
+                chatButton.click();
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
