@@ -354,7 +354,7 @@ function previewWidget() {
                                 word-wrap: break-word;
                 word-break: break-word;
                 overflow-wrap: break-word;
-                            ">Hello! Welcome to our chat!</div>
+                            ">Hello! Welcome to our chat!<br><br><strong>It is effective for:</strong><br>• Keeping customers up to date<br>• Promoting new products or services<br>• Sharing news and special offers</div>
                         </div>
                         
                         <!-- User Message with Avatar -->

@@ -408,26 +408,62 @@ class N8NChatbotWidget {
                 }
             }
             
-            /* Message Formatting Styles */
-            .bullet-point {
-                margin: 4px 0;
+            /* Enhanced Message Formatting Styles */
+            .formatted-bullet {
+                margin: 6px 0;
                 padding-left: 8px;
+                line-height: 1.5;
+                display: flex;
+                align-items: flex-start;
             }
             
-            .numbered-point {
-                margin: 4px 0;
-                padding-left: 8px;
+            .formatted-bullet::before {
+                content: '';
+                width: 6px;
+                height: 6px;
+                background-color: currentColor;
+                border-radius: 50%;
+                margin-right: 10px;
+                margin-top: 8px;
+                flex-shrink: 0;
             }
             
-            .sub-bullet-point {
-                margin: 2px 0;
-                padding-left: 16px;
+            .formatted-number {
+                margin: 6px 0;
+                padding-left: 8px;
+                line-height: 1.5;
+            }
+            
+            .formatted-sub-bullet {
+                margin: 4px 0;
+                padding-left: 20px;
                 font-size: 0.95em;
+                line-height: 1.4;
+                display: flex;
+                align-items: flex-start;
             }
             
-            .section-header {
-                margin: 8px 0 4px 0;
-                font-weight: bold;
+            .formatted-sub-bullet::before {
+                content: '';
+                width: 4px;
+                height: 4px;
+                background-color: currentColor;
+                border-radius: 50%;
+                margin-right: 8px;
+                margin-top: 8px;
+                flex-shrink: 0;
+            }
+            
+            .formatted-header {
+                margin: 12px 0 6px 0;
+                font-weight: 600;
+                line-height: 1.3;
+            }
+            
+            .formatted-section {
+                margin: 10px 0 6px 0;
+                font-weight: 600;
+                line-height: 1.3;
             }
             
             .n8n-chatbot-message-content br {
@@ -436,6 +472,11 @@ class N8NChatbotWidget {
             
             .n8n-chatbot-message-content strong {
                 font-weight: 600;
+            }
+            
+            .n8n-chatbot-message-content p {
+                margin: 8px 0;
+                line-height: 1.5;
             }
         `;
         
@@ -681,29 +722,33 @@ class N8NChatbotWidget {
     }
 
     formatMessage(text) {
-        // Convert various formatting patterns to HTML
+        // Convert various formatting patterns to HTML with improved spacing
         let formatted = text;
         
-        // Handle line breaks
+        // Handle line breaks with proper spacing
+        formatted = formatted.replace(/\n\n/g, '<br><br>');
         formatted = formatted.replace(/\n/g, '<br>');
         
-        // Handle bullet points (• or *)
-        formatted = formatted.replace(/^[•*]\s+(.+)$/gm, '<div class="bullet-point">• $1</div>');
+        // Handle bullet points with better formatting and round bullets
+        formatted = formatted.replace(/^[•*-]\s+(.+)$/gm, '<div class="formatted-bullet">• $1</div>');
         
-        // Handle numbered lists
-        formatted = formatted.replace(/^\d+\.\s+(.+)$/gm, '<div class="numbered-point">$1</div>');
+        // Handle numbered lists with proper spacing
+        formatted = formatted.replace(/^\d+\.\s+(.+)$/gm, '<div class="formatted-number">$1</div>');
         
         // Handle bold text (**text** or <strong>text</strong>)
         formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         
-        // Handle existing HTML tags (keep them)
-        // This regex preserves existing HTML while allowing our formatting
+        // Handle section headers with better styling
+        formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="formatted-header"><strong>$1:</strong></div>');
         
-        // Handle section headers (text followed by colon)
-        formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="section-header"><strong>$1:</strong></div>');
+        // Handle indented sub-points with round bullets
+        formatted = formatted.replace(/^\s{2,}[•*-]\s+(.+)$/gm, '<div class="formatted-sub-bullet">• $1</div>');
         
-        // Handle indented sub-points
-        formatted = formatted.replace(/^\s{2,}[•*]\s+(.+)$/gm, '<div class="sub-bullet-point">• $1</div>');
+        // Handle "It is effective for:" style headers
+        formatted = formatted.replace(/^(It is effective for:)$/gm, '<div class="formatted-section"><strong>$1</strong></div>');
+        
+        // Add spacing after sections
+        formatted = formatted.replace(/<\/div><div class="formatted-/g, '</div><div style="margin-top: 4px;" class="formatted-');
         
         return formatted;
     }
