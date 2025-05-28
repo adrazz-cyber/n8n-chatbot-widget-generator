@@ -150,6 +150,8 @@ class N8NChatbotWidget {
                 bottom: ${this.config.theme.button.bottom + this.config.theme.button.size + 15}px;
                 width: ${this.config.theme.chatWindow.width}px;
                 height: ${this.config.theme.chatWindow.height}px;
+                max-width: calc(100vw - 40px);
+                max-height: calc(100vh - 100px);
                 background-color: ${this.config.theme.chatWindow.backgroundColor};
                 border-radius: ${this.config.theme.chatWindow.borderRadius || '12px'};
                 border: ${this.config.theme.chatWindow.borderWidth || '0px'} solid ${this.config.theme.chatWindow.borderColor || 'transparent'};
@@ -161,6 +163,23 @@ class N8NChatbotWidget {
                 transform: translateY(20px) scale(0.95);
                 transition: all 0.3s ease;
                 pointer-events: none;
+            }
+            
+            /* Responsive adjustments for smaller screens */
+            @media (max-width: 600px) {
+                .n8n-chatbot-window {
+                    width: calc(100vw - 20px);
+                    height: calc(100vh - 80px);
+                    right: 10px;
+                    bottom: 70px;
+                }
+            }
+            
+            @media (min-width: 601px) and (max-width: 900px) {
+                .n8n-chatbot-window {
+                    width: min(${this.config.theme.chatWindow.width}px, calc(100vw - 40px));
+                    height: min(${this.config.theme.chatWindow.height}px, calc(100vh - 100px));
+                }
             }
             
             @keyframes bounceIn {
@@ -406,64 +425,112 @@ class N8NChatbotWidget {
                     right: 35px;
                     bottom: 80px;
                 }
+                
+                .n8n-chatbot-messages {
+                    padding: 15px 15px 15px 10px;
+                }
+                
+                .n8n-chatbot-message {
+                    gap: 8px;
+                }
+                
+                .n8n-chatbot-message-content {
+                    padding: 10px 14px;
+                    font-size: 14px;
+                }
+                
+                .n8n-chatbot-input {
+                    font-size: 14px;
+                }
+                
+                .n8n-chatbot-avatar {
+                    width: 32px;
+                    height: 32px;
+                }
+                
+                .formatted-bullet,
+                .formatted-number {
+                    font-size: 0.95em;
+                }
+                
+                .formatted-header,
+                .formatted-service-header {
+                    font-size: 1em;
+                }
             }
             
             /* Enhanced Message Formatting Styles */
             .formatted-bullet {
-                margin: 6px 0;
-                padding-left: 8px;
-                line-height: 1.5;
+                margin: 8px 0;
+                padding-left: 0;
+                line-height: 1.6;
                 display: flex;
                 align-items: flex-start;
             }
             
             .formatted-bullet::before {
-                content: '';
-                width: 6px;
-                height: 6px;
-                background-color: currentColor;
-                border-radius: 50%;
-                margin-right: 10px;
-                margin-top: 8px;
+                content: '•';
+                font-weight: bold;
+                margin-right: 12px;
                 flex-shrink: 0;
+                font-size: 1.2em;
+                line-height: 1.2;
             }
             
             .formatted-number {
-                margin: 6px 0;
-                padding-left: 8px;
-                line-height: 1.5;
+                margin: 8px 0;
+                padding-left: 0;
+                line-height: 1.6;
+                counter-increment: list-counter;
+                display: flex;
+                align-items: flex-start;
+            }
+            
+            .formatted-number::before {
+                content: counter(list-counter) '.';
+                font-weight: bold;
+                margin-right: 12px;
+                flex-shrink: 0;
             }
             
             .formatted-sub-bullet {
-                margin: 4px 0;
-                padding-left: 20px;
-                font-size: 0.95em;
-                line-height: 1.4;
+                margin: 6px 0 6px 20px;
+                line-height: 1.5;
                 display: flex;
                 align-items: flex-start;
             }
             
             .formatted-sub-bullet::before {
-                content: '';
-                width: 4px;
-                height: 4px;
-                background-color: currentColor;
-                border-radius: 50%;
-                margin-right: 8px;
-                margin-top: 8px;
+                content: '◦';
+                margin-right: 10px;
                 flex-shrink: 0;
+                line-height: 1.3;
             }
             
             .formatted-header {
-                margin: 12px 0 6px 0;
-                font-weight: 600;
-                line-height: 1.3;
+                margin: 16px 0 10px 0;
+                font-weight: 700;
+                line-height: 1.4;
+                font-size: 1.1em;
             }
             
             .formatted-section {
-                margin: 10px 0 6px 0;
+                margin: 14px 0 8px 0;
                 font-weight: 600;
-                line-height: 1.3;
+                line-height: 1.4;
+                display: block;
+            }
+            
+            .formatted-service-header {
+                margin: 16px 0 8px 0;
+                font-weight: 700;
+                line-height: 1.4;
+                font-size: 1.05em;
+                color: rgba(255, 255, 255, 0.95);
+            }
+            
+            .n8n-chatbot-message-content {
+                counter-reset: list-counter;
             }
             
             .n8n-chatbot-message-content br {
@@ -471,12 +538,24 @@ class N8NChatbotWidget {
             }
             
             .n8n-chatbot-message-content strong {
-                font-weight: 600;
+                font-weight: 700;
             }
             
             .n8n-chatbot-message-content p {
-                margin: 8px 0;
-                line-height: 1.5;
+                margin: 10px 0;
+                line-height: 1.6;
+            }
+            
+            /* Responsive adjustments for message content */
+            @media (max-width: 500px) {
+                .formatted-bullet,
+                .formatted-number {
+                    font-size: 0.95em;
+                }
+                
+                .formatted-header {
+                    font-size: 1.05em;
+                }
             }
         `;
         
@@ -736,34 +815,45 @@ class N8NChatbotWidget {
         // Convert various formatting patterns to HTML with improved spacing
         let formatted = text;
         
+        // First, normalize line endings
+        formatted = formatted.replace(/\r\n/g, '\n');
+        
+        // Handle service headers like "- Digital Consultancy:" or "- Web Design and Hosting services"
+        formatted = formatted.replace(/^[\-–—]\s*([^:]+:?)$/gm, function(match, p1) {
+            if (p1.endsWith(':')) {
+                return '<div class="formatted-service-header">' + p1 + '</div>';
+            } else {
+                return '<div class="formatted-service-header">' + p1 + '</div>';
+            }
+        });
+        
+        // Handle sub-bullets that come after service headers
+        formatted = formatted.replace(/^[\-–—]\s+(Support with.+|Web Design.+|We tailor.+|AI Solutions by.+)$/gm, '<div class="formatted-bullet">$1</div>');
+        
         // Handle line breaks with proper spacing
-        formatted = formatted.replace(/\n\n/g, '<br><br>');
+        formatted = formatted.replace(/\n\n/g, '</p><p>');
         formatted = formatted.replace(/\n/g, '<br>');
         
-        // Enhanced bullet point handling - catch all dash variations and convert to proper bullets
-        // Handle bullet points at start of line with various dash types
-        formatted = formatted.replace(/^[\-–—•*]\s+(.+)$/gm, '<div class="formatted-bullet">$1</div>');
+        // Wrap in paragraph if not already wrapped
+        if (!formatted.startsWith('<p>') && !formatted.startsWith('<div>')) {
+            formatted = '<p>' + formatted + '</p>';
+        }
         
-        // Handle bullet points after line breaks
-        formatted = formatted.replace(/<br>[\-–—•*]\s+(.+)$/gm, '<br><div class="formatted-bullet">$1</div>');
+        // Clean up empty paragraphs
+        formatted = formatted.replace(/<p><\/p>/g, '');
+        formatted = formatted.replace(/<p><br>/g, '<p>');
+        formatted = formatted.replace(/<br><\/p>/g, '</p>');
         
         // Handle numbered lists with proper spacing
         formatted = formatted.replace(/^\d+\.\s+(.+)$/gm, '<div class="formatted-number">$1</div>');
         
-        // Handle bold text (**text** or <strong>text</strong>)
+        // Handle bold text (**text** or __text__)
         formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        formatted = formatted.replace(/__(.*?)__/g, '<strong>$1</strong>');
         
-        // Handle section headers with better styling
-        formatted = formatted.replace(/^([A-Z][^:]*):$/gm, '<div class="formatted-header"><strong>$1</strong></div>');
-        
-        // Handle indented sub-points with round bullets
-        formatted = formatted.replace(/^\s{2,}[\-–—•*]\s+(.+)$/gm, '<div class="formatted-sub-bullet">$1</div>');
-        
-        // Handle "It is effective for:" style headers
-        formatted = formatted.replace(/^(It is effective for:)$/gm, '<div class="formatted-section"><strong>$1</strong></div>');
-        
-        // Add spacing after sections
-        formatted = formatted.replace(/<\/div><div class="formatted-/g, '</div><div style="margin-top: 4px;" class="formatted-');
+        // Handle italic text (*text* or _text_)
+        formatted = formatted.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        formatted = formatted.replace(/_(.*?)_/g, '<em>$1</em>');
         
         return formatted;
     }
