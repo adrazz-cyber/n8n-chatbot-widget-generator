@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Header Text Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .color-example {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Header Text Color Test - v16</h1>
+        <p>Testing the new header text color feature</p>
+
+        <div class="test-section">
+            <h2>Test 1: White Text on Dark Background (Default)</h2>
+            <p>Header Text Color: <span class="color-example" style="background: #FFFFFF;"></span> #FFFFFF</p>
+            <p>Button Color: <span class="color-example" style="background: #3da5ae;"></span> #3da5ae</p>
+        </div>
+
+        <div class="test-section">
+            <h2>Test 2: Black Text on Light Background</h2>
+            <p>Header Text Color: <span class="color-example" style="background: #000000;"></span> #000000</p>
+            <p>Button Color: <span class="color-example" style="background: #8ecad0;"></span> #8ecad0</p>
+        </div>
+
+        <div class="test-section">
+            <h2>What's New in v16:</h2>
+            <ul>
+                <li>Added "Header Text Colour" control in Basic Configuration</li>
+                <li>Header title text uses the configured color</li>
+                <li>Refresh button icon uses the configured color</li>
+                <li>Close button (×) uses the configured color</li>
+                <li>Default remains white (#FFFFFF) for backward compatibility</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>How to Test:</h2>
+            <ol>
+                <li>Go to the generator</li>
+                <li>In Window tab → Basic Configuration</li>
+                <li>Find "Header Text Colour" picker</li>
+                <li>Change the color</li>
+                <li>Generate new embed code</li>
+                <li>The widget header will use your chosen text color</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Test with black header text -->
+    <script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=16"></script>
+    <script>
+        N8NChatbot.init({
+            "n8nChatUrl": "https://your-webhook-url",
+            "theme": {
+                "button": {
+                    "backgroundColor": "#8ecad0",
+                    "size": 54
+                },
+                "chatWindow": {
+                    "title": "Test Black Header Text",
+                    "headerTextColor": "#000000",
+                    "welcomeMessage": "Testing header text color feature!"
+                }
+            }
+        });
+    </script>
+</body>
+</html>
