@@ -1,6 +1,17 @@
-# N8N Chatbot Widget Generator - Enhanced Edition v15
+# N8N Chatbot Widget Generator - Enhanced Edition v16
 
 ## 🚀 Latest Updates (May 28, 2025)
+
+### ✨ Version 16 - Header Text Color Control
+
+#### 🎨 New Header Customization
+- **Header Text Color Control:** New color picker in Window tab > Basic Configuration
+- **Customizable Elements:** 
+  - Chat window title text
+  - Refresh button icon
+  - Close button (×)
+- **Default Color:** White (#FFFFFF) maintains backward compatibility
+- **Use Case:** Perfect for light-colored themes where white text isn't readable
 
 ### ✨ Version 15 Enhancements
 
@@ -46,6 +57,7 @@
 - **Modern Toggle Switches:** Smooth animations for all boolean controls
 - **Button Shapes:** Circle or Rounded Square options
 - **Bounce Animation:** Professional entrance animation when chat opens
+- **Header Text Color:** Customizable header text color for better contrast
 
 #### Avatar System
 - **Bot & User Avatars:** Custom URLs with fallback emojis (🤖 and 👤)
@@ -132,6 +144,7 @@ N8NChatbot.init({
     },
     "chatWindow": {
       "title": "Welcome",
+      "headerTextColor": "#FFFFFF",
       "welcomeMessage": "Hello!\\n\\n- Our Services:\\n- Professional support",
       "messageFormatting": {
         "lineHeight": 1.6,
@@ -163,6 +176,7 @@ n8n-chatbot-widget-enhanced/
 |---------|--------------|-------------------|
 | Price | **FREE** | $39 |
 | Typography System | **5 Fonts** | Basic |
+| Header Text Color | **Yes** | No |
 | Text Formatting | **Advanced** | Standard |
 | Responsive Design | **Full** | Limited |
 | Save/Load Config | **Yes** | No |
@@ -181,4 +195,4 @@ This is an open-source project under MIT license. Contributions welcome!
 
 ---
 
-**Version:** 15 | **Updated:** May 28, 2025 | **License:** MIT
+**Version:** 16 | **Updated:** May 28, 2025 | **License:** MIT
