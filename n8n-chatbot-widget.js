@@ -209,7 +209,7 @@ class N8NChatbotWidget {
                 border-bottom: 1px solid rgba(0,0,0,0.1);
                 background: linear-gradient(135deg, ${this.config.theme.button.backgroundColor}, ${this.config.theme.button.backgroundColor}dd);
                 border-radius: 12px 12px 0 0;
-                color: white;
+                color: ${this.config.theme.chatWindow.headerTextColor || '#ffffff'};
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -231,7 +231,7 @@ class N8NChatbotWidget {
             .n8n-chatbot-refresh {
                 background: none;
                 border: none;
-                color: white;
+                color: ${this.config.theme.chatWindow.headerTextColor || '#ffffff'};
                 font-size: 18px;
                 cursor: pointer;
                 padding: 4px;
@@ -251,7 +251,7 @@ class N8NChatbotWidget {
             .n8n-chatbot-close {
                 background: none;
                 border: none;
-                color: white;
+                color: ${this.config.theme.chatWindow.headerTextColor || '#ffffff'};
                 font-size: 20px;
                 cursor: pointer;
                 padding: 4px;

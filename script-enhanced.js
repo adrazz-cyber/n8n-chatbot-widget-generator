@@ -73,6 +73,7 @@ function generateCode() {
     try {
         const webhookUrl = document.getElementById('webhookUrl')?.value || '';
         const chatTitle = document.getElementById('chatTitle')?.value || 'Welcome to Our Chat';
+        const headerTextColor = document.getElementById('headerTextColor')?.value || '#FFFFFF';
         const welcomeMessage = document.getElementById('welcomeMessage')?.value || 'Hello! How can we help you today?';
         const placeholderText = document.getElementById('placeholderText')?.value || 'Type your message here...';
         const buttonColor = document.getElementById('buttonColor')?.value || '#009BDD';
@@ -129,7 +130,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=15"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=16"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -149,6 +150,7 @@ function generateCode() {
       "chatWindow": {
         "title": "${chatTitle}",
         "titleFont": "${titleFont}",
+        "headerTextColor": "${headerTextColor}",
         "welcomeMessage": "${welcomeMessage}",
         "width": ${chatWidth},
         "height": ${chatHeight},
@@ -421,6 +423,7 @@ function saveConfig() {
             // Basic settings
             webhookUrl: document.getElementById('webhookUrl')?.value || '',
             chatTitle: document.getElementById('chatTitle')?.value || '',
+            headerTextColor: document.getElementById('headerTextColor')?.value || '#FFFFFF',
             welcomeMessage: document.getElementById('welcomeMessage')?.value || '',
             placeholderText: document.getElementById('placeholderText')?.value || '',
             
