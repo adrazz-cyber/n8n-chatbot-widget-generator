@@ -818,6 +818,30 @@ class N8NChatbotWidget {
         // First, normalize line endings
         formatted = formatted.replace(/\r\n/g, '\n');
         
+        // Convert URLs to clickable links
+        // This regex matches URLs that start with http://, https://, or www.
+        formatted = formatted.replace(/(https?:\/\/[^\s<]+|www\.[^\s<]+)/g, function(url) {
+            let href = url;
+            // Add http:// if URL starts with www.
+            if (url.startsWith('www.')) {
+                href = 'http://' + url;
+            }
+            return '<a href="' + href + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">' + url + '</a>';
+        });
+        
+        // Handle URLs in parentheses (like your example)
+        formatted = formatted.replace(/\(([^)]+)\)/g, function(match, content) {
+            // Check if the content in parentheses is a URL
+            if (content.match(/^https?:\/\//) || content.match(/^www\./)) {
+                let href = content;
+                if (content.startsWith('www.')) {
+                    href = 'http://' + content;
+                }
+                return '(<a href="' + href + '" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">' + content + '</a>)';
+            }
+            return match;
+        });
+        
         // Handle service headers like "- Digital Consultancy:" or "- Web Design and Hosting services"
         formatted = formatted.replace(/^[\-–—]\s*([^:]+:?)$/gm, function(match, p1) {
             if (p1.endsWith(':')) {
