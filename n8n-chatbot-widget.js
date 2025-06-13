@@ -287,9 +287,9 @@ class N8NChatbotWidget {
                 border-radius: 18px;
                 line-height: 1.4;
                 word-wrap: break-word;
-                word-break: break-word;
+                word-break: normal;
                 overflow-wrap: break-word;
-                hyphens: auto;
+                hyphens: none;
                 max-width: 100%;
                 box-sizing: border-box;
             }
