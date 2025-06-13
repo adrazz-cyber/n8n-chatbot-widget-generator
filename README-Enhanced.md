@@ -1,6 +1,22 @@
-# N8N Chatbot Widget Generator - Enhanced Edition v16
+# N8N Chatbot Widget Generator - Enhanced Edition v17
 
-## 🚀 Latest Updates (May 28, 2025)
+## 🚀 Latest Updates (June 13, 2025)
+
+### ✨ Version 17 - URL Auto-Linking & Text Wrapping Fix
+
+#### 🔗 Automatic URL Detection
+- **Smart Link Conversion:** URLs in chat messages automatically become clickable links
+- **Supported Formats:**
+  - Standard URLs: `https://example.com` and `http://example.com`
+  - WWW URLs: `www.example.com` (automatically adds http://)
+  - URLs in parentheses: `(https://example.com)`
+- **Link Security:** All links include `target="_blank"` and `rel="noopener noreferrer"`
+- **Seamless Styling:** Links inherit message color with underline decoration
+
+#### 📝 Text Wrapping Improvements
+- **Fixed Word Breaking:** Words no longer split mid-word across lines
+- **Natural Text Flow:** Text wraps at word boundaries for better readability
+- **Disabled Hyphenation:** Removed automatic hyphenation for cleaner appearance
 
 ### ✨ Version 16 - Header Text Color Control
 

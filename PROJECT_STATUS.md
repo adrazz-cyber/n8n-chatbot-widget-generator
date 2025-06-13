@@ -1,11 +1,11 @@
-# 🚀 N8N Chatbot Widget Generator - PRODUCTION READY (v=14)
+# 🚀 N8N Chatbot Widget Generator - PRODUCTION READY (v2.1)
 
 ## 📊 **Current Status: FULLY OPERATIONAL**
 - **Live Demo**: https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/
 - **GitHub**: https://github.com/adrazz-cyber/n8n-chatbot-widget-generator
-- **Widget CDN**: https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=14
+- **Widget CDN**: https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=17
 - **License**: MIT (Open Source)
-- **Last Updated**: May 23, 2025
+- **Last Updated**: June 13, 2025
 
 ## 🎯 **Key Features Completed**
 - ✅ Professional 4-tab interface (Button, Tooltip, Window, Footer)
@@ -18,6 +18,18 @@
 - ✅ Real-time configuration save/load system
 - ✅ Comprehensive webhook integration with N8N
 - ✅ Mobile-responsive design
+- ✅ **NEW: URL Auto-Linking** - Automatically converts URLs to clickable links
+- ✅ **NEW: Smart Text Wrapping** - Prevents word-break issues for better readability
+
+## 🆕 **Recent Updates (v2.1 - June 13, 2025)**
+- **URL Auto-Linking**: Messages with URLs automatically convert to clickable links
+  - Supports http://, https://, and www. URLs
+  - Handles URLs in parentheses
+  - Links open in new tabs with security attributes
+- **Text Wrapping Fix**: Resolved word-break issues
+  - Words no longer split mid-word
+  - Natural text flow at word boundaries
+  - Disabled automatic hyphenation
 
 ## 🏆 **Competitive Position**
 **FREE alternative to $39 n8nchatui.com with SUPERIOR features:**
