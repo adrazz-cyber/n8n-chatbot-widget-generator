@@ -1,26 +1,29 @@
 # N8N Chatbot Widget Generator
 
-🎉 **Now Enhanced with Typography Controls!** See [README-Enhanced.md](README-Enhanced.md) for new features.
+🎉 **Now Enhanced with Typography Controls & Auto-Linking!** See [README-Enhanced.md](README-Enhanced.md) for detailed features.
 
 A customisable web application for generating N8N chatbot widget embed codes with a visual configuration interface.
 
-## ✨ Enhanced Features (NEW!)
+## ✨ Latest Updates (v2.1)
 
-- **Typography Control**: Choose from 13 professional fonts for different sections
-- **5 Font Categories**: Title, Message, Input, Tooltip, and Footer fonts
-- **Privacy-First**: Clean placeholders with no pre-filled company data
-- **Enhanced Preview**: See font selections in real-time
-- **Professional Output**: Clean, organised embed code with typography settings
+- **🔗 Auto-Linking URLs**: URLs in chat messages are automatically converted to clickable links
+- **📝 Improved Text Wrapping**: Fixed word-break issues - text now wraps properly at word boundaries
+- **🎨 Typography Control**: Choose from 13 professional fonts for different sections
+- **🔐 Privacy-First**: Clean placeholders with no pre-filled company data
+- **👁️ Enhanced Preview**: See font selections and formatting in real-time
+- **✨ Professional Output**: Clean, organised embed code with all customisations
 
 ## Core Features
 
 - **Visual Configuration Interface**: Easy-to-use web interface for customising chatbot appearance
 - **Real-time Preview**: See how your chatbot will look on your website
 - **Colour Customisation**: Change all colours including button, messages, backgrounds, and text
-- **Font and Size Controls**: Adjust font sizes and widget dimensions
+- **Font and Size Controls**: Adjust font families, sizes and widget dimensions
 - **Save/Load Configurations**: Save your settings as JSON files and load them later
 - **One-click Code Generation**: Generate ready-to-use embed code
 - **Responsive Design**: Works on desktop and mobile devices
+- **URL Auto-Linking**: Automatically converts URLs in messages to clickable links
+- **Smart Text Wrapping**: Prevents words from breaking mid-word for better readability
 
 ## Getting Started
 
@@ -133,6 +136,21 @@ The generated code uses the n8n chat UI library. Make sure your N8N workflow inc
 3. **Messages**: Personalise welcome messages and placeholders
 4. **Size**: Adjust based on your website's layout and user experience needs
 
+## URL Auto-Linking
+
+The chatbot automatically converts URLs in messages to clickable links:
+
+- **Supported Formats**:
+  - URLs starting with `http://` or `https://`
+  - URLs starting with `www.` (automatically prepends http://)
+  - URLs within parentheses `(https://example.com)`
+  
+- **Link Features**:
+  - Opens in new tab (`target="_blank"`)
+  - Secure with `rel="noopener noreferrer"`
+  - Inherits message text color with underline styling
+  - Works in both bot and user messages
+
 ## Browser Compatibility
 
 - Chrome 60+
@@ -165,9 +183,11 @@ For issues related to:
 
 ## Version History
 
-- **v1.0**: Initial release with full configuration interface
-- **v1.1**: Added save/load functionality
+- **v2.1** (June 13, 2025): Added URL auto-linking and fixed text wrapping issues
+- **v2.0**: Enhanced with typography controls and privacy-first design
 - **v1.2**: Improved preview system and responsive design
+- **v1.1**: Added save/load functionality
+- **v1.0**: Initial release with full configuration interface
 
 ---
 
