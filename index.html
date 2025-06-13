@@ -206,8 +206,13 @@
                                 <input type="text" id="chatTitle" value="Welcome to Our Chat">
                             </div>
                             <div class="form-group">
+                                <label for="headerTextColor">Header Text Colour</label>
+                                <input type="color" id="headerTextColor" value="#FFFFFF">
+                            </div>
+                            <div class="form-group">
                                 <label for="welcomeMessage">Welcome Message</label>
-                                <input type="text" id="welcomeMessage" value="Hello! How can we help you today?">
+                                <textarea id="welcomeMessage" rows="4" placeholder="Use - for bullet points, ** for bold text">Hello! How can we help you today?</textarea>
+                                <small class="form-help">Use formatting: - for bullet points, ** for bold text, blank lines for spacing</small>
                             </div>
                             <div class="form-group">
                                 <label for="placeholderText">Input Placeholder</label>
@@ -307,6 +312,34 @@
                                     <label for="clearChatOnReload" class="toggle-label">Clear Chat on Reload</label>
                                 </div>
                                 <div class="toggle-help">Clear chat history when the page is reloaded</div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h2>Message Formatting</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="messageLineHeight">Line Height</label>
+                                    <input type="range" id="messageLineHeight" min="1.2" max="2.0" step="0.1" value="1.6">
+                                    <span class="range-value" id="messageLineHeightValue">1.6</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="messageParagraphSpacing">Paragraph Spacing</label>
+                                    <input type="range" id="messageParagraphSpacing" min="8" max="20" value="10">
+                                    <span class="range-value" id="messageParagraphSpacingValue">10px</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="bulletSpacing">Bullet Point Spacing</label>
+                                    <input type="range" id="bulletSpacing" min="6" max="16" value="8">
+                                    <span class="range-value" id="bulletSpacingValue">8px</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="headerMargin">Header Margin</label>
+                                    <input type="range" id="headerMargin" min="10" max="24" value="16">
+                                    <span class="range-value" id="headerMarginValue">16px</span>
+                                </div>
                             </div>
                         </div>
 

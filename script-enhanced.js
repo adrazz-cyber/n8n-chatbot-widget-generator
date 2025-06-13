@@ -73,6 +73,7 @@ function generateCode() {
     try {
         const webhookUrl = document.getElementById('webhookUrl')?.value || '';
         const chatTitle = document.getElementById('chatTitle')?.value || 'Welcome to Our Chat';
+        const headerTextColor = document.getElementById('headerTextColor')?.value || '#FFFFFF';
         const welcomeMessage = document.getElementById('welcomeMessage')?.value || 'Hello! How can we help you today?';
         const placeholderText = document.getElementById('placeholderText')?.value || 'Type your message here...';
         const buttonColor = document.getElementById('buttonColor')?.value || '#009BDD';
@@ -129,7 +130,7 @@ function generateCode() {
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
         const tooltipTextColor = document.getElementById('tooltipTextColor')?.value || '#FFFFFF';
 
-        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=15"></script>
+        const embedCode = `<script src="https://adrazz-cyber.github.io/n8n-chatbot-widget-generator/n8n-chatbot-widget.js?v=16"></script>
 <script>
   N8NChatbot.init({
     "n8nChatUrl": "${webhookUrl}",
@@ -149,6 +150,7 @@ function generateCode() {
       "chatWindow": {
         "title": "${chatTitle}",
         "titleFont": "${titleFont}",
+        "headerTextColor": "${headerTextColor}",
         "welcomeMessage": "${welcomeMessage}",
         "width": ${chatWidth},
         "height": ${chatHeight},
@@ -230,6 +232,7 @@ function previewWidget() {
         const messageFont = document.getElementById('messageFont')?.value || 'Inter';
         const tooltipFont = document.getElementById('tooltipFont')?.value || 'Inter';
         const chatTitle = document.getElementById('chatTitle')?.value || 'Welcome to Our Chat';
+        const headerTextColor = document.getElementById('headerTextColor')?.value || '#FFFFFF';
         const tooltipMessage = document.getElementById('tooltipMessage')?.value || 'Hello! Can I help you?';
         const buttonColor = document.getElementById('buttonColor')?.value || '#009BDD';
         const tooltipBackgroundColor = document.getElementById('tooltipBackgroundColor')?.value || '#009BDD';
@@ -317,6 +320,9 @@ function previewWidget() {
                     <h4 style="margin: 0 0 10px 0; font-family: '${titleFont}', sans-serif;">${chatTitle}</h4>
                     <p style="margin: 0 0 10px 0; font-family: '${messageFont}', sans-serif; color: #666;">
                         Font Preview: Title uses ${titleFont}, Messages use ${messageFont}
+                    </p>
+                    <p style="margin: 0 0 10px 0; font-size: 12px; color: #666;">
+                        Header Text Color: <span style="display: inline-block; width: 20px; height: 20px; background-color: ${headerTextColor}; border: 1px solid #ddd; vertical-align: middle; margin-left: 5px;"></span> ${headerTextColor}
                     </p>
 
                     <!-- Avatar and Message Examples -->
@@ -421,6 +427,7 @@ function saveConfig() {
             // Basic settings
             webhookUrl: document.getElementById('webhookUrl')?.value || '',
             chatTitle: document.getElementById('chatTitle')?.value || '',
+            headerTextColor: document.getElementById('headerTextColor')?.value || '#FFFFFF',
             welcomeMessage: document.getElementById('welcomeMessage')?.value || '',
             placeholderText: document.getElementById('placeholderText')?.value || '',
             
